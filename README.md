@@ -1,4 +1,5 @@
-﻿# AI-100-DesignImplementAzureAISol
+﻿# AI-100 Azure AI ソリューションの設計と実装
+
 AI100T01A ILT コースのラボ ファイル
 
 コンテンツは現在検証中で、2019 年 4 月 2 日に更新されます。

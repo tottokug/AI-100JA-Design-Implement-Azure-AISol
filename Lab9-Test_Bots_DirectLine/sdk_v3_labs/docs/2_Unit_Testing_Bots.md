@@ -14,13 +14,13 @@ Microsoft Bot Framework を使用してコードを記述することは、楽�
 
 ## 2.	セットアップ
 
-code\EchoBot から VisualStudio の EchoBot ソリューションをインポートします。正常にインポートされると、次に示すように、2 つのプロジェクト (EchoBot、ボット アプリケーションと EchoBotTests、テスト プロジェクト) が表示されます。 
+code\EchoBot から VisualStudio の EchoBot ソリューションをインポートします。正常にインポートされると、次に示すように、2 つのプロジェクト (EchoBot、ボット アプリケーションと EchoBotTests、テスト プロジェクト) が表示されます。
 
 ![セットアップ](images/Setup.png)
 
 ## 3.	EchoBot
 
-このラボでは、EchoBot を使用して単体テストを開発します。EchoBot は、入力されたメッセージでユーザーにエコーバックする非常にシンプルなボットです。たとえば、ユーザーが "Hello" と入力した場合、EchoBot はメッセージ "You sent: Hello" で応答します。Dialogs を使用する EchoBot コードのコアが以下に存在しています (MessagesController.cs)。MessageReceiveAsync は、ユーザーに"You said: " とエコーを返します。
+このラボでは、EchoBot を使用して単体テストを開発します。EchoBot は、入力されたメッセージでユーザーにエコーバックする非常にシンプルなボットです。たとえば、ユーザーが "Hello" と入力した場合、EchoBot はメッセージ "You sent: Hello" で応答します。Dialogs を使用する EchoBot コードのコアが以下に存在しています (MessagesController.cs)。MessageReceivedAsync は、ユーザーに"You said: " とエコーを返します。
 
 ````c#
 public class EchoDialog : IDialog<object>
@@ -61,11 +61,11 @@ using (new FiberTestBase.ResolveMoqAssembly(rootDialog))
 
 ## 5.	予定より早く終了した場合追加クレジットのために、この演習をお試しください。
 
-A. "You sent" で始まるエコー プロンプトを検証する *EchoStarts* と呼ばれる別の TestMethod を記述します。
+A.   "You sent" で始まるエコー プロンプトを検証する *EchoStartsWith* と呼ばれる別の TestMethod を記述します。
 
-*ヒント:* TestMethod は ShouldReturnEcho() と非常によく似ており、toUser.text が "You sent" で始まるかどうかを確認します。 
+*ヒント:* TestMethod は ShouldReturnEcho() と非常によく似ており、toUser.text が "You sent" で始まるかどうかを確認します。
 
-B. エコーされたメッセージがボットによって送信されたことを確認できますか?
+B.   エコーされたメッセージがボットによって送信されたことを確認できますか?
 
 *ヒント:* これには、受信した IMessageActivity 応答のプロパティを確認する必要があります。
 

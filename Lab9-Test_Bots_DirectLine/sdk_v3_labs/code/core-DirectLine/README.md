@@ -2,7 +2,7 @@
 
 サンプル ボットと、Direct Line API を使用して相互に通信するカスタム クライアント。
 
-[![Deploy to Azure][Deploy Button]][Deploy CSharp/DirectLine]
+[![Azureへのデプロイ][Deploy Button]][Deploy CSharp/DirectLine]
 
 [Deploy Button]: https://azuredeploy.net/deploybutton.png
 [Deploy CSharp/DirectLine]: https://azuredeploy.net
@@ -28,7 +28,7 @@ Bot Framework 開発者ポータルで、チャネル リスト内の Direct Lin
 Direct Line API は、単一のボットに直接接続するための単純な REST API です。この API は、ボットと対話する独自のクライアント アプリケーション、Web チャット コントロール、またはモバイル アプリを作成する開発者を対象としています。[Direct Line v3.0 Nuget パッケージ](https://www.nuget.org/packages/Microsoft.Bot.Connector.DirectLine/3.0.0-beta)により、基になる REST API へのアクセスが簡素化されます。
 
 Direct Line チャネル上の各会話は、`DirectLineClient.Conversations.StartConversationAsync`を使用して明示的に開始する必要があります。
-新しい `DirectLineClient`を作成し、新しい会話を開始するクライアントの `Program.cs`(DirectLineClient/Program.cs#L25-L27) クラスを確認してください。
+新しい `DirectLineClient`を作成し、新しい会話を開始するクライアントの [Program.cs](DirectLineClient/Program.cs#L25-L27) クラスを確認してください。
 
 
 ````C#

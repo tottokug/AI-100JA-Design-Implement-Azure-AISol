@@ -2,7 +2,7 @@
 
 このハンズオン ラボでは、Microsoft Bot Framework、Azure Search、およびいくつかの Cognitive Services を使用して、エンド ツー エンドでインテリジェントなボットを作成する方法について説明します。 
 
-このワークショップでは、次の操作を行います。
+このワークショップでは、次のことを行います。
 - インテリジェント サービスをアプリケーションに織り込む方法を理解する
 - Azure Search 機能を実装して、アプリケーション内で肯定的な検索エクスペリエンスを提供する方法を理解する
 - フルテキスト検索、言語認識検索を有効にするためにデータを拡張するように Azure Search サービスを構成する
@@ -26,13 +26,13 @@
 
 このワークショップは、Azure での AI 開発者を対象としています。これは半日のワークショップですので、事前に必要なことがあります。
 
-まず、Visual Studio での経験が必要です。ワークショップで構築するすべてのものに Visual Studio を使用するので、アプリケーションを作成するために[その使用方法](https://docs.microsoft.com/ja-jp/visualstudio/ide/visual-studio-ide)に精通している必要があります。また、これは、アプリケーションのコーディングや開発方法を教えるクラスではありません。C# でのコーディング方法を知っている ([ここ](https://mva.microsoft.com/ja-jp/training-courses/c-fundamentals-for-absolute-beginners-16169?l=Lvld4EQIC_2706218949)で学習できます) ものの、高度な検索および NLP (自然言語処理) ソリューションを実装する方法は知らないことを前提とします。 
+まず、Visual Studio での経験が必要です。ワークショップで構築するすべてのものに Visual Studio を使用するので、アプリケーションを作成するために[その使用方法](https://docs.microsoft.com/ja-jp/visualstudio/ide/visual-studio-ide)に精通している必要があります。さらに、これはアプリケーションのコーディングまたは開発方法を教えるクラスではありません。C# でのコーディング方法を知っている ([ここ](https://mva.microsoft.com/ja-jp/training-courses/c-fundamentals-for-absolute-beginners-16169?l=Lvld4EQIC_2706218949)で学習できます) ものの、高度な検索および NLP (自然言語処理) ソリューションを実装する方法は知らないことを前提とします。 
 
 次に、マイクロソフトの Bot Framework を使用してボットを開発した経験が必要です。設計方法やダイアログのしくみについてディスカッションする時間はあまりありません。Bot Framework に慣れていない場合は、ワークショップに参加する前に、[この Microsoft Virtual Academy コース](https://mva.microsoft.com/ja-jp/training-courses/creating-bots-in-the-microsoft-bot-framework-using-c-17590#!)を受講する必要があります。
 
 3 番目に、portal での経験があり、Azure でリソースを作成する (および費用をかける) ことが可能である必要があります。このワークショップでは、Azure Pass は提供しません。
 
-## 概要
+## 紹介
 
 独自のイメージを取り込み、Cognitive Services を使用してイメージ内のオブジェクトや人物を検索して、それらの人物がどのように感じているかを把握し、そのデータをすべて NoSQL ストア (DocumentDB) に格納することが可能なエンド ツー エンドのシナリオを構築します。この NoSQL ストアを使用して Azure Search インデックスを設定し、LUIS を使用して Bot Framework ボットを構築し、簡単なターゲットを絞ったクエリを実行できるようにします。
 
@@ -74,7 +74,7 @@ DocumentDB で、[Azure Search](https://azure.microsoft.com/ja-jp/services/searc
 
 Azure の無料試用版は、[https://azure.microsoft.com/ja-jp/free/](https://azure.microsoft.com/ja-jp/free/) でアクティブ化できます。  
 
-このラボを実行するために Azure Pass が付与されている場合は、[http://www.microsoftazurepass.com/](http://www.microsoftazurepass.com/) に 移動してアクティブ化できます。  アクティベーション プロセスについて文書化されている [https://www.microsoftazurepass.com/howto](https://www.microsoftazurepass.com/howto) の手順に従ってください。  Microsoft アカウントでは、Azure で **1 つの無料試用版** とそれに関連付けられた 1 つの Azure Pass を使用できるため、Microsoft アカウントで Azure Pass を既に有効にしている場合は、その無料試用版を使用するか、別の Microsoft アカウントを使用する必要があります。
+このラボを実行するために Azure Pass が付与されている場合は、[http://www.microsoftazurepass.com/](http://www.microsoftazurepass.com/) に 移動してアクティブ化できます。アクティベーション プロセスについて文書化されている [https://www.microsoftazurepass.com/howto](https://www.microsoftazurepass.com/howto) の手順に従ってください。Microsoft アカウントでは、Azure で **1 つの無料試用版** とそれに関連付けられた 1 つの Azure Pass を使用できるため、Microsoft アカウントで Azure Pass を既に有効にしている場合は、その無料試用版を使用するか、別の Microsoft アカウントを使用する必要があります。
 
 ### ラボ: Data Science Virtual Machine のセットアップ
 
@@ -90,7 +90,7 @@ Azure アカウントを作成すると、[Azure portal](https://portal.azure.co
 	- Cortana の検索バーで「gpedit.msc」と入力し、Enter キーを押します。次のポリシーを有効にします。「コンピューターの構成」 > 「Windowsの設定」 > 「セキュリティの設定」> 「ローカル ポリシー」 > 「セキュリティ オプション」 > 「ユーザー アカウント制御」: 組み込みの管理者アカウントの管理者承認モード
 	- "キーの収集" ラボを開始します。 
 5. インストールが完了したら、開発者の設定とユーザー アカウント制御ポリシーを変更し、DSVM を再起動します。 
-> 注記: ワークショップの後、DSVM をオフにして、課金されないようにしてください。
+> **注** ワークショップの後、DSVM をオフにして、課金されないようにしてください。
 
 
 ### ラボ: キーの収集
@@ -134,13 +134,13 @@ Portal で **「新規」** をクリックし、検索ボックスに **「cogn
 
 _Azure Blob Storage_
 
-「はじめに」の詳細な手順は[オンラインで見つける](https://docs.microsoft.com/ja-jp/azure/storage/storage-dotnet-how-to-use-blobs)ことができますが、ここではこのラボに必要なものだけを詳しく見てみましょう。 
+「はじめに」の詳細な手順は[オンラインで見つける](https://docs.microsoft.com/ja-jp/azure/storage/storage-dotnet-how-to-use-blobs)ことができますが、ここではこのラボに必要なものだけを詳しく見てみましょう。
 
 Azure portal で、**「新規」->「ストレージ」->「ストレージ アカウント」** をクリックします。
 
 ![新しい Azure Storage](./resources/assets/create-blob-storage.PNG)
 
-クリックすると、上記のフィールドに入力するフィールドが表示されます。ストレージ アカウント名 (小文字と数字) を選択し、「アカウントの種類」__を "Blob Storage" に設定し、____「レプリケーション」を__ "ローカル冗長ストレージ (LRS)" に設定して (この目的はコストを節約することのみ)、上記と同じリソース グループを使用して、「国や地域」を "米国西部"____ に設定します   (各リージョンで利用可能な Azure サービスの一覧は、https://azure.microsoft.com/ja-jp/regions/services/ にあります)。見つけやすいように、_ダッシュボードにピン留め_します。
+クリックすると、上記のフィールドに入力するフィールドが表示されます。ストレージ アカウント名 (小文字と数字) を選択し、「アカウントの種類」__を "Blob Storage" に設定し、____「レプリケーション」を__ "ローカル冗長ストレージ (LRS)" に設定して (この目的はコストを節約することのみ)、上記と同じリソース グループを使用して、「国や地域」を "米国西部"____ に設定します (各リージョンで利用可能な Azure サービスの一覧は、https://azure.microsoft.com/ja-jp/regions/services/ にあります)。見つけやすいように、_ダッシュボードにピン留め_します。
 
 Azure Storage アカウントを持っているので、__接続文字列を取得し、_TestCLI_ と _TestApp_ の`settings.json`に追加してみましょう。
 
@@ -175,11 +175,11 @@ Azure portal で、**「新規」->「データベース」->「Azure Cosmos DB�
 
 結果として得られる情報には、タグ、説明、性別/年齢/感情 (人物の場合) があります。次のラボを完了したら、作成された ImageInsights.json ファイルを確認して、この情報の構造を把握します。
 
-その後、ボットの言語理解を深められるように、LUIS モデルの開発にも時間を費やします。このサービスでは、トレーニングして公開する前に、意図、エンティティ、発話などをモデルに追加します。その後でようやく、API 呼び出しからアクセスできるようになります。
+後で、ボットが言語をよりよく理解できるように、LUIS モデルの開発にも少し時間を費やします。このサービスでは、トレーニングして公開する前に、意図、エンティティ、発話などをモデルに追加します。その後でようやく、API 呼び出しからアクセスできるようになります。
 
 ### ラボ: Cognitive Services とイメージ処理ライブラリの探索
 
-`ImageProcessing.sln`ソリューションを開くと、イメージを読み込み、それらに対してさまざまな Cognitive Services を呼び出し、その結果を調べることを可能にする UWP アプリケーションが表示さ (`TestApp`) れます。これはイメージの実験や探索に役立ちます。このアプリは、イメージを分析するために TestCLI プロジェクトでも使用される`ImageProcessingLibrary`プロジェクトを基にして構築されています。 
+`ImageProcessing.sln`ソリューションを開くと、イメージを読み込み、それらに対してさまざまな Cognitive Services を呼び出し、その結果を調べることを可能にする UWP アプリケーションが表示されます。これはイメージの実験や探索に役立ちます。このアプリは、イメージを分析するために TestCLI プロジェクトでも使用される`ImageProcessingLibrary`プロジェクトを基にして構築されています。 
 
 ソリューションを "ビルド" する必要があります (`ImageProcessing.sln`を右クリックして、「ビルド」を選択する)。また、TestApp プロジェクトを再読み込みする必要がある場合もあります。これは、このプロジェクトを右クリックし、「プロジェクトの再読み込み」を選択することによって実行できます。 
 
@@ -193,7 +193,7 @@ Azure portal で、**「新規」->「データベース」->「Azure Cosmos DB�
 
 Cosmos DB はこのワークショップの焦点ではありませんが、ご興味がある方のために、使用するコードのハイライトの一部をご紹介します。
 - `ImageStorageLibrary`の`DocumentDBHelper.cs`クラスに移動します。使用する実装の多くについては、[スタート アップガイド](https://docs.microsoft.com/ja-jp/azure/documentdb/documentdb-get-started)を参照してください。
-- `TestCLI''Util.cs`に移動し、`ImageMetadata`クラスを確認します。ここで、Cognitive Services から取得した`ImageInsights`を適切なメタデータに変換し、Cosmos DB に格納します。
+- `TestCLI``Util.cs`に移動し、`ImageMetadata`クラスを確認します。ここで、Cognitive Services から取得した`ImageInsights`を適切なメタデータに変換し、Cosmos DB に格納します。
 - 最後に、`Program.cs`と`ProcessDirectoryAsync`を見てみましょう。まず、イメージとメタデータが既にアップロードされていることを確認します。`DocumentDBHelper`を使用して ID でドキュメントを検索します。ドキュメントが存在しない場合は`null`が返されます。次に、`forceUpdate`を設定しているか、またはイメージがまだ処理されていない場合は、`ImageProcessingLibrary`から`ImageProcessor`を使用して Cognitive Services を呼び出し、現在の`ImageMetadata`に追加する`ImageInsights`を取得します。 
 - すべてが完了すると、イメージを格納できます。まず、`BlobStorageHelper`インスタンスを使用して実際のイメージを BLOB Storage に格納し、次に`DocumentDBHelper`インスタンスを使用して`ImageMetadata`を Cosmos DB に格納します。(これまでに確認したように) ドキュメントが既に存在している場合、既存のドキュメントを更新する必要があります。存在していない場合は、新しいドキュメントを作成する必要があります。
 
@@ -216,7 +216,7 @@ _TestCLI_ を実行し、コマンド プロンプトを開いて、ImageProcess
     -query            実行するクエリ
     -?  | -h | --Help  ヘルプ情報を表示します
 
-既定では、設定は`settings.json`から読み込まれます (`.exe`にビルドされます) が、`-settings`フラグを使用して独自の設定を指定することもできます。イメージ (および Cognitive Services のメタデータ) をクラウド ストレージに読み込むには、次のようにイメージ ディレクトリに対して`-process`を実行するように _TestCLI_ に指示するだけです。
+既定では、設定は`settings.json`から読み込まれます (`.exe`にビルドされます) が、`-settings`フラグを使用して独自の設定を指定することもできます。イメージ (および Cognitive Services のメタデータ) をクラウド ストレージに読み込むには、次のようにイメージディレクトリに対して`-process`を実行するように _TestCLI_ に指示するだけです。
 
     > .\bin\Debug\TestCLI.exe -process c:\my\image\directory
 
@@ -285,7 +285,7 @@ Azure Portal で、**「新規」->「Web + モバイル」->「Azure Search」*
 
 フィールド **「NumFaces」** を **「並べ替え可能」** に設定します (クライアントがイメージ内の顔の数に基づいて結果を並べ替えることができるようにする)
 
-フィールド **「タグ」、「NumFaces」、および「顔」** を **「ファセット可能」** に設定します ( クライアントが結果を数でグループ化できるようにする (たとえば、この検索結果の場合、"beach" というタグが付けられている 5 つの写真がある)
+フィールド **「タグ」、「NumFaces」、および「顔」** を **「ファセット可能」** に設定します (クライアントが結果を数でグループ化できるようにする (たとえば、この検索結果の場合、"beach" というタグが付けられている 5 つの写真がある)
 
 フィールド **「キャプション」、「タグ」、「顔」** を **「検索可能」** に設定します (クライアントがこれらのフィールドのテキストに対してフルテキスト検索を行えるようにする)
 
@@ -303,7 +303,7 @@ Azure Portal で、**「新規」->「Web + モバイル」->「Azure Search」*
 
 ![検索候補](./resources/assets/AzureSearch-Suggester.png) 
 
-**「OK」** をクリックして、インデクサーの構成を完了します。  インデクサーが変更をチェックする頻度をスケジュールで設定できますが、このラボでは 1 回だけ実行します。  
+**「OK」** をクリックして、インデクサーの構成を完了します。インデクサーが変更をチェックする頻度をスケジュールで設定できますが、このラボでは 1 回だけ実行します。  
 
 **「詳細オプション」** をクリックし、**「Base-64 エンコード キー」** を選択して、「ID」フィールドで、「Azure Search key」 フィールドでサポートされている文字のみが使用されることを確認します。
 
@@ -313,7 +313,7 @@ Azure Portal で、**「新規」->「Web + モバイル」->「Azure Search」*
 
 ***検索インデックスに対してクエリを実行する***
 
-インデックス作成が開始されたことを示すメッセージがポップアップ表示されるはずです。  インデックスのステータスを確認する場合は、Azure Search のメイン ブレードで「インデックス」オプションを選択できます。
+インデックス作成が開始されたことを示すメッセージがポップアップ表示されるはずです。インデックスのステータスを確認する場合は、Azure Search のメイン ブレードで「インデックス」オプションを選択できます。
 
 この時点で、インデックスを検索できます。  
 
@@ -333,7 +333,7 @@ Azure Portal で、**「新規」->「Web + モバイル」->「Azure Search」*
 
 「ヘッダー」をクリックし、次のパラメーターを入力します。
 
-+ Content Type: application/json
++ コンテンツの種類: application/json
 + api-key: [「キー」セクションの下にある Azure Search ポータルから API キーを入力します]
 
 「送信」を選択すると、JSON 形式で書式設定されたデータが表示されるはずです。
@@ -345,7 +345,7 @@ Azure Portal で、**「新規」->「Web + モバイル」->「Azure Search」*
 
 まず、[Language Understanding Intelligent Service (LUIS) について学習](https://docs.microsoft.com/ja-jp/azure/cognitive-services/LUIS/Home)しましょう。
 
-LUIS の概要を把握したところで、LUIS アプリを計画します。検索に基づいてイメージを返すボットを作成し、共有または並べ替えを行います。ボットが実行できるさまざまなアクションをトリガーする意図を作成し、そのアクションの実行に必要なパラメータをモデル化するエンティティを作成する必要があります。たとえば、PictureBot の意図が "SearchPics" であり、写真を検索するために検索サービスがトリガーされます。これには、検索対象を知るために "facet" エンティティが必要です。アプリを計画するためのその他の例については、[ここ](https://docs.microsoft.com/ja-jp/azure/cognitive-services/LUIS/plan-your-app)を参照してください。
+LUIS の概要を把握したところで、LUIS アプリを計画します。検索に基づいてイメージを返すボットを作成し、共有または並べ替えを行います。ボットが実行できるさまざまなアクションをトリガーする意図を作成し、そのアクションの実行に必要なパラメーターをモデル化するエンティティを作成する必要があります。たとえば、PictureBot の意図が "SearchPics" であり、写真を検索するために検索サービスがトリガーされます。これには、検索対象を知るために "facet" エンティティが必要です。アプリを計画するためのその他の例については、[ここ](https://docs.microsoft.com/ja-jp/azure/cognitive-services/LUIS/plan-your-app)を参照してください。
 
 アプリについて考え抜いたら、[それを構築してトレーニングする](https://docs.microsoft.com/ja-jp/azure/cognitive-services/LUIS/luis-get-started-create-app)準備が整いました。LUIS アプリケーションの作成時に一般的に実行する手順は次のとおりです。
   1. [意図を追加する](https://docs.microsoft.com/ja-jp/azure/cognitive-services/LUIS/add-intents) 
@@ -362,11 +362,11 @@ LUIS の概要を把握したところで、LUIS アプリを計画します。�
 
 次のラボでは、PictureBot を作成します。まず、LUIS を使用して、自然言語機能を追加する方法を見てみましょう。LUIS を使用すると、自然言語の発話を意図にマッピングできます。  ここでは、写真の検索、写真の共有、写真のプリントの順序付けなど、いくつかの意図があります。  これらの事柄を尋ねる方法として、発話のいくつかの例をご紹介します。LUIS では、学習した内容に基づいて、それぞれの意図に追加の新しい発話がマッピングされます。  
 
-[Https://www.luis.ai](https://www.luis.ai) に移動して、Microsoft アカウントを使用してサインインします  (これは、このラボの冒頭で Cognitive Services キーを作成したのと同じアカウントにする必要があります)。  [https://www.luis.ai/applications](https://www.luis.ai/applications)の LUIS アプリケーションの一覧にリダイレクトされるはずです。  ボットをサポートする新しい LUIS アプリを作成します。  
+[https://www.luis.ai](https://www.luis.ai) に移動して、Microsoft アカウントを使用してサインインします  (これは、このラボの冒頭で Cognitive Services キーを作成したのと同じアカウントにする必要があります)。  [https://www.luis.ai/applications](https://www.luis.ai/applications)の LUIS アプリケーションの一覧にリダイレクトされるはずです。  ボットをサポートする新しい LUIS アプリを作成します。  
 
-> 楽しい余談: [現在のページ](https://www.luis.ai/applications)の「New App」 (新しいアプリ) ボタンの横に「Import App」 (アプリのインポート) もあります。  LUIS アプリケーションを作成した後、アプリ全体を JSON としてエクスポートし、ソース管理にチェックインできます。  これは推奨されるベスト プラクティスであり、コードのバージョン管理に合わせて LUIS モデルのバージョンを管理できます。  エクスポートされた LUIS アプリは、「Import App」 (アプリのインポート) ボタンを使用して再インポートできます。  ラボの進行が遅れてしまい、ショートカットする場合は、「Import App」 (アプリのインポート) ボタンをクリックして [LUIS モデル](./resources/code/LUIS/PictureBotLuisModel.json)をインポートできます。  
+> 楽しい余談: [現在のページ](https://www.luis.ai/applications)の「New App」 (新しいアプリ) ボタンの横に「Import App」 (アプリのインポート) もあります。LUIS アプリケーションを作成した後、アプリ全体を JSON としてエクスポートし、ソース管理にチェックインできます。これは推奨されるベスト プラクティスであり、コードのバージョン管理に合わせて LUIS モデルのバージョンを管理できます。  エクスポートされた LUIS アプリは、「Import App」 (アプリのインポート) ボタンを使用して再インポートできます。  ラボの進行が遅れてしまい、ショートカットする場合は、「Import App」 (アプリのインポート) ボタンをクリックして [LUIS モデル](./resources/code/LUIS/PictureBotLuisModel.json)をインポートできます。  
 
-[Https://www.luis.ai/applications](https://www.luis.ai/applications) から「New App」 (新しいアプリ) ボタンをクリックします。  名前を付けて ("PictureBotLuisModel" を選択)、「Culture」 (文化) を「English」 (英語) に設定します。  必要に応じて、説明を入力できます。  ドロップダウンをクリックして使用するエンドポイント キーを選択し、ワークショップの開始時に Azure Portal で作成した LUIS キーが存在している場合は、そのキーを選択します (このオプションは、アプリを公開するまで表示されない場合があるため、表示されない場合は心配しないでください)。  次に、「Create」 (作成) をクリックします。  
+[https://www.luis.ai/applications](https://www.luis.ai/applications) から「New App」 (新しいアプリ) ボタンをクリックします。名前を付けて ("PictureBotLuisModel" を選択)、「Culture」 (文化) を「English」 (英語) に設定します。  必要に応じて、説明を入力できます。  ドロップダウンをクリックして使用するエンドポイント キーを選択し、ワークショップの開始時に Azure Portal で作成した LUIS キーが存在している場合は、そのキーを選択します (このオプションは、アプリを公開するまで表示されない場合があるため、表示されない場合は心配しないでください)。次に、「Create」 (作成) をクリックします。
 
 ![LUIS の新しいアプリ](./resources/assets/LuisNewApp.jpg) 
 
@@ -380,7 +380,7 @@ LUIS の概要を把握したところで、LUIS アプリを計画します。�
 + 写真のプリントを注文する
 + ユーザーに挨拶する (ただし、これは後で説明するように、他の方法でも可能)
 
-これらのそれぞれを要求するユーザーの意図を作成してみましょう。  「Add intent」 (意図の追加) ボタンをクリックします。  
+これらのそれぞれを要求するユーザーの意図を作成してみましょう。「Add intent」 (意図の追加) ボタンをクリックします。  
 
 最初の意図に "Greeting" という名前を付け、「Save」 (保存) をクリックします。  次に、ボットに挨拶するときにユーザーが話す可能性のある言葉の例をいくつか示し、それぞれの後に Enter キーを押します。  発話を入力したら、「Save」 (保存) をクリックします。  
 
@@ -424,12 +424,12 @@ LUIS の概要を把握したところで、LUIS アプリを計画します。�
 
 最後に、左側のサイドバーの「Intents」 (意図) をクリックして、さらに 2 つの意図を追加します。
 + 1つの意図に **"SharePic"** という名前を付けます。  これは "この写真を共有する"、"それをツイートできますか"、"Twitter に投稿" などの発話によって識別されます。  
-+ **"OrderPic**" という名前の別の意図を作成します。  これは、"この写真をプリントする"、"プリントを注文したい"、"それの 8 x 10 を手に入れることができますか"、"ウォレットを注文して" などの発話でコミュニケーションできます。  
++ **"OrderPic"** という名前の別の意図を作成します。  これは、"この写真をプリントする"、"プリントを注文したい"、"それの 8 x 10 を手に入れることができますか"、"ウォレットを注文して" などの発話でコミュニケーションできます。  
 発話を選択するときには、質問、命令、"...したい..." 形式の組み合わせを使用すると便利です。  
 
-また、"None" (なし) という意図が 1 つあることにも注意してください。  いずれの意図にもマッピングされないランダムな発話は、"None" (なし) にマッピングされる場合があります。  「Do you like peanut butter and jelly?」 (ピーナッツバターとジャムは好きですか?) などが表示されます。
+また、"None" (なし) という意図が 1 つあることにも注意してください。いずれの意図にもマッピングされないランダムな発話は、"None" (なし) にマッピングされる場合があります。「Do you like peanut butter and jelly?」 (ピーナッツバターとジャムは好きですか?) などが表示されます。
 
-これで、モデルをトレーニングする準備が整いました。  左側のサイドバーの「Train & Test」 (トレーニングとテスト) をクリックします。  次に、「train」 (トレーニング) ボタンをクリックします。  これにより、指定したトレーニング データを使用して「utterance」 (発話) -->「intent mapping」 (意図のマッピング) を行うモデルが構築されます。  
+これで、モデルをトレーニングする準備が整いました。  左側のサイドバーの「Train & Test」 (トレーニングとテスト) をクリックします。次に、「train」 (トレーニング) ボタンをクリックします。これにより、指定したトレーニング データを使用して「utterance」 (発話) -->「intent mapping」 (意図のマッピング) を行うモデルが構築されます。  
 
 次に、左側のサイドバーにある「Publish App」 (アプリの公開) をクリックします。  まだ設定していない場合は、以前に設定したエンドポイント キーを選択するか、リンク先に従って Azure アカウントで新しいキーを作成します。  エンドポイント スロットは "Production"(運用環境) のままにしておくことができます。  次に、「Publish」 (公開) をクリックします。  
 
@@ -450,7 +450,7 @@ LUIS の概要を把握したところで、LUIS アプリを計画します。�
 
 ![リスト付きのカスタム感情エンティティ](./resources/assets/CustomEmotionEntityWithList.jpg) 
 
-> 注記: エンティティや機能を追加するときには、`Intents` (意図) > `Utterances` (発話) に移動し、追加したエンティティに対して発話を確認することや、さらに発話を追加することを忘れないでください。また、モデルを再トレーニングして公開する必要があります。
+> **注**: エンティティや機能を追加するときには、`「Intents」 (意図) > 「Utterances」 (発話)` に移動し、追加したエンティティに対して発話を確認することや、さらに発話を追加することを忘れないでください。また、モデルを再トレーニングして公開する必要があります。
 
 ## ボットの構築
 
@@ -459,16 +459,16 @@ Bot Framework に触れた経験があることを前提としています。経
 ### ラボ: ボット開発の設定
 
 C# SDK を使用してボットを開発します。  開始するには、次の 2 つのことが必要です。
-1. Bot Framework プロジェクトのテンプレートは、[ここ](https://aka.ms/bf-bc-vstemplate)でダウンロードできます。  このファイルは "Bot Application.zip" と呼ばれ、\Documents\Visual Studio 2017\Templates\ProjectTemplates\Visual C#\ ディレクトリに保存する必要があります。  ここに zip ファイル全体をドロップするだけです。解凍する必要はありません。  
-2. ボットをローカルでテストするために、Bot フレームワーク エミュレーターを[ここ](https://emulator.botframework.com/)から Bot Framework Emulator をダウンロードしてください。  エミュレーターは、ブラウザーに応じて、`c:\Users\`_your-username_`\AppData\Local\botframework\app-3.5.27\botframework-emulator.exe` フォルダーにインストールされます。 
+1. Bot Framework プロジェクトのテンプレートは、[ここ](https://aka.ms/bf-bc-vstemplate)でダウンロードできます。  このファイルは "Bot Application.zip" と呼ばれ、\Documents\Visual Studio 2019\Templates\ProjectTemplates\Visual C#\ ディレクトリに保存する必要があります。  ここに zip ファイル全体をドロップするだけです。解凍する必要はありません。  
+2. ボットをローカルでテストするために、Bot フレームワーク エミュレーターを[ここ](https://emulator.botframework.com/)から Bot Framework Emulator をダウンロードしてください。エミュレーターは、ブラウザーに応じて、`c:\Users\`_your-username_`\AppData\Local\botframework\app-3.5.27\botframework-emulator.exe` フォルダーにインストールされます。 
 
 ### ラボ: 単純なボットを作成して実行する
 
-Visual Studio で、「ファイル」 --> 「新しいプロジェクト」に移動し、「PictureBot」という名前のボット アプリケーションを作成します。  
+Visual Studio で、「ファイル」 --> 「新しいプロジェクト」に移動し、「PictureBot」という名前のボットアプリケーションを作成します。  
 
 ![新しいボット アプリケーション](./resources/assets/NewBotApplication.jpg) 
 
-サンプルのボット コードのファイルの内容を調べます。これは、メッセージとその文字数を繰り返すエコー ボットです。  特に、次の点に注目してください。
+サンプルのボット コードのファイルの内容を調べます。これは、メッセージとその文字数を繰り返すエコー ボットです。  特に、 **注**
 + App_Start の下の **WebApiConfig.cs** にあるルート テンプレートは api/{controller}/{id} で、ID は省略可能です。  そのため、必ず最後に API/メッセージが追加されたボットのエンドポイントを呼び出します。  
 + Controllers の下の **MessagesController.cs** は、ボットへのエントリポイントです。ボットはさまざまな種類のアクティビティに対応でき、メッセージを送信すると RootDialog が呼び出されます。  
 + Dialogs の下の **RootDialog.cs** にある "StartAsync" はユーザーからのメッセージを待機しているエントリ ポイントであり、"MessageReceiveAsync" は受信したメッセージを処理し、さらにメッセージを待機するメソッドです。  "context.PostAsync" を使用して、ボットからのメッセージをユーザーに送信します。  
@@ -479,7 +479,7 @@ F5 キーを押して、サンプル コードを実行します。  NuGet に�
 
 http://localhost:3979/ のような URL で、既定の Web ブラウザーでコードを起動します。  
 
-> 楽しい余談: なぜこのポート番号でしょうか?  これは、プロジェクトのプロパティとして設定されます。  ソリューション エクスプローラーで、「プロパティ」をダブルクリックし、「Web」タブを選択します。  プロジェクトの URL は「サーバー」セクションで設定されます。  
+> 楽しい余談: なぜこのポート番号でしょうか?  これは、プロジェクトのプロパティとして設定されます。ソリューション エクスプローラーで、「プロパティ」をダブルクリックし、「Web」タブを選択します。プロジェクトの URL は「サーバー」セクションで設定されます。
 
 ![ボット プロジェクトの URL](./resources/assets/BotProjectUrl.jpg) 
 
@@ -561,7 +561,7 @@ namespace PictureBot.Dialogs
 
 ```
 
-それでは、コードを実行してみましょう。  F5 キーをクリックして Visual Studio で実行し、Bot Framework Emulator で新しい会話を開始します。  ボットとチャットして、期待どおりの応答を得られることを確認してみましょう。  予期しない結果が生じた場合は、それをメモして LUIS を修正します。  
+それでは、コードを実行しましょう。  F5 キーをクリックして Visual Studio で実行し、Bot Framework Emulator で新しい会話を開始します。  ボットとチャットして、期待どおりの応答を得られることを確認してみましょう。  予期しない結果が生じた場合は、それをメモして LUIS を修正します。  
 
 ![ボットで LUIS をテストする](./resources/assets/BotTestLuis.jpg) 
 
@@ -577,12 +577,12 @@ LUIS モデルを使用してユーザーの意図を把握できたので、Azu
 
 ### ラボ: Azure Search 用にボットを構成する 
 
-まず、Azure Search インデックスに接続するための関連情報をボットに提供する必要があります。  接続情報を格納するのに最適な場所は、構成ファイルです。  
+最初に、Azure Search インデックスに接続するための関連情報をボットに提供する必要があります。  接続情報を格納するのに最適な場所は、構成ファイルです。  
 
 Web.config を開き、「appSettings」セクションで以下を追加します。
 
 ```xml    
-    <!-- Azure Search の設定 -->
+    <!-- Azure Search Settings -->
     <add key="SearchDialogsServiceName" value="" />
     <add key="SearchDialogsServiceKey" value="" />
     <add key="SearchDialogsIndexName" value="images" />
@@ -663,7 +663,7 @@ using System.Collections.Generic;
 
 ```
 
-and change your class derivation to:
+派生クラスを変更します:
 
 ```csharp
 
@@ -710,7 +710,7 @@ and change your class derivation to:
                     await OrderPic(context, null);
                     break;
                 default:
-                    await context.PostAsync("I'm sorry.I didn't understand you.");
+                    await context.PostAsync("I'm sorry. I didn't understand you.");
                     break;
             }
         }
@@ -803,7 +803,7 @@ LUIS の "None" (なし) という意図は、発話が意図にマッピング�
 
 ```
 
-最後に、上記のサービスのいずれでも理解できなかった場合は、既定のハンドラーを追加します。  この ScorableGroup は、LuisIntent 属性または RegexPattern 属性 (MethodBind を含む) で装飾されていないため、明示的な MethodBind が必要です。
+最後に、上記のサービスのいずれでも理解できなかった場合は、既定のハンドラーを追加します。この ScorableGroup は、LuisIntent 属性または RegexPattern 属性 (MethodBind を含む) で装飾されていないため、明示的な MethodBind が必要です。
 
 ```csharp
 
@@ -812,8 +812,8 @@ LUIS の "None" (なし) という意図は、発話が意図にマッピング�
         [ScorableGroup(2)]
         public async Task Default(IDialogContext context, IActivity activity)
         {
-            await context.PostAsync("I'm sorry.I didn't understand you.");
-            await context.PostAsync("You can tell me to find photos, tweet them, and order prints.  次に例を示します。\"find pictures of food\".");
+            await context.PostAsync("I'm sorry. I didn't understand you.");
+            await context.PostAsync("You can tell me to find photos, tweet them, and order prints. 次に例を示します。\"find pictures of food\".");
         }
 
 ```
@@ -879,11 +879,11 @@ Visual Studio のソリューション エクスプローラーで、ボット �
 - インテリジェント サービスをアプリケーションに織り込む方法
 - Azure Search 機能を実装して、アプリケーション内で肯定的な検索エクスペリエンスを提供する方法
 - フルテキスト検索、言語認識検索を有効にするためにデータを拡張するように Azure Search サービスを構成する方法
-- ボットが効果的に通信できるように LUIS モデルを構築、トレーニング、公開する方法
+- ボットが効果的に通信できるように LUIS モデルを構築、トレーニング、公開する
 - LUIS と Azure Search を活用する Microsoft Bot Framework を使用してインテリジェント ボットを構築する方法
 - .NET アプリケーションでさまざまな Cognitive Services APIs (特に Computer Vision、Face、Emotion、LUIS) を呼び出す方法
 
-将来のプロジェクト/学習のためのリソース:
+将来のプロジェクト/学習のためのリソース
 - [Azure Bot Services のドキュメント](https://docs.microsoft.com/ja-jp/bot-framework/)
 - [Azure Search のドキュメント](https://docs.microsoft.com/ja-jp/azure/search/search-what-is-azure-search)
 - [Azure Bot Builder のサンプル](https://github.com/Microsoft/BotBuilder-Samples)

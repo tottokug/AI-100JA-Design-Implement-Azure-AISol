@@ -16,7 +16,7 @@ using System.Collections.Generic;
 
 ```
 
-and change your class derivation to:
+派生クラスを変更します:
 
 ```csharp
 
@@ -63,7 +63,7 @@ and change your class derivation to:
                     await OrderPic(context, null);
                     break;
                 default:
-                    await context.PostAsync("I'm sorry.I didn't understand you.");
+                    await context.PostAsync("I'm sorry. I didn't understand you.");
                     break;
             }
         }
@@ -165,8 +165,8 @@ LUIS の "None" という意図は、発話が意図にマッピングされて�
         [ScorableGroup(2)]
         public async Task Default(IDialogContext context, IActivity activity)
         {
-            await context.PostAsync("I'm sorry.I didn't understand you.");
-            await context.PostAsync("You can tell me to find photos, tweet them, and order prints.  次に例を示します。\"find pictures of food\".");
+            await context.PostAsync("I'm sorry. I didn't understand you.");
+            await context.PostAsync("You can tell me to find photos, tweet them, and order prints.  Here is an example: \"find pictures of food\".");
         }
 
 ```

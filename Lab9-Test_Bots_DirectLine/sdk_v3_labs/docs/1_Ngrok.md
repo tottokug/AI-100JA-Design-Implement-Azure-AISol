@@ -28,7 +28,7 @@ Bot Framework にアクセスしてボットを登録します。登録すると
  
  c.	 以下のコマンドを実行すると、転送 URL が表示されます。
 
- ````ngrok.exe http 3979 -host-header="localhost:3979"````
+````ngrok.exe http 3979 -host-header="localhost:3979"````
 
 ![転送 URL](images/ForwardingUrl.png)
 

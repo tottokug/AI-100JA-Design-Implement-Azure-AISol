@@ -8,7 +8,7 @@ Bot Framework に触れた経験があることを前提としています。経
 ### ラボ: ボット開発の設定
 
 C# SDK を使用してボットを開発します。  開始するには、次の 2 つのことが必要です。
-1. Bot Framework プロジェクトのテンプレートは、[ここ](http://aka.ms/bf-bc-vstemplate)でダウンロードできます。  このファイルは "Bot Application.zip" と呼ばれ、\Documents\Visual Studio 2017\Templates\ProjectTemplates\Visual C#\ ディレクトリに保存する必要があります。  ここに zip ファイル全体をドロップするだけです。解凍する必要はありません。  
+1. Bot Framework プロジェクトのテンプレートは、[ここ](http://aka.ms/bf-bc-vstemplate)でダウンロードできます。  このファイルは "Bot Application.zip" と呼ばれ、\Documents\Visual Studio 2019\Templates\ProjectTemplates\Visual C#\ ディレクトリに保存する必要があります。  ここに zip ファイル全体をドロップするだけです。解凍する必要はありません。  
 2. ボットをローカルでテストするために、Bot フレームワーク エミュレーターを[ここ](https://github.com/Microsoft/BotFramework-Emulator/releases/download/v3.5.33/botframework-emulator-Setup-3.5.33.exe)から Bot Framework Emulator をダウンロードしてください。  Emulator は、ブラウザーに応じて、`c:\Users\`_your-username_`\AppData\Local\botframework\app-3.5.33\botframework-emulator.exe`フォルダーにインストールされます。 
 
 ### ラボ: 単純なボットを作成して実行する
@@ -19,7 +19,7 @@ Visual Studio で、「ファイル」 --> 「新しいプロジェクト」に�
 
 >**単純なボットを作成して実行する** ラボの残りの部分はオプションです。前提条件に従って、Bot Framework の操作経験が必要です。F5 キーを押すと、正しくビルドされていることを確認できます。次のラボに進みましょう。
 
-サンプルのボット コードのファイルの内容を調べます。これは、メッセージとその文字数を繰り返すエコー ボットです。  特に、次の点に注目してください。
+サンプルのボット コードのファイルの内容を調べます。これは、メッセージとその文字数を繰り返すエコー ボットです。特に、 **注**
 + App_Start の下の **WebApiConfig.cs** にあるルート テンプレートは api/{controller}/{id} で、ID は省略可能です。  そのため、必ず最後に API/メッセージが追加されたボットのエンドポイントを呼び出します。  
 + Controllers の下の **MessagesController.cs** は、ボットへのエントリポイントです。ボットはさまざまな種類のアクティビティに対応でき、メッセージを送信すると RootDialog が呼び出されます。  
 + Dialogs の下の **RootDialog.cs** にある "StartAsync" はユーザーからのメッセージを待機しているエントリ ポイントであり、"MessageReceiveAsync" は受信したメッセージを処理し、さらにメッセージを待機するメソッドです。  "context.PostAsync" を使用して、ボットからのメッセージをユーザーに送信します。  
@@ -38,7 +38,7 @@ http://localhost:3979/ のような URL で、既定の Web ブラウザーで�
 
 ### ラボ: LUIS を使用するようにボットを更新する
 
-LUIS を使用するには、ボットを更新する必要があります。  これを行うには、[LuisDialog クラス](https://docs.botframework.com/ja-jp/csharp/builder/sdkreference/d8/df9/class_microsoft_1_1_bot_1_1_builder_1_1_dialogs_1_1_luis_dialog.html)を使用します。  
+LUIS を使用するには、ボットを更新する必要があります。これを行うには、[LuisDialog クラス](https://docs.botframework.com/ja-jp/csharp/builder/sdkreference/d8/df9/class_microsoft_1_1_bot_1_1_builder_1_1_dialogs_1_1_luis_dialog.html)を使用します。  
 
 **RootDialog.cs** ファイルで、次の名前空間への参照を追加します。
 
@@ -126,12 +126,12 @@ LUIS モデルを使用してユーザーの意図を把握できたので、Azu
 
 ### ラボ: Azure Search 用にボットを構成する 
 
-まず、Azure Search インデックスに接続するための関連情報をボットに提供する必要があります。  接続情報を格納するのに最適な場所は、構成ファイルです。  
+最初に、Azure Search インデックスに接続するための関連情報をボットに提供する必要があります。  接続情報を格納するのに最適な場所は、構成ファイルです。  
 
 Web.config を開き、「appSettings」セクションで以下を追加します。
 
 ```xml    
-    <!-- Azure Search の設定 -->
+    <!-- Azure Search Settings -->
     <add key="SearchDialogsServiceName" value="" />
     <add key="SearchDialogsServiceKey" value="" />
     <add key="SearchDialogsIndexName" value="images" />

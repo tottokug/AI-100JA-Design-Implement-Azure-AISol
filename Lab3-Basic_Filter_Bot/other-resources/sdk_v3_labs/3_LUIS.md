@@ -68,7 +68,7 @@ LUIS の "None" という意図は、発話が意図にマッピングされて�
             if (result.TryFindEntity("facet", out rec)) facet = rec.Entity;
 
             // 何を検索すべきかわからない (たとえば、ユーザーが
-            // 「find pictures of x」(x の画像を検索) と言う代わりに「find pictures」(画像を検索) または「search」(検索) と言った) 場合、
+            // 「find pictures of x」 (x の写真を検索) と言う代わりに「find pictures」 (写真を検索) または「search」 (検索) と言った) 場合、
             // 検索語句の入力を求めるプロンプトが表示されます。  
             if (string.IsNullOrEmpty(facet))
             {
@@ -138,8 +138,8 @@ LUIS モデルを再トレーニングして再度公開する必要があるこ
         [ScorableGroup(2)]
         public async Task Default(IDialogContext context, IActivity activity)
         {
-            await context.PostAsync("I'm sorry.I didn't understand you.");
-            await context.PostAsync("You can tell me to find photos, tweet them, and order prints.  次に例を示します。\"find pictures of food\".");
+            await context.PostAsync("I'm sorry. I didn't understand you.");
+            await context.PostAsync("You can tell me to find photos, tweet them, and order prints.  Here is an example: \"find pictures of food\".");
         }
 
 ```

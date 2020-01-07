@@ -52,7 +52,7 @@ Azure Portal で、**「リソースの作成」->「Web + モバイル」->「A
 
 この時点で、Azure Search は Cosmos DB コンテナーに接続されています。いくつかのドキュメントを分析して Azure Search インデックスの既定のスキーマを識別します。これが完了したら、アプリケーションで必要とされるフィールドのプロパティを設定できます。
 
->注記: "_ts" フィールドが有効なフィールド名ではないという警告が表示されることがあります。このラボではこれを無視できますが、詳細については[ここ](https://docs.microsoft.com/azure/search/search-indexer-field-mappings)をご覧ください。
+>**注:** 「_ts」 フィールドが有効なフィールド名ではないという警告が表示されることがあります。このラボではこれを無視できますが、詳細については[ここ](https://docs.microsoft.com/azure/search/search-indexer-field-mappings)をご覧ください。
 
 インデックス名を **images** に更新する
 

@@ -5,10 +5,10 @@
 
 Bot Framework に触れた経験があることを前提としています。経験があれば、問題ありません。経験がない場合でも、心配しすぎないでください。このセクションで十分に学習します。[この Microsoft Virtual Academy コース](https://mva.microsoft.com/ja-jp/training-courses/creating-bots-in-the-microsoft-bot-framework-using-c-17590#!)を修了し、[ドキュメント](https://docs.microsoft.com/ja-jp/bot-framework/)を確認することをお勧めします。
 
-### ラボ 1.1: ボット開発の設定
+### ラボ 1.1: ボット開発のためのセットアップを行う
 
 C# SDK を使用してボットを開発します。  開始するには、次の 2 つのことが必要です。
-1. Bot Framework プロジェクトのテンプレートは、[ここ](http://aka.ms/bf-bc-vstemplate)でダウンロードできます。  このファイルは "Bot Application.zip" と呼ばれ、\Documents\Visual Studio 2017\Templates\ProjectTemplates\Visual C#\ ディレクトリに保存する必要があります。  ここに zip ファイル全体をドロップするだけです。解凍する必要はありません。  
+1. Bot Framework プロジェクトのテンプレートは、[ここ](http://aka.ms/bf-bc-vstemplate)でダウンロードできます。  このファイルは "Bot Application.zip" と呼ばれ、\Documents\Visual Studio 2019\Templates\ProjectTemplates\Visual C#\ ディレクトリに保存する必要があります。  ここに zip ファイル全体をドロップするだけです。解凍する必要はありません。  
 2. ボットをローカルでテストするために、Bot フレームワーク エミュレーターを[ここ](https://github.com/Microsoft/BotFramework-Emulator/releases/download/v3.5.33/botframework-emulator-Setup-3.5.33.exe)から Bot Framework Emulator をダウンロードしてください。  エミュレーターは、ブラウザーに応じて、`c:\Users\`_your-username_`\AppData\Local\botframework\app-3.5.33\botframework-emulator.exe` または Downloads フォルダーにインストールされます。
 
 ### ラボ 1.2: 単純なボットを作成して実行する
@@ -17,14 +17,14 @@ Visual Studio で、「ファイル」 --> 「新しいプロジェクト」に�
 
 ![新しいボット アプリケーション](./resources/assets/NewBotApplication.png) 
 
->**単純なボットを作成して実行する**残りの部分はオプションです。前提条件に従って、Bot Framework の操作経験が必要です。F5 キーを押すと、正しくビルドされていることを確認できます。次のラボに進みましょう。
+>**単純なボットを作成して実行する**ラボの残りの部分はオプションです。前提条件に従って、Bot Framework の操作経験が必要です。F5 キーを押すと、正しくビルドされていることを確認できます。次のラボに進みましょう。
 
-サンプルのボット コードのファイルの内容を調べます。これは、メッセージとその文字数を繰り返すエコー ボットです。  特に、次の点に注目してください。
+サンプルのボット コードのファイルの内容を調べます。これは、メッセージとその文字数を繰り返すエコー ボットです。  特に、 **注**
 + App_Start の下の **WebApiConfig.cs** にあるルート テンプレートは api/{controller}/{id} で、ID は省略可能です。  そのため、必ず最後に API/メッセージが追加されたボットのエンドポイントを呼び出します。  
 + Controllers の下の **MessagesController.cs** は、ボットへのエントリポイントです。ボットはさまざまな種類のアクティビティに対応でき、メッセージを送信すると RootDialog が呼び出されます。  
 + Dialogs の下の **RootDialog.cs** にある "StartAsync" はユーザーからのメッセージを待機しているエントリ ポイントであり、"MessageReceiveAsync" は受信したメッセージを処理し、さらにメッセージを待機するメソッドです。  "context.PostAsync" を使用して、ボットからのメッセージをユーザーに送信します。  
 
-F5 キーを押して、サンプル コードを実行します。  NuGet によって、適切な依存関係が自動的にダウンロードされます。  
+F5 キーを押して、サンプル コードを実行します。  NuGet によって、適切な依存関係がが自動的にダウンロードされます。  
 
 http://localhost:3979/ のような URL で、既定の Web ブラウザーでコードを起動します。  
 
@@ -32,7 +32,7 @@ http://localhost:3979/ のような URL で、既定の Web ブラウザーで�
 
 ![ボット プロジェクトの URL](./resources/assets/BotProjectUrl.jpg) 
 
-プロジェクトがまだ実行されていることを確認し (プロジェクトのプロパティを確認するために停止した場合は、F5 キーをもう一度押す)、Bot Framework Emulator を起動します   (インストールしたばかりの場合は、ローカル コンピューターでの検索時にインデックスが表示されない可能性があるため、c:\Users\your-username\AppData\Local\botframework\app-3.5.27\botframework-emulator.exe. にインストールされていることを確認してください。  ボットの URL が上記でコードを起動したポート番号と一致していて、最後に API/メッセージが追加されていることを確認します。  ボットと会話できる状態になっているはずです。  
+プロジェクトがまだ実行されていることを確認し (プロジェクトのプロパティを確認するために停止した場合は、F5 キーをもう一度押す)、Bot Framework Emulator を起動します (インストールしたばかりの場合は、ローカル コンピューターでの検索時にインデックスが表示されない可能性があるため、c:\Users\your-username\AppData\Local\botframework\app-3.5.27\botframework-emulator.exe. にインストールされていることを確認してください)。  ボットの URL が上記でコードを起動したポート番号と一致していて、最後に API/メッセージが追加されていることを確認します。  ボットと会話できる状態になっているはずです。  
 
 ![Bot Emulator](./resources/assets/BotEmulator.png) 
 
@@ -52,7 +52,7 @@ using System.Collections.Generic;
 
 ```
 
-and change your class derivation to:
+派生クラスを変更します:
 
 ```csharp
 
@@ -101,7 +101,7 @@ ScorableGroup 0 の最優先事項として、正規表現と一致する新し�
                     //await OrderPic(context, null);
                     break;
                 default:
-                    await context.PostAsync("I'm sorry.I didn't understand you.");
+                    await context.PostAsync("I'm sorry. I didn't understand you.");
                     break;
             }
         }

@@ -3,12 +3,12 @@
 
 ### ラボ 2.1: Azure Search 用にボットを構成する 
 
-まず、Azure Search インデックスに接続するための関連情報をボットに提供する必要があります。  接続情報を格納するのに最適な場所は、構成ファイルです。  
+最初に、Azure Search インデックスに接続するための関連情報をボットに提供する必要があります。  接続情報を格納するのに最適な場所は、構成ファイルです。  
 
 Web.config を開き、「appSettings」セクションで以下を追加します。
 
 ```xml    
-    <!-- Azure Search の設定 -->
+    <!-- Azure Search Settings -->
     <add key="SearchDialogsServiceName" value="" />
     <add key="SearchDialogsServiceKey" value="" />
     <add key="SearchDialogsIndexName" value="images" />
@@ -26,7 +26,7 @@ SearchDialogsServiceKey の値をこのサービスのキーに設定します�
 
 ![Azure Search NuGet](./resources/assets/AzureSearchNuGet.jpg) 
 
-Visual Studio のソリューション エクスプローラーでプロジェクトを右クリックし、「追加」-->「新しいフォルダー」を選択します。  "Models" という名前のフォルダーを作成します。  次に、"Models" フォルダーを右クリックして、「追加」>「既存の項目」を選択します。  "Models" フォルダーにこれら 2 つのファイルを追加するには、この操作を 2 回行います (必要に応じて名前空間を調整してください)。
+Visual Studio のソリューション エクスプローラーでプロジェクトを右クリックし、「追加」-->「新しいフォルダー」を選択します。"Models" という名前のフォルダーを作成します。  次に、"Models" フォルダーを右クリックして、「追加」>「既存の項目」を選択します。"Models" フォルダーにこれら 2 つのファイルを追加するには、この操作を 2 回行います (必要に応じて名前空間を調整してください)。
 1. [ImageMapper.cs](./resources/code/Models/ImageMapper.cs)
 2. [SearchHit.cs](./resources/code/Models/SearchHit.cs)
 
@@ -36,7 +36,7 @@ Visual Studio のソリューション エクスプローラーでプロジェ�
 
 追加したファイルの内容を確認します。近くにいる人と何を行ったかについて話し合いましょう。
 
-また、SearchDialog を呼び出すように RootDialog を更新する必要があります。  "Dialogs" フォルダー内の RootDialog.cs で、`ResumeAfterChoice` メソッドのすぐ下に、次の "ResumeAfter" メソッドを追加します。
+また、SearchDialog を呼び出すように RootDialog を更新する必要があります。"Dialogs" フォルダー内の RootDialog.cs で、`ResumeAfterChoice` メソッドのすぐ下に、次の "ResumeAfter" メソッドを追加します。
 
 ```csharp
 

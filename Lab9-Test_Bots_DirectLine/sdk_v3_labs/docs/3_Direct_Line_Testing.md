@@ -49,7 +49,7 @@ Direct Line API を使用すると、クライアントが HTTP Post 要求を�
 
 2.	コンソール経由でメッセージを送信し、会話 ID を取得します。Program.cs の 52 行目では、ボットと対話するために必要な会話 ID を出力します。
 
-	````Console.WriteLine("Conversation ID:"+ conversation.ConversationId);````
+````Console.WriteLine("Conversation ID:"+ conversation.ConversationId);````
 
 	![コンソール](images/Console.png)
 
@@ -60,13 +60,13 @@ Direct Line API を使用すると、クライアントが HTTP Post 要求を�
 	4.1 cURL:
 
 	cURL は、さまざまなプロトコルを使用してデータを転送するためのコマンド ライン ツールです。cURL は 	
-	Https://curl.haxx.se/download.html からダウンロードできます。
+	https://curl.haxx.se/download.html からダウンロードできます。
 
 	端末を開き、cURL がインストールされている場所に移動し、特定の会話に対して以下のコマンドを実行します。
 		
-	```
+```
 	curl -H "Authorization:Bearer {SecretKey}" https://directline.botframework.com/api/conversations/{conversationId}/messages -XGET
-	```
+```
 
 	![Messages-XGET](images/Messages-XGET.png)
 
@@ -89,7 +89,7 @@ Direct Line API を使用すると、クライアントが HTTP Post 要求を�
 
 	3.0 では、以前のバージョンとは異なり、イメージやヒーロー カードなどのリッチ メディアを送信することもできます。DirectLineBotDialog.cs を使用している場合、ケース ステートメントの 1 つは、イメージを送信するテキスト "send me a botframework image" (ボットフレームワーク画像を送信) というテキストを検索します。
 
-	```c#
+```c#
 	case "send me a botframework image":
 						
 		reply.Text = $"Sample message with an Image attachment";
@@ -101,7 +101,7 @@ Direct Line API を使用すると、クライアントが HTTP Post 要求を�
 			};
 
 		reply.Attachments.Add(imageAttachment);
-	```
+```
 
 	クライアントを使用してこのテキストを入力し、以下に示すように cURL を使用して結果を表示します。イメージ配列に表示されるイメージ URL が表示されます。
 

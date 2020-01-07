@@ -3,7 +3,7 @@
 
 ### ラボ 4.1: ボットを公開する
 
-Microsoft Bot Framework を使用して作成されたボットは、パブリック アクセス可能な任意の URL でホストできます。  このラボの目的のために、[Azure Bot Service](https://docs.microsoft.com/ja-jp/bot-framework/bot-service-overview-introduction) を使用してボットを登録します。
+Microsoft Bot Framework を使用して作成されたボットは、パブリック アクセス可能な任意の URL でホストできます。このラボの目的のために、[Azure Bot Service](https://docs.microsoft.com/ja-jp/bot-framework/bot-service-overview-introduction) を使用してボットを登録します。
 
 Portal に移動します。この portal で、「リソースの作成」をクリックして「bot」を検索します。「Web App Bot」を選択して「作成」をクリックします。名前用に、一意の識別子を作成する必要があります。PictureBot[i][n] のような規則にすることをお勧めします。[i] は自分のイニシャルで、[n] は数字です (例: PictureBotamt40)。自分に最も近いリージョンに配置します。
 価格レベルについては、F0 を選択します。このワークショップではこれで十分です。ボット テンプレートを Basic (C#) に設定し、新しい App Service プランを構成します (ボットと同じ場所に配置する)。自分の PictureBot で上書きするので、どのテンプレートを選択するかは問題ではありません。Application Insights をオフにします (コストを節約するため)。「作成」をクリックします。

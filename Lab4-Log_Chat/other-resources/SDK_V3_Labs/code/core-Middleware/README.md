@@ -2,7 +2,7 @@
 
 メッセージをインターセプトしてログに記録する方法を示すサンプル ボット。
 
-[![Deploy to Azure][Deploy Button]][Deploy CSharp/MiddlewareLogging]
+[![Azureへのデプロイ][Deploy Button]][Deploy CSharp/MiddlewareLogging]
 
 [Deploy Button]: https://azuredeploy.net/deploybutton.png
 [Deploy CSharp/MiddlewareLogging]: https://azuredeploy.net

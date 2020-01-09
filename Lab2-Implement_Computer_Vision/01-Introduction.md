@@ -8,7 +8,7 @@ lab:
 
 ## 紹介
 
-このハンズオン ラボでは、Cognitive Services (特に Computer Vision API) を使用して、エンド ツー エンドでインテリジェント コンソール アプリケーションを作成する方法について説明します。ここでは ImageProcessing ポータブル クラス ライブラリ (PCL) を使用します。その内容と、自分で作成したアプリケーションでの使用方法についても説明します。
+このハンズオン ラボでは、Cognitive Services (特に Computer Vision API) を使用して、エンド ツー エンドでインテリジェント コンソール アプリケーションを作成する方法について説明します。ここでは ImageProcessing Portable Class Library (PCL) を使用します。その内容と、自分で作成したアプリケーションでの使用方法についても説明します。
 
 ## 次のステップ
 

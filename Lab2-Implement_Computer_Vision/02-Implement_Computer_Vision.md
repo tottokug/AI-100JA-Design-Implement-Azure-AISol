@@ -38,9 +38,9 @@ Cognitive Services に重点を置きますが、Visual Studio 2019 Community Ed
 
 - **code**: ここには、使用するいくつかのディレクトリがあります。
 
-    -   **スタータ**: ラボを通過する場合に使用する必要があるスタート プロジェクト
+    -   **Starting-ImageProcessing**: ラボを開始する時に使用するスタートプロジェクト。
 
-    -   **終了**: 行き詰まったり時間切れになった場合の完成したプロジェクト。
+    -   **Finished-ImageProcessing**: 行き詰まったり時間切れになった場合の完成したプロジェクト。
     
 各フォルダーには、ラボ用に複数の異なるプロジェクトがあるソリューション (.sln) が含まれています。
 
@@ -92,7 +92,7 @@ Cognitive Services を使用すると、アプリ、Web サイト、ボットに
 
 1. `ProcessingLibrary`内の**ImageProcessor.cs**に移動します。
 
-1.  次の[`using`ディレクティブ](https://docs.microsoft.com/ja-jp/dotnet/csharp/language-reference/keywords/using-directive)を、名前空間の上のクラスの**先頭**に追加します。
+1.  次の[`using`ディレクティブ](https://docs.microsoft.com/ja-jp/dotnet/csharp/language-reference/keywords/using-directive)を、namespaceの上の**先頭**に追加します。
 
 ```csharp
 using System;
@@ -118,7 +118,7 @@ public static async Task<ImageInsights> ProcessImageAsync(Func<Task<Stream>> ima
 
 `ImageProcessor.cs`で、`ProcessImageAsync`メソッド内に、プロセッサを通して入力する[静的配列](https://stackoverflow.com/questions/4594850/definition-of-static-arrays)を設定します。ご覧のとおり、これらは`ImageInsights.cs`に対して呼び出す主な属性です。
 
-1.  `ProcessImageAsync`の`{」と「}`の間に以下のコードを追加します。
+1.  `ProcessImageAsync`の`{`と`}`の間に以下のコードを追加します。
 
 ```csharp
 VisualFeature[] DefaultVisualFeaturesList = new VisualFeature[] { VisualFeature.Tags, VisualFeature.Description };
@@ -168,7 +168,7 @@ Cosmos DB はこのラボの焦点ではありませんが、ご興味がある�
 
 1. `ImageStorageLibrary`プロジェクトの`CosmosDBHelper.cs`クラスに移動します。コードとコメントを確認します。使用される実装の多くについては、[スタート アップガイド](https://docs.microsoft.com/ja-jp/azure/cosmos-db/documentdb-get-started)を参照してください。
 
-1. `TestCLI``Util.cs`に移動し、`ImageMetadata`クラス (コードとコメント) を確認します。ここで、Cognitive Services から取得した`ImageInsights`を適切なメタデータに変換し、Cosmos DB に格納します。
+1. `TestCLI`プロジェクトの`Util.cs`に移動し、`ImageMetadata`クラス (コードとコメント) を確認します。ここで、Cognitive Services から取得した`ImageInsights`を適切なメタデータに変換し、Cosmos DB に格納します。
 - 最後に、`TestCLI`の`Program.cs`と`ProcessDirectoryAsync`を見てみましょう。まず、画像とメタデータが既にアップロードされていることを確認します。`CosmosDBHelper`を使用して ID でドキュメントを検索します。ドキュメントが存在しない場合は`null`が返されます。次に、`forceUpdate`を設定しているか、または画像がまだ処理されていない場合は、`ProcessingLibrary`から`ImageProcessor`を使用して Cognitive Services を呼び出し、現在の`ImageMetadata`に追加する`ImageInsights`を取得します。
 
 すべてが完了すると、画像を格納できます。まず、`BlobStorageHelper`インスタンスを使用して実際の画像を BLOB Storage に格納し、次に`CosmosDBHelper`インスタンスを使用して`ImageMetadata`を Cosmos DB に格納します。(これまでに確認したように) ドキュメントが既に存在している場合、既存のドキュメントを更新する必要があります。存在していない場合は、新しいドキュメントを作成する必要があります。
@@ -181,7 +181,7 @@ Cosmos DB はこのラボの焦点ではありませんが、ご興味がある�
 
 1.  [Lab1-Technical_Requirements.md](../Lab1-Technical_Requirements/02-Technical_Requirements.md) から特定の環境設定を追加します
 
-> プロジェクト **oxford api** の場合、Cognitive Services の URL は **/vision/v1.0** で終わることに注意してください。たとえば、`https://westus2.api.cognitive.microsoft.com/vision/v1.0` などです。
+> **Project Oxford API** の場合、Cognitive Services の URL は **/vision/v1.0** で終わることに注意してください。たとえば、`https://westus2.api.cognitive.microsoft.com/vision/v1.0` などです。
 
 1.  まだコンパイルしていない場合は、プロジェクトをコンパイルします。
 
@@ -189,7 +189,7 @@ Cosmos DB はこのラボの焦点ではありませんが、ご興味がある�
 
 > **注**: デバッグ ディレクトリに移動しないでください
 
-1.  実行コマンド **dotnet run**
+3.  実行コマンド **dotnet run**
 
 ```
 Usage:  [options]

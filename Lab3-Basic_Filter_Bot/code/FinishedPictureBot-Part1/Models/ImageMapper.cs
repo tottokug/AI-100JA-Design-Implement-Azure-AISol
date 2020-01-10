@@ -4,7 +4,7 @@ namespace PictureBot.Models
 {
     public class ImageMapper 
     {
-        public static SearchHit ToSearchHit(SearchResult hit)
+        public static SearchHit ToSearchHit(SearchResult<Document> hit)
         {
             var searchHit = new SearchHit
             {

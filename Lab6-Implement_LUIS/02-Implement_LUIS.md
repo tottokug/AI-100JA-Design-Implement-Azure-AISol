@@ -42,16 +42,23 @@ LUIS ではラボで使用できる "スターター キー" が提供される�
 
 1.  「**リソースの作成**」をクリックします。
 
-1.  検索ボックスに**言語理解**を入力して、 **言語理解**を選びます
+1.  検索ボックスに**Language Understanding**を入力して、 **Language Understanding**を選びます
 
 1.  [**作成**] をクリックします。
 
-1.  名前に **{YOURINIT}luisbot** と入力します
+1. Create optionsはBothを選択します。
 
-1.  リソースグループに似た下付き文字と場所を選択します。
+1.  名前に **{YOURInitial}luisbot** と入力します
 
-1.  価格帯については、 **F0**を選択します
+1.  サブスクリプションとリソースグループを選択します。
 
+1. Authoring　locationを選択します。
+
+1. Authoring pricing tierについては、 **F0**を選択します
+
+1. Runtime locationを選択します。
+
+1. Runtime pricing tierについては、 **F0**を選択します。 
 1.  リソース グループを選択します。
 
 1.  [**作成**] をクリックします。
@@ -83,9 +90,9 @@ LUIS を使用して、自然言語機能を追加する方法を見てみまし
 
 1.  名前を入力し、[**完了**]をクリックします。[効果的な LUIS アプリの作成方法] ダイアログを閉じます。
 
-![LUIS の新しいアプリ](../images//LuisNewApp.png)
+![LUIS の新しいアプリ](../images/LuisNewApp.png)
 
-1.  上部のナビゲーションで、[**ビルド**] リンクを選択します。"None" (なし) という意図が 1 つあることにも注意してください。いずれの意図にもマッピングされないランダムな発話は、"None" (なし) にマッピングされる場合があります。
+1.  上部のナビゲーションで、[**BUILD**] リンクを選択します。"None" (なし) という意図が 1 つあることにも注意してください。いずれの意図にもマッピングされないランダムな発話は、"None" (なし) にマッピングされる場合があります。
 
 ![LUIS ダッシュボード](../images//LuisCreateIntent.png)
 
@@ -104,11 +111,11 @@ LUIS を使用して、自然言語機能を追加する方法を見てみまし
 
 1.  ボットに挨拶するときにユーザーが話す可能性のある言葉の例をいくつか示し、それぞれの後に Enter キーを押します。
 
-![LUIS Greeting の意図](../images//LuisGreetingIntent.png)
+![LUIS Greeting の意図](../images/LuisGreetingIntent.png)
 
 エンティティを作成する方法を見てみましょう。ユーザーが写真の検索を要求するとき、何を探すかを指定できます。エンティティ内でキャプチャしてみましょう。
 
-1.  左側の列の**「エンティティ」**をクリックし、**「新しいエンティティを作成する」**をクリックします。
+1.  左側の列の**「Entities」**をクリックし、**「Create new entity」**をクリックします。
 
 1.  エンティティ名 **facet** を付ける
 
@@ -150,6 +157,7 @@ LUIS を使用して、自然言語機能を追加する方法を見てみまし
 + 1つの意図に **"SharePic"** という名前を付けます。これは、次のような発話によって識別される場合があります。
 
 + この写真を共有
++ 水泳写真を送って
 + ツイートできますか?
 + ツイッターに投稿
 
@@ -170,11 +178,11 @@ LUIS を使用して、自然言語機能を追加する方法を見てみまし
 
 1.  右上のバーで「**Train**」 (トレーニング) をクリックします。これにより、指定したトレーニング データを使用して「utterance」 (発話) --> 「intent mapping」 (意図のマッピング) を行うモデルが構築されます。トレーニングはすぐに行われるとは限りません。場合によっては、キューに入れられ、数分かかることがあります。
 
-1.  トップバーの [**管理**] をクリックします。ウィンドウの左側には、いくつかのオプション (「Application Information」 (アプリケーション情報)、「Keys and Endpoints」 (キーとエンドポイント)、「Publish Settings」 (発行設定)、「Versions」 (バージョン)、「Collaborators」 (共同作業者)) があります。さまざまな公開オプションの詳細については、[ここ](https://docs.microsoft.com/ja-jp/azure/cognitive-services/LUIS/PublishApp)を参照してください。
+1.  トップバーの [**管理(Manage)**] をクリックします。ウィンドウの左側には、いくつかのオプション (「Application Information」 (アプリケーション情報)、「Azure Resources」 (Azure リソース)、「Publish Settings」 (発行設定)、「Versions」 (バージョン)、「Collaborators」 (共同作業者)) があります。さまざまな公開オプションの詳細については、[ここ](https://docs.microsoft.com/ja-jp/azure/cognitive-services/LUIS/PublishApp)を参照してください。
 
 1.  [**Azure リソース**] を選択すると、後で LUIS 統合にここでキーを使用することも、単に Azure Portal のキーを使用することもできます。
 
-1.  トップバーで [**公開**] をクリックします。"Production" エンドポイントまたは "Staging" エンドポイントに公開するオプションがあります。
+1.  トップバーで [**公開(Publish)**] をクリックします。"Production" エンドポイントまたは "Staging" エンドポイントに公開するオプションがあります。
 
 1.  「**Production**」を選択し、[2 つのエンドポイントの理由についてお読みください](https://docs.microsoft.com/ja-jp/azure/cognitive-services/luis/luis-concept-version)。
 

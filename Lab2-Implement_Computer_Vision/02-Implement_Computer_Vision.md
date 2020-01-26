@@ -158,66 +158,6 @@ return result;
 1.  プロジェクトをビルドし、**Ctrl+Shift+B** キーを押してエラーを修正します。
 `ImageProcessor.cs`を正しく設定したことを確認するには、どうすればいいでしょうか? 完全なクラスは、[ここ](./code/Finished/ProcessingLibrary/ImageProcessor.cs)で確認できます。
 
-### Cosmos DB の探索
-
-Azure Cosmos DB はマイクロソフトの回復性の高い NoSQL PaaS ソリューションであり、画像メタデータの結果と同様に、緩やかに構造化されたデータを格納するのに非常に便利です。他にも選択肢 (Azure Table Storage、SQL Server) がありますが、Cosmos DB ではスキーマを自由に進化させ (新しいサービスへのデータの追加など)、簡単にクエリを実行し、Azure Search にすばやく統合するための柔軟性がもたらされます (後のラボで実習)。
-
-## ラボ 2.5 (オプション): CosmosDBHelper について
-
-Cosmos DB はこのラボの焦点ではありませんが、ご興味がある方のために、使用するコードのハイライトの一部をご紹介します。
-
-1. `ImageStorageLibrary`プロジェクトの`CosmosDBHelper.cs`クラスに移動します。コードとコメントを確認します。使用される実装の多くについては、[スタート アップガイド](https://docs.microsoft.com/ja-jp/azure/cosmos-db/documentdb-get-started)を参照してください。
-
-1. `TestCLI`プロジェクトの`Util.cs`に移動し、`ImageMetadata`クラス (コードとコメント) を確認します。ここで、Cognitive Services から取得した`ImageInsights`を適切なメタデータに変換し、Cosmos DB に格納します。
-- 最後に、`TestCLI`の`Program.cs`と`ProcessDirectoryAsync`を見てみましょう。まず、画像とメタデータが既にアップロードされていることを確認します。`CosmosDBHelper`を使用して ID でドキュメントを検索します。ドキュメントが存在しない場合は`null`が返されます。次に、`forceUpdate`を設定しているか、または画像がまだ処理されていない場合は、`ProcessingLibrary`から`ImageProcessor`を使用して Cognitive Services を呼び出し、現在の`ImageMetadata`に追加する`ImageInsights`を取得します。
-
-すべてが完了すると、画像を格納できます。まず、`BlobStorageHelper`インスタンスを使用して実際の画像を BLOB Storage に格納し、次に`CosmosDBHelper`インスタンスを使用して`ImageMetadata`を Cosmos DB に格納します。(これまでに確認したように) ドキュメントが既に存在している場合、既存のドキュメントを更新する必要があります。存在していない場合は、新しいドキュメントを作成する必要があります。
-
-## ラボ 2.6: TestCLI を使用した画像の読み込み
-
-イベント ループ、フォーム、その他の UX 関連の中断を心配することなくコードの処理に集中できるように、メインの処理コードとストレージ コードをコマンド ライン/コンソール アプリケーションとして実装します。後で独自の UX を自由に追加してください。
-
-1.  **TestCLI** プロジェクトで、 **settings.json** ファイルを開きます
-
-1.  [Lab1-Technical_Requirements.md](../Lab1-Technical_Requirements/02-Technical_Requirements.md) から特定の環境設定を追加します
-
-> **Project Oxford API** の場合、Cognitive Services の URL は **/vision/v1.0** で終わることに注意してください。たとえば、`https://westus2.api.cognitive.microsoft.com/vision/v1.0` などです。
-
-1.  まだコンパイルしていない場合は、プロジェクトをコンパイルします。
-
-1.  コマンドプロンプトを開き、 **TestCLI** プロジェクトのビルドディレクトリに移動します。 **{GitHubDir}\Lab2-Implement_Computer_Vision\code\Starter\TestCLI** のようになります。
-
-> **注**: デバッグ ディレクトリに移動しないでください
-
-3.  実行コマンド **dotnet run**
-
-```
-Usage:  [options]
-
-オプション：
--force            ファイルが既に追加されている場合でも、更新を強制するために使用します。
--Settings         設定ファイル (オプション。設定されていない場合、埋め込まれたリソースの settings.json を使用します)
--Process          処理するディレクトリ
--query            実行するクエリ
--?  | -h | --Help  ヘルプ情報を表示します
-```
-
-既定では、`settings.json`から設定が読み込まれます (`.exe`にビルド)。`-settings`フラグを使用して独自の設定を指定することもできます。画像 (および Cognitive Services のメタデータ) をクラウド ストレージに読み込むには、次のように画像ディレクトリに対して`-process`を実行するように _TestCLI_ に指示するだけです。
-
-```
-dotnet run -- -process <%GitHubDir%>\AI-100-Design-Implement-Azure-AISol\Lab2-Implement_Computer_Vision\sample_images
-```
-
-> **注**: <%GitHubDir%> の値を、リポジトリのクローンを作成したフォルダーに置き換えます。
-
-処理が完了したら、次のように _TestCLI_ を使用して Cosmos DB に対して直接クエリを実行できます。
-
-```
-dotnet run -- -query "select * from images"
-```
-
-少し時間を取ってサンプル画像 (/sample_images にあります) を調べて、画像をアプリケーション内の結果と比較します。
-
 ## クレジット
 
 このラボは、この [Cognitive Services チュートリアル](https://github.com/noodlefrenzy/CognitiveServicesTutorial)を変更したものです。

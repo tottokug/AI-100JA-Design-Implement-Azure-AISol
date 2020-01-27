@@ -752,49 +752,6 @@ middleware.Add(new RegExpRecognizerMiddleware()
 
 > ここでは、正規表現の使い方のごく一部を示しています。興味がある場合は、[こちらの詳しい情報を参照してください](https://docs.microsoft.com/ja-jp/dotnet/standard/base-types/regular-expression-language-quick-reference)。
 
-2.  `options.State` が非推奨になったことにお気づきかもしれません。最新の方法に移行してみましょう。
-
-1.  次のコードを削除します。
-
-```csharp
-var conversationState = new ConversationState(dataStore);
-
-options.State.Add(conversationState);
-```
-
-4.  次に置き換える
-
-```csharp
-var userState = new UserState(dataStore);
-var conversationState = new ConversationState(dataStore);
-
-//ユーザー状態を作成します。
-services.AddSingleton<UserState>(userState);
-
-//会話状態を作成します。
-services.AddSingleton<ConversationState>(conversationState);
-```
-
-5.  また、依存性注入バージョンからプルするように`設定`コードを置き換えます。
-
-```csharp
-var conversationState = options.State.OfType<ConversationState>().FirstOrDefault();
-if (conversationState == null)
-{
-    throw new InvalidOperationException("ConversationState must be defined and added before adding conversation-scoped state accessors.");
-}
-```
-
-6.  次に置き換える
-
-```csharp
-var conversationState = services.BuildServiceProvider().GetService<ConversationState>();
-
-if (conversationState == null)
-{
-    throw new InvalidOperationException("ConversationState must be defined and added before adding conversation-scoped state accessors.");
-}
-```
 
 LUIS を追加していないので、このボットはいくつかのバリエーションを理解するだけですが、ユーザーがこのボットを使って写真を検索し、共有し、プリントを注文するときに、かなりのメッセージを理解するはずです。
 

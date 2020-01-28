@@ -105,28 +105,6 @@ lab:
 
 1.  **Startup.cs** ファイルを開くと、特別なものは何も追加されていないことが分かります。
 
-1.  **BotServices.cs** ファイルを開き、QnA Maker が初期化されている場所に注意してください。
-
-```csharp
-    public BotServices(IConfiguration configuration)
-    {
-        QnAMakerService = new QnAMaker(new QnAMakerEndpoint
-        {
-            KnowledgeBaseId = configuration["QnAKnowledgebaseId"],
-            EndpointKey = configuration["QnAAuthKey"],
-            Host = GetHostname(configuration["QnAEndpointHostName"])
-        });
-    }
-```
-
-8. **Dialog/QnAMakerBaseDialog.cs** を開き、 「Calling QnAMaker to get response.」とコメントのある部分を見てください。
-
-
-```csharp
-
-var response = await _services.QnAMakerService.GetAnswersRawAsync(stepContext.Context, qnaMakerOptions).ConfigureAwait(false);
-
-```
 
 ご覧のとおり、わずか数行のコードで、生成された QnA Maker を独自のボットに追加するのは非常に簡単です。
 

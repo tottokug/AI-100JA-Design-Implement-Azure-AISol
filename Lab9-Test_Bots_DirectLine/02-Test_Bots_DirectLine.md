@@ -1,12 +1,6 @@
-﻿---
-lab:
-    title: 'ラボ 9: DirectLine でボットをテストする'
-    module: 'モジュール 2: ボットの作成'
----
+﻿# 課題 9: DirectLine でボットをテストする
 
-# ラボ 9: DirectLine でボットをテストする
-
-##  紹介
+## 紹介
 
 状況によっては、ボットと直接通信する必要があります。たとえば、ホストされたボットを使用して機能テストを実行する場合です。ボットと独自のクライアント アプリケーション間の通信は、[Direct Line API](https://docs.microsoft.com/ja-jp/bot-framework/rest-api/bot-framework-rest-direct-line-3-0-concepts) を使用して実行できます。
 
@@ -45,29 +39,29 @@ Microsoft Bot Framework DirectLine ボットは、独自の設計のカスタム
 
 ## ラボ 9.1: ボットを公開する
 
-1.  **PictureBot** ソリューションを開きます
+1. **PictureBot** ソリューションを開きます
 
-1.  プロジェクトを右クリックして、"**公開**" を選択します
+1. プロジェクトを右クリックして、"**公開**" を選択します
 
-1.  公開ダイアログで、「**既存を選択**」を選択し、「**公開**」をクリックします
+1. 公開ダイアログで、「**既存を選択**」を選択し 、「**公開**」をクリックします
 
-1.  プロンプトが表示されたら、ラボで使用したアカウントを使用してログインします。
+1. プロンプトが表示されたら、ラボで使用したアカウントを使用してログインします。
 
-1.  使用しているサブスクリプションを選択します
+1. 使用しているサブスクリプションを選択します
 
-1.  リソース グループを展開し、ラボ 3 で作成した画像ボット アプリ サービスを選択します。
+1. リソース グループを展開し、ラボ 3 で作成した画像ボット アプリ サービスを選択します。
 
-1.  [**OK**] をクリックします。
+1. 「**OK**」を選択します。
 
-> **注**: このラボへのアクセスにかかったパスによっては、2回目の公開が必要になる場合があります。ボットを再公開します。今回は、公開設定を変更して既存のファイルを削除します。
+> **注**: このラボへのアクセスにかかったパスによっては、2回目の公開が必要になる場合があります。  ボットを再公開します。今回は、公開設定を変更して既存のファイルを削除します。  
 
 ## ラボ 9.2: DirectLine チャネルの設定
 
-1.  ポータルで、公開されている PictureBot **Web アプリ ボット**を見つけて、[**チャンネル**] タブに移動します。
+1. ポータルで、公開されている PictureBot **Web アプリ ボット**を見つけて、[**チャンネル**] タブに移動します。
 
-1.  「Direct Line」アイコンを選択します (地球のように見えます)。**デフォルトのサイト**が表示されます。
+1. 「Direct Line」アイコンを選択します (地球のように見えます)。**デフォルトのサイト**が表示されます。
 
-1.  **シークレット キー**については、[**表示**] をクリックして、いずれかのシークレット キーをメモ帳に保存するか、キーを追跡している場所に保存します。
+1. **シークレット キー**については、「**表示**」をクリックして、いずれかのシークレット キーをメモ帳に保存するか、キーを追跡する場所に保存します。
 
 [Direct Line チャネル](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-service-channel-connect-directline?view=azure-bot-service-4.0) と[秘密とトークン](https://docs.microsoft.com/ja-jp/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-authentication?view=azure-bot-service-3.0#secrets-and-tokens)を有効にする詳細な手順を読むことができます。
 
@@ -77,28 +71,28 @@ Microsoft Bot Framework DirectLine ボットは、独自の設計のカスタム
 
 > **注**: ここでの手順とコードは、ドキュメントの[ベスト プラクティス](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-builder-howto-direct-line?view=azure-bot-service-4.0&tabs=cscreatebot%2Ccsclientapp%2Ccsrunclient)から変更されています。
 
-1.  まだ開いていない場合は、Visual Studio で **PictureBot** ソリューションを開きます 
+1. まだ開いていない場合は、Visual Studio で **PictureBot** ソリューションを開きます
 
-1.  ソリューション エクスプローラーでソリューションを右クリックし、**「追加」 > 「新しいプロジェクト」**を選択します。
+1. ソリューション エクスプローラーでソリューションを右クリックし、**「追加」 > 「新しいプロジェクト」**を選択します。
 
-1.  **Console App（.NET Core）**を検索して選択し、[**次へ**] をクリックします
+1. **Console App (.NET Core)** を検索して選択し、「**次へ**」をクリックします
 
-1.  名前として「 **ピクチャボットDL**」と入力します。
+1. 名前として「 **ピクチャボットDL**」と入力します。
 
-1.  **「作成」** を選択します。
+1. **「作成」** を選択します。
 
-**手順 2** - NuGet パッケージを PictureBotDL に追加する
+### NuGet パッケージを PictureBotDL に追加する
 
-1.  PictureBotDL プロジェクトを右クリックし、**「NuGet パッケージの管理.」**を選択します。 
+1. PictureBotDL プロジェクトを右クリックし、**「NuGet パッケージの管理.」**を選択します。
 
-1.  [**参照**] タブで、次を検索およびインストール/更新します。
+1. 「**参照**」 タブで、次を検索およびインストール/更新します。
 
-+   Microsoft.Bot.Connector.DirectLine
-+   Microsoft.Rest.ClientRuntime
+- Microsoft.Bot.Connector.DirectLine
+- Microsoft.Rest.ClientRuntime
 
-1.  **Program.cs**を開く
+1. **Program.cs**を開く
 
-1.  (PictureBotDL 内の) **Program.cs** の内容を次のように置き換えます。
+1. (PictureBotDL 内の) **Program.cs** の内容を次のように置き換えます。
 
 ```csharp
 using System;
@@ -129,7 +123,7 @@ namespace PictureBotDL
 
 
         /// <summary>
-        /// ボットとのユーザーの会話を促進します。
+        // ボットとのユーザーの会話を促進します。
         /// </summary>
         /// <returns></returns>
         private static async Task StartBotConversation()
@@ -180,7 +174,7 @@ namespace PictureBotDL
 
 
         /// <summary>
-        /// ボットを継続的にポーリングし、ボットからクライアントに送信されたメッセージを取得します。
+        // ボットを継続的にポーリングし、ボットからクライアントに送信されたメッセージを取得します。
         /// </summary>
         /// <param name="client">Direct Line クライアント。</param>
         /// <param name="conversationId">会話 ID。</param>
@@ -238,7 +232,7 @@ namespace PictureBotDL
 
 
         /// <summary>
-        /// コンソールにヒーロー カードを表示します。
+        // コンソールにヒーロー カードを表示します。
         /// </summary>
         /// <param name="attachment">ヒーロー カードが含まれる添付ファイル。</param>
         private static void RenderHeroCard(Attachment attachment)
@@ -263,19 +257,20 @@ namespace PictureBotDL
     }
 }
 ```
+
 > **注**: このコードは、次のラボのセクションで使用するいくつかの項目が含まれるように、[ドキュメント](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-builder-howto-direct-line?view=azure-bot-service-4.0&tabs=cscreatebot%2Ccsclientapp%2Ccsrunclient#create-the-console-client-app)から少し変更されました。
 
-1.  **Program.cs** で、直接回線シークレットとボット ID を特定の値に更新します。
+1. **Program.cs** で、直接回線シークレットとボット ID を特定の値に更新します。
 
 少し時間を取って、このサンプル コードを確認してください。これは、PictureBot に接続して応答を得る方法を理解していることを確認するための良い練習です。
 
-**手順 4** - アプリを実行する
+### クライアント アプリを実行します。
 
-1.  **PictureBotDL** プロジェクトを右クリックし、「**スタートアップ プロジェクトに設定**」を選択します。
+1. **PictureBotDL** プロジェクトを右クリックし、「**スタートアップ プロジェクトに設定**」を選択します。
 
-1.  次に、**F5** を押してアプリを実行します。
+1. 次に、**F5** を押してアプリを実行します。
 
-1.  コマンドライン アプリケーションを使用してボットと会話する
+1. コマンドライン アプリケーションを使用してボットと会話する
 
 ![コンソール アプリ](../images//consoleapp.png)
 
@@ -289,11 +284,11 @@ namespace PictureBotDL
 
 このラボでは、Postman (Web ベースのクライアント) を使用してメッセージを取得します。
 
-**手順 1** - Postman をダウンロードする
+### Postman をダウンロードする
 
-1.  [プラットフォームのネイティブアプリをダウンロードします](https://www.getpostman.com/apps)。単純なアカウントを作成することが必要な場合があります。
+1. [プラットフォームのネイティブ アプリをダウンロードします](https://www.getpostman.com/apps)。単純なアカウントを作成することが必要な場合があります。
 
-**手順 2**
+### アプリをテストする
 
 Direct Line API を使用すると、クライアントが HTTP Post 要求を発行してボットにメッセージを送信できます。クライアントは WebSocket ストリームを介して、または HTTP GET 要求を発行することによって、ボットからメッセージを受信できます。このラボでは、メッセージを受信するための HTTP Get オプションについて説明します。
 
@@ -307,25 +302,25 @@ Postman により、これが非常に簡単に行えます。
 
 ![ベアラー トークン](../images//bearer.png)
 
-1.  **Postman** を開く
+1. **Postman** を開く
 
-1.  タイプについては、**GET**が選択されていることを確認してください
+1. タイプについては、**GET**が選択されていることを確認してください
 
-1.  URL に **https://directline.botframework.com/api/conversations/{conversationId}/messages** と入力します。必ず converstationId を特定の会話 ID に置き換えてください
+1. URL に **https://directline.botframework.com/api/conversations/{conversationId}/messages** と入力します 。  converstationId を特定の会話 ID に必ず置き換えてください
 
-1.  [**承認**] をクリックして、タイプとして [**ベアラートークン**] を選択します。
+1. 「**承認**」をクリックして、タイプに「**ベアラー トークン**」を選択します。
 
-1.  値を**{Your Direct Line Secret}**に設定します
+1. 値を**{Your Direct Line Secret}**に設定します
 
-1.  最後に、「**送信**」を選択します。
+1. 最後に、「**送信**」を選択します。
 
-1.  結果を調べます。
+1. 結果を調べます。
 
-1.  コンソール アプリで新しい会話を作成し、必ずイメージを検索します。
+1. コンソール アプリで新しい会話を作成し、必ずイメージを検索します。
 
-1.  新しい会話 ID を使用して、Postman を使用して新しい要求を作成します。
+1. 新しい会話 ID を使用して、Postman を使って新しい要求を作成します。
 
-1.  返された応答を検査します。  応答の画像配列内に表示されている画像の URL を見つけてください。
+1. 返された応答を検査します。  応答の画像配列内に表示されている画像の URL を見つけてください。
 
 ![イメージ配列の例](../images//imagesarray.png)
 
@@ -333,8 +328,8 @@ Postman により、これが非常に簡単に行えます。
 
 時間が余りましたか? (Postman のときと同様に) 会話を取得するために、端末から cURL (ダウンロード リンク: https://curl.haxx.se/download.html) を利用できますか?
 
-> ヒント: コマンドは`curl -H "Authorization:Bearer {SecretKey}" https://directline.botframework.com/api/conversations/{conversationId}/messages -XGET`のようになります。
+> ヒント: コマンドは「curl -H "Authorization:Bearer {SecretKey}" https://directline.botframework.com/api/conversations/{conversationId}/messages -XGET」のようになります。
 
-##  リソース
+## リソース
 
--   [Direct Line API](https://docs.microsoft.com/ja-jp/bot-framework/rest-api/bot-framework-rest-direct-line-3-0-concepts)
+- [Direct Line API](https://docs.microsoft.com/ja-jp/bot-framework/rest-api/bot-framework-rest-direct-line-3-0-concepts)

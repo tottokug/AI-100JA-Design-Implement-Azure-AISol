@@ -1,10 +1,4 @@
-﻿---
-lab:
-    title: 'ラボ 3: 基本的なフィルタリング ボット'
-    module: 'モジュール 2: ボットの作成'
----
-
-# ラボ 3: 基本的なフィルタリング ボット
+﻿# 課題 3: 基本的なフィルタリング ボット
 
 ## 紹介
 
@@ -14,8 +8,8 @@ lab:
 
 また、ここではBot Emulator でボットをテストし、ボットがユーザーから受け取るメッセージに対して特殊なタスクを実行できるミドルウェアを取り扱います。
 
-Azure Search とマイクロソフトの Language Understanding Intelligent Service (LUIS) に関するいくつかの概念について取り上げますが、このラボでは実装しません。
+Azure Cognitive Search とマイクロソフトの Language Understanding Intelligent Service (LUIS) に関するいくつかの概念について取り上げますが、このラボでは実装しません。
 
 ## 次のステップ
 
--   [ラボ 03-02: 基本フィルター ボット](../Lab3-Basic_Filter_Bot/02-Basic_Filter_Bot.md)
+- [ラボ 03-02: 基本フィルター ボット](../Lab3-Basic_Filter_Bot/02-Basic_Filter_Bot.md)

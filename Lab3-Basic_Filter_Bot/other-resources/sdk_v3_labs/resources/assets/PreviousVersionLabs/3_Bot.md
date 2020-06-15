@@ -1,5 +1,5 @@
 ﻿## 3_Bot:
-予想時間: 30-40 分
+想定時間: 30-40 分
 
 ## ボットの構築
 
@@ -9,7 +9,7 @@ Bot Framework に触れた経験があることを前提としています。経
 
 C# SDK を使用してボットを開発します。  開始するには、次の 2 つのことが必要です。
 1. Bot Framework プロジェクトのテンプレートは、[ここ](http://aka.ms/bf-bc-vstemplate)でダウンロードできます。  このファイルは "Bot Application.zip" と呼ばれ、\Documents\Visual Studio 2019\Templates\ProjectTemplates\Visual C#\ ディレクトリに保存する必要があります。  ここに zip ファイル全体をドロップするだけです。解凍する必要はありません。  
-2. ボットをローカルでテストするために、Bot フレームワーク エミュレーターを[ここ](https://github.com/Microsoft/BotFramework-Emulator/releases/download/v3.5.33/botframework-emulator-Setup-3.5.33.exe)から Bot Framework Emulator をダウンロードしてください。  Emulator は、ブラウザーに応じて、`c:\Users\`_your-username_`\AppData\Local\botframework\app-3.5.33\botframework-emulator.exe`フォルダーにインストールされます。 
+2. ボットをローカルでテストするために、Bot フレームワーク エミュレーターを[ここ](https://github.com/Microsoft/BotFramework-Emulator/releases/download/v3.5.33/botframework-emulator-Setup-3.5.33.exe)から Bot Framework Emulator をダウンロードしてください。  Emulator は、ブラウザーに応じて、「c:\Users\`_your-username_`\AppData\Local\botframework\app-3.5.33\botframework-emulator.exe」フォルダーにインストールされます。 
 
 ### ラボ: 単純なボットを作成して実行する
 
@@ -17,9 +17,9 @@ Visual Studio で、「ファイル」 --> 「新しいプロジェクト」に�
 
 ![新しいボット アプリケーション](./resources/assets/NewBotApplication.png) 
 
->**単純なボットを作成して実行する** ラボの残りの部分はオプションです。前提条件に従って、Bot Framework の操作経験が必要です。F5 キーを押すと、正しくビルドされていることを確認できます。次のラボに進みましょう。
+>**単純なボットを作成して実行する**ラボの残りの部分はオプションです。前提条件に従って、Bot Framework の操作経験が必要です。F5 キーを押すと、正しくビルドされていることを確認できます。次のラボに進みましょう。
 
-サンプルのボット コードのファイルの内容を調べます。これは、メッセージとその文字数を繰り返すエコー ボットです。特に、 **注**
+サンプルのボット コードのファイルの内容を調べます。これは、メッセージとその文字数を繰り返すエコー ボットです。  特に、 **注**
 + App_Start の下の **WebApiConfig.cs** にあるルート テンプレートは api/{controller}/{id} で、ID は省略可能です。  そのため、必ず最後に API/メッセージが追加されたボットのエンドポイントを呼び出します。  
 + Controllers の下の **MessagesController.cs** は、ボットへのエントリポイントです。ボットはさまざまな種類のアクティビティに対応でき、メッセージを送信すると RootDialog が呼び出されます。  
 + Dialogs の下の **RootDialog.cs** にある "StartAsync" はユーザーからのメッセージを待機しているエントリ ポイントであり、"MessageReceiveAsync" は受信したメッセージを処理し、さらにメッセージを待機するメソッドです。  "context.PostAsync" を使用して、ボットからのメッセージをユーザーに送信します。  
@@ -38,7 +38,7 @@ http://localhost:3979/ のような URL で、既定の Web ブラウザーで�
 
 ### ラボ: LUIS を使用するようにボットを更新する
 
-LUIS を使用するには、ボットを更新する必要があります。これを行うには、[LuisDialog クラス](https://docs.botframework.com/ja-jp/csharp/builder/sdkreference/d8/df9/class_microsoft_1_1_bot_1_1_builder_1_1_dialogs_1_1_luis_dialog.html)を使用します。  
+LUIS を使用するには、ボットを更新する必要があります。  これを行うには、[LuisDialog クラス](https://docs.botframework.com/ja-jp/csharp/builder/sdkreference/d8/df9/class_microsoft_1_1_bot_1_1_builder_1_1_dialogs_1_1_luis_dialog.html)を使用します。  
 
 **RootDialog.cs** ファイルで、次の名前空間への参照を追加します。
 
@@ -118,36 +118,36 @@ namespace PictureBot.Dialogs
 
 ![LUIS で意図を再度割り当てる](./resources/assets/LuisReassignIntent.jpg) 
 
-これらの変更をボットに反映させるには、LUIS モデルを再トレーニングして再度公開する必要があります。  左側のサイドバーで「Publish App」 (アプリの公開) をクリックし、「Train」 (トレーニング) ボタンをクリックして、下の方にある「Publish」 (公開) ボタンをクリックします。  その後、エミュレーターでボットに戻ってやり直すことができます。  
+これらの変更をボットに反映させるには、LUIS モデルを再トレーニングして再度公開する必要があります。  左側のサイドバーで「Publish App」 (アプリの公開) をクリックし、「Train」 (トレーニング) ボタンをクリックして、下の方にある「Publish」 (公開) ボタンをクリックします。  その後、エミュレーターでボットに戻って再度実行できます。  
 
 > 楽しい余談: 提案された発話は非常に効果的です。  LUIS は、どの発話を表面化するかについてスマートに決定します。  人間参加型 (human-in-the-loop) で手動でラベル付けすると、改善するために最大限に役立つものを選びます。  たとえば、LUIS モデルで、特定の発話が 47% の信頼度で Intent1 にマッピングされ、48% の信頼度で Intent2 にマッピングされると予測された場合、このモデルが 2 つの意図の間に非常に近いため、手動でマッピングする人間に対して表面化する有力な候補になります。  
 
-LUIS モデルを使用してユーザーの意図を把握できたので、Azure Search を統合して写真を検索してみましょう。  
+LUIS モデルを使用してユーザーの意図を把握できたので、Azure Cognitive Search を統合して写真を検索してみましょう。  
 
-### ラボ: Azure Search 用にボットを構成する 
+### ラボ: Azure Cognitive Search 用にボットを構成する
 
-最初に、Azure Search インデックスに接続するための関連情報をボットに提供する必要があります。  接続情報を格納するのに最適な場所は、構成ファイルです。  
+最初に、Azure Cognitive Search インデックスに接続するための関連情報をボットに提供する必要があります。  接続情報を格納するのに最適な場所は、構成ファイルです。  
 
 Web.config を開き、「appSettings」セクションで以下を追加します。
 
-```xml    
-    <!-- Azure Search Settings -->
+```xml
+    <!-- Azure Cognitive Search の設定 -->
     <add key="SearchDialogsServiceName" value="" />
     <add key="SearchDialogsServiceKey" value="" />
     <add key="SearchDialogsIndexName" value="images" />
 ```
 
-SearchDialogs ServiceName の値を、以前に作成した Azure Search サービスの名前に設定します。  必要に応じて、[Azure portal](https://portal.azure.com) に戻ってこれを確認します。  
+SearchDialogs ServiceName の値を、以前に作成した Azure Cognitive Search サービスの名前に設定します。  必要に応じて、[Azure portal](https://portal.azure.com) に戻ってこれを確認します。  
 
-SearchDialogsServiceKey の値をこのサービスのキーに設定します。  これは、[Azure portal](https://portal.azure.com) で Azure Search の「キー」セクションで確認できます。  次のスクリーンショットでは、SearchDialogsServiceName が「aiimmersionsearch」、SearchDialogsServiceKey が「375...」です。  
+SearchDialogsServiceKey の値をこのサービスのキーに設定します。  これは、[Azure portal](https://portal.azure.com) で Azure Cognitive Search の「キー」セクションで確認できます。  次のスクリーンショットでは、SearchDialogsServiceName が「aiimmersionsearch」、SearchDialogsServiceKey が「375...」です。  
 
-![Azure Search の設定](./resources/assets/AzureSearchSettings.jpg) 
+![Azure Cognitive Search の設定](./resources/assets/AzureSearchSettings.jpg) 
 
-### ラボ: Azure Search を使用するようにボットを更新する
+### ラボ: Azure Cognitive Search を使用するようにボットを更新する
 
-次に、Azure Search を呼び出すようにボットを更新します。  まず、「ツール」 --> 「NuGet パッケージ マネージャー」 --> 「ソリューションの NuGet パッケージの管理」を開きます。  検索ボックスに「Microsoft.Azure.Search」と入力します。  対応するライブラリを選択し、プロジェクトを示すチェックボックスをオンにしてインストールします。  他の依存関係もインストールされる可能性があります。インストールされているパッケージで、"Newtonsoft.Json" パッケージの更新が必要な場合もあります。
+次に、Azure Cognitive Search を呼び出すようにボットを更新します。  まず、「ツール」 --> 「NuGet パッケージ マネージャー」 --> 「ソリューションの NuGet パッケージの管理」を開きます。  検索ボックスに「Microsoft.Azure.Search」と入力します。  対応するライブラリを選択し、プロジェクトを示すチェックボックスをオンにしてインストールします。  他の依存関係もインストールされる可能性があります。インストールされているパッケージで、"Newtonsoft.Json" パッケージの更新が必要な場合もあります。
 
-![Azure Search NuGet](./resources/assets/AzureSearchNuGet.jpg) 
+![Azure Cognitive Search NuGet](./resources/assets/AzureSearchNuGet.jpg) 
 
 Visual Studio のソリューション エクスプローラーでプロジェクトを右クリックし、「追加」 --> 「新しいフォルダー」を選択します。  "Models" という名前のフォルダーを作成します。  次に、"Models" フォルダーを右クリックして、「追加」 > 「既存の項目」を選択します。  "Models" フォルダーにこれら 2 つのファイルを追加するには、この操作を 2 回行います (必要に応じて名前空間を調整してください)。
 1. [ImageMapper.cs](./resources/code/Models/ImageMapper.cs)
@@ -177,7 +177,7 @@ Visual Studio のソリューション エクスプローラーでプロジェ�
                 PromptDialog.Text(context, ResumeAfterSearchTopicClarification,
                     "What kind of picture do you want to search for?");
             }
-            else
+            その他
             {
                 await context.PostAsync("Searching pictures...");
                 context.Call(new SearchDialog(facet), ResumeAfterSearchDialog);

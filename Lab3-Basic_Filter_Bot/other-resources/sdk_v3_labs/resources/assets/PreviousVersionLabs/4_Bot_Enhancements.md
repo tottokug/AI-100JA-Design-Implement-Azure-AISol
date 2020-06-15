@@ -1,11 +1,11 @@
-﻿## 4_ボットの拡張:
-予想時間: 20-30 分
+﻿## 4_Bot_Enhancements:
+想定時間: 20-30 分
 
-### ラボ: 正規表現とスコラブル グループ
+### ラボ: 正規表現と ScorableGroups
 
 ボットをさらに良いものにするためにできることは多数あります。何よりも、LUIS を単純な "hi" というあいさつ (ボットがかなり頻繁にユーザーから受け取る要求です) に使用したくはありません。  単純な正規表現でこれを行うことができ、時間の節約になり (ネットワークの待機時間)、費用も節約できます (LUIS サービスを呼び出すコスト)。  
 
-また、ボットの複雑さが増し、ユーザーの入力を受け取って複数のサービスを使用して解釈するようになると、そのフローを管理するプロセスが必要になります。  たとえば、最初に正規表現を試してみて、見つからない場合は LUIS を呼び出し、その後は他のサービス、たとえば [QnA Maker](http://qnamaker.ai) や Azure Search を試します。  これを管理する優れた方法は、[ScorableGroups](https://blog.botframework.com/2017/07/06/Scorables/) です。  ScorableGroups では、これらのサービス呼び出しの順序を指定する属性が提供されます。  このコードでは、最初に正規表現と一致する順序を指定し、次に LUIS を呼び出して発話を解釈して、最後に最も優先度が低いものを、一般的な "I'm not sure what you mean" (おっしゃっていることの意味がわかりません) という応答にドロップダウンします。    
+また、ボットの複雑さが増し、ユーザーの入力を受け取って複数のサービスを使用して解釈するようになると、そのフローを管理するプロセスが必要になります。  たとえば、最初に正規表現を試してみて、見つからない場合は LUIS を呼び出し、その後は他のサービス、たとえば [QnA Maker](http://qnamaker.ai) や Azure Cognitive Search を試します。  これを管理する優れた方法は、[ScorableGroups](https://blog.botframework.com/2017/07/06/Scorables/) です。  ScorableGroups では、これらのサービス呼び出しの順序を指定する属性が提供されます。  このコードでは、最初に正規表現と一致する順序を指定し、次に LUIS を呼び出して発話を解釈して、最後に最も優先度が低いものを、一般的な "I'm not sure what you mean" (おっしゃっていることの意味がわかりません) という応答にドロップダウンします。    
 
 ScorableGroups を使用するには、LuisDialog の代わりに、DispatchDialog から RootDialog を継承する必要があります (ただし、クラスに LuisModel 属性を存在させることは可能)。  また、Microsoft.Bot.Builder.Scorables (およびその他) を参照することも必要です。  したがって、RootDialog.cs ファイルで以下を追加します。
 
@@ -16,7 +16,7 @@ using System.Collections.Generic;
 
 ```
 
-派生クラスを変更します:
+and change your class derivation to:
 
 ```csharp
 
@@ -63,7 +63,7 @@ using System.Collections.Generic;
                     await OrderPic(context, null);
                     break;
                 default:
-                    await context.PostAsync("I'm sorry. I didn't understand you.");
+                    await context.PostAsync("I'm sorry.I didn't understand you.");
                     break;
             }
         }
@@ -72,7 +72,7 @@ using System.Collections.Generic;
 
 このコードは、"hi"、"hello"、および "help" で始まるユーザーの式と一致します。  ユーザーが助けを求めると、ボットが実行できる 3 つの主要な操作 (写真の検索、写真の共有、プリントの注文) のボタンの簡単なメニューが表示されます。  
 
-> 楽しい余談: ボットができることについてのオプションを並べたメニューを受け取るためにユーザーが「help」と入力する必要はないと主張する人もいるかもしれませんが、これはボットと最初に接触したときの既定の動作です。**見つけやすさ** はボットにとって最大の課題の 1 つです。このボットに何ができるかをユーザーに知ってもらう必要があります。  優れた[ボット設計の原則](https://docs.microsoft.com/ja-jp/bot-framework/bot-design-principles)が役立ちます。   
+> 楽しい余談: ボットができることについてのオプションを並べたメニューを受け取るためにユーザーが「help」と入力する必要はないと主張する人もいるかもしれませんが、これはボットと最初に接触したときの既定の動作です。**見つけやすさ**はボットにとって最大の課題の 1 つです。このボットに何ができるかをユーザーに知ってもらう必要があります。  優れた[ボット設計の原則](https://docs.microsoft.com/ja-jp/bot-framework/bot-design-principles)が役立ちます。   
 
 この設定により、Scorable Group 1 で正規表現と一致するものがない場合に、2 回目の試行として LUIS を呼び出すようになります。  
 
@@ -147,7 +147,7 @@ LUIS の "None" という意図は、発話が意図にマッピングされて�
                 // はい、写真を共有します。
                 await context.PostAsync("Posting tweet.");
             }
-            else
+            その他
             {
                 // いいえ、写真を共有しないでください。  
                 await context.PostAsync("OK, I won't share it.");
@@ -165,8 +165,8 @@ LUIS の "None" という意図は、発話が意図にマッピングされて�
         [ScorableGroup(2)]
         public async Task Default(IDialogContext context, IActivity activity)
         {
-            await context.PostAsync("I'm sorry. I didn't understand you.");
-            await context.PostAsync("You can tell me to find photos, tweet them, and order prints.  Here is an example: \"find pictures of food\".");
+            await context.PostAsync("I'm sorry.I didn't understand you.");
+            await context.PostAsync("You can tell me to find photos, tweet them, and order prints.  次に例を示します。\"find pictures of food\".");
         }
 
 ```

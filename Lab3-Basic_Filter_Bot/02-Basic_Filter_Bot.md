@@ -1,10 +1,4 @@
-﻿---
-lab:
-    title: 'ラボ 3: 基本的なフィルタリング ボットを作成する'
-    module: 'モジュール 2: ボットの作成'
----
-
-# ラボ 3: 基本的なフィルタリング ボットを作成する
+﻿# 課題 3: 基本的なフィルタリング ボットを作成する
 
 ## 紹介
 
@@ -20,87 +14,90 @@ AI ツールを設計して実装するときは、次の AI 倫理の原則を�
 
 ## 前提条件
 
-1.  [Lab1-Technical_Requirements.md](../Lab1-Technical_Requirements/02-Technical_Requirements.md) に記載されている手順に従って v4 Bot Framework Emulator をダウンロードします。これは、ボットをローカルでテストできるようにするためです。
+1. [Lab1-Technical_Requirements.md](../Lab1-Technical_Requirements/02-Technical_Requirements.md) に記載されている手順に従って v4 Bot Framework Emulator をダウンロードします。これは、ボットをローカルでテストできるようにするためです。
 
 ## ラボ 3.0 Azure Webアプリボットの作成
 
-Microsoft Bot Framework を使用して作成されたボットは、パブリック アクセス可能な任意の URL でホストできます。このラボの目的のために、[Azure Bot Service](https://docs.microsoft.com/ja-jp/bot-framework/bot-service-overview-introduction) を使用してボットを登録します。
+Microsoft Bot Framework を使用して作成されたボットは、パブリック アクセス可能な任意の URL でホストできます。  このラボの目的のために、[Azure Bot Service](https://docs.microsoft.com/ja-jp/bot-framework/bot-service-overview-introduction) を使用してボットを登録します。
 
-1.  [Azure portal](https://portal.azure.com) に移動します 
+1. [Azure portal](https://portal.azure.com) に移動します
 
-1.  ポータルでリソースグループに移動し、[**+追加**] をクリックして**ボット**を検索します。
+1. ポータルでリソースグループに移動し、「**+追加**」をクリックして**ボット**を検索します。
 
-1.  「**Web App Bot**」を選択して「**作成**」をクリックします。
+1. 「**Web App Bot**」を選択して「**作成**」をクリックします。
 
-1.  名前用に、一意の識別子を作成する必要があります。PictureBot[i][n] のような規則にすることをお勧めします。[i] は自分のイニシャルで、[n] は数字です (例: PictureBotamt6)。
+1. 名前用に、一意の識別子を作成する必要があります。PictureBot[i][n] のような規則にすることをお勧めします。[i] は自分のイニシャルで、[n] は数字です (例: PictureBotamt6)。
 
-1.  リージョンを選択します。
+1. リージョンを選択します。
 
-1.  価格帯については、 **F0**を選択します。
+1. 価格レベルの場合は **、F0 (10K プレミアム メッセージ)**を選択します。
 
-1.  ボット テンプレート領域の選択
+1. ボット テンプレート領域の選択
 
-1.  **C＃**を選択し、次に**Echo Botを**選択します。後でPictureBotに更新します。
+1. **C＃**を選択し、次に**Echo Botを**選択します。後でPictureBotに更新します。
 
-1.  [**OK**] をクリックして、 **Echo Bot**が表示されていることを確認します。
+    ![ボット テンプレート領域が強調表示され、言語とボットの種類が選択されます。](../images/lab02-createbot.png 'Select the bot type')
 
-1.  新しい App Service プランを構成します (ボットと同じ場所に配置する)。
+1. 「**OK**」をクリックして、「**Echo Bot**」が表示されていることを確認します。
 
-1.  Application Insights をオンにするかどうかを選択できます。
+1. 新しい App Service プランを構成します (ボットと同じ場所に配置する)。
 
-1.  「**アプリ ID とパスワードの自動作成**」は変更もクリックも**しないでください**。これは後で設定します。
+1. Application Insights をオンにするかどうかを選択できます。
 
-1.  [**作成**] をクリックします。
+1. 「**アプリ ID とパスワードの自動作成**」は変更もクリックも**しないでください**。これは後で設定します。
 
-![Azure Bot Service を作成する](../images/CreateBot2.png)
+1. 「**作成**」を選択します
 
-1.  デプロイされたら、新しい Azure Web アプリボットリソースに移動します。
+1. デプロイされたら、新しい Azure Web アプリボットリソースに移動します。
 
-1.  **ボット管理で**、**設定**をクリックします
+1. 「**ボット管理で**」、「**設定**」をクリックします
 
-1.  **Microsoft App ID** の **[管理]**リンクをクリックします
+1. 「**Microsoft App ID**」の「**管理**」リンクをクリックします
 
-![[管理] リンクをクリックします。](../images/ManageBot.png)
+![「管理」リンクを選択します](../images/ManageBot.png)
 
-1.  [**新しいクライアントシークレット**] をクリックします
+1. 「**新しいクライアント シークレット**」をクリックします
 
-1.  名前に「**PictureBot**」と入力します
+1. 名前に「**PictureBot**」と入力します
 
-1.  有効期限については、「**しない**」を選択します
+1. 有効期限については、「**しない**」を選択します
 
-1.  **Add**をクリックします。
+1. 「**追加**」を選択します
 
-1.  秘密をメモ帳などに記録し、後でラボで使用できるようにします。
+1. シークレットをメモ帳などに記録し、後でラボで使用できるようにします。
 
-1.  [**概要**] をクリックし、後でラボでアプリケーション ID をメモ帳または同様の情報に記録します。
+1. 「**概要**」をクリックし、後でラボでアプリケーション ID をメモ帳または同様の情報に記録します。
 
-1.  **Webアプリボット**リソースに戻り、[**Webチャットでテスト**] タブを選択します
+1. 「**Webアプリボット**」リソースに戻り、「**ボット管理**」の下の「**Webチャットでテスト**」タブを選択します
 
-1.  起動したら、何ができるかを調べます。ご覧のとおり、メッセージをエコー バックするだけです。
+1. 起動したら、何ができるかを調べます。  ご覧のとおり、メッセージをエコー バックするだけです。
 
 ![基本的なエコー ボット応答](../images/EchoBot.png)
 
 ## ラボ 3.1: 単純なボットを作成して実行する
 
-1.  **ビジュアル スタジオ 2019**以降を開く
+1. **ビジュアル スタジオ 2019**以降を開く
 
-1.  [**新しいプロジェクトの作成**] をクリックし、**ボット**を検索します。
+1. 「**新しいプロジェクトの作成**」をクリックし、**ボット**を検索します。
 
-1.  **Echo Bot (Bot Framework v4)** が表示されるまで下にスクロールします。
+1. **Echo Bot (Bot Framework v4)** が表示されるまで下にスクロールします。
+
+>注意:
+>インストールされている Visual Studio のバージョンによっては、以下のスクリーンショットは独自のものと異なる場合があります。  Echo Bot テンプレートに複数のバージョンが表示されている場合は、バージョン 2.1 ではなくバージョン 3.1 を選択します。
 
 ![エコー ボット プロジェクト テンプレートを選択します。](../images/NewBotProject.png)
 
-1.  **次へ**をクリックします
+1. 「**次へ**」を選択します
 
-> **注:** エコー ボット テンプレートが表示されない場合は、req 前の手順から Visual Studio アドインをインストールする必要があります。
+> **注意:** エコー ボット テンプレートが表示されない場合は、req 前の手順から Visual Studio アドインをインストールする必要があります。
 
-1.  名前に「**PictureBot**」と入力し、[**作成**] をクリックします
+1. 名前に「**PictureBot**」と入力し、「**作成**」をクリックします
 
-1.  Echo Bot テンプレートから生成されるさまざまなものをすべて見てみましょう。個々のファイルについて説明することはしませんが、**後で**少し時間を取ってこのサンプル (ともう 1 つの Web App Bot サンプル - Basic Bot) を実際に試して精査することを**強くお勧めします** (まだの場合)。この中には、ボット開発に必要となる、重要で有用なシェルがあります。これとその他の有用なシェルやサンプルは、[ここ](https://github.com/Microsoft/BotBuilder-Samples)にあります。
+1. Echo Bot テンプレートから生成されるさまざまなものをすべて見てみましょう。個々のファイルについて説明することはしませんが、**後で**少し時間を取ってこのサンプル (ともう 1 つの Web App Bot サンプル - Basic Bot) を実際に試して精査することを**強くお勧めします** (まだの場合)。この中には、ボット開発に必要となる、重要で有用なシェルがあります。これとその他の有用なシェルやサンプルは、[ここ](https://github.com/Microsoft/BotBuilder-Samples)にあります。
 
-1.  まず、ソリューションを右クリックして「**ビルド**」を選択します。これにより、ナゲット パッケージが復元されます。
+1. まず、ソリューションを右クリックして「**ビルド**」を選択します。これにより、ナゲット パッケージが復元されます。
 
-1.  **appsettings.json** ファイルを開き、上記で記録したボット サービス情報を追加して更新します。
+1. **appsettings.json** ファイルを開き、上記で記録したボット サービス情報を追加して更新します。
 
 ```json
 {
@@ -109,39 +106,39 @@ Microsoft Bot Framework を使用して作成されたボットは、パブリ�
 }
 ```
 
-1.  ご存知とは思いますが、Visual Studio のソリューション/プロジェクトの名前を変更することは、きわめて注意を要する作業です。**慎重に**次のタスクを行って、すべての名前に EchoBot の代わりに PictureBot が反映される状態にしてください。
+1. ご存知とは思いますが、Visual Studio のソリューション/プロジェクトの名前を変更することは、きわめて注意を要する作業です。**慎重に**次のタスクを行って、すべての名前に EchoBot の代わりに PictureBot が反映される状態にしてください。
 
-1.  **Bots / Echobot.cs** ファイルを右クリックし、[**名前の変更**]を選択して、クラス ファイルの名前を **PictureBot.cs** に変更します。
+1. **Bots / Echobot.cs** ファイルを右クリックし、[**名前の変更**]を選択して、クラス ファイルの名前を **PictureBot.cs** に変更します。
 
-1.  クラスの名前を変更し、クラスへのすべての参照を **PictureBot** に変更します。プロジェクトをビルドしようとすると、見逃したかどうかがわかります。
+1. プロンプトが表示されない場合は、クラスの名前を手動で変更してから、クラスのすべての参照を **PictureBot** に変更する必要があります。  プロジェクトをビルドしようとすると、見逃したかどうかがわかります。
 
-1.  プロジェクトを右クリックして、「 **Nuget Packagaesの管理** 」を選択します
+1. プロジェクトを右クリックして、「 **Nuget Packagaesの管理** 」を選択します
 
-1.  [ **参照** ]タブをクリックし、次のパッケージをインストールします。バージョン**4.5.1**を使用していることを確認してください。
+1. 「**参照**」タブをクリックし、次のパッケージをインストールします。バージョン **4.6.3** を使用していることを確認してください。
 
 * Microsoft.Bot.Builder.Azure
 * Microsoft.Bot.Builder.AI.Luis
 * Microsoft.Bot.Builder.Dialogs
-* Microsoft.Azure.Search (バージョン、9.1.0 以降)
+* Microsoft.Azure.Search (バージョン、10.1.0 以降)
 
 1. ソリューションをビルドします。
 
->**ヒント**:  モニターが 1 台だけの場合に手順の説明と Visual Studio を簡単に切り替えるために、手順ファイルを Visual Studio ソリューションに追加できるようになりました。それには、ソリューション エクスプローラーでプロジェクトを右クリックし、**「追加」** > 「既存の項目」を選択します。「Lab2」に移動し、種類が "MD ファイル" のすべてのファイルを追加します。
+>**ヒント**:  モニターが 1 台だけの場合に手順の説明と Visual Studio を簡単に切り替えるために、手順ファイルを Visual Studio ソリューションに追加できるようになりました。それには、ソリューション エクスプローラーでプロジェクトを右クリックし、**「追加」 > 「既存の項目」**を選択します。「Lab2」に移動し、種類が "MD ファイル" のすべてのファイルを追加します。
 
-#### Hello World ボットを作成する
+### Hello World ボットを作成する
 
 ラボの今後の部分で使用する命名と NuGet パッケージをサポートするように基本シェルの更新が完了したので、カスタム コードの追加を開始する準備ができました。最初に、V4 SDK を使用するボット開発のウォームアップとしてシンプルな "Hello world" ボットを作成します。
 
-重要な概念の 1 つが `ターン` です。これは、ユーザーへのメッセージとボットからの応答を表すのに使用されます。
+重要な概念の 1 つが "ターン" です。これは、ユーザーへのメッセージとボットからの応答を表すのに使用されます。
 たとえば、ユーザーが「ハロー、ボット」と言ってボットが「こんにちは、お元気ですか?」と答えると、これが **1 つの**ターンとなります。次の画像で、1 つの**ターン**がボット アプリケーションの複数のレイヤーをどのように通過するかを確認してください。
 
 ![ボットの概念](../images/bots-concepts-middleware.png)
 
-1.  **PictureBot.cs** ファイルを開きます。
+1. **PictureBot.cs** ファイルを開きます。  
 
-1.  次のコードを使用して、`OnMessageActivityAsync` メソッドを確認します。このメソッドは、会話のたびに呼び出されます。このことが重要である理由は後で分かりますが、ここでは OnMessageActivityAsync がすべてのターンで呼び出されることを覚えておいてください。
+1. 次のコードを使用して、`OnMessageActivityAsync` メソッドを確認します。このメソッドは、会話のたびに呼び出されます。このことが重要である理由は後で分かりますが、ここでは OnMessageActivityAsync がすべてのターンで呼び出されることを覚えておいてください。
 
-1.  **F5 **を押してデバッグを開始します。
+1. **F5 **を押してデバッグを開始します。
 
 次のことに**注意してください**。
 
@@ -155,19 +152,19 @@ Microsoft Bot Framework を使用して作成されたボットは、パブリ�
 
 ボットと対話するには:
 
-* Bot Framework Emulator を起動します (このラボでは v4 Emulator を使用します)。[**スタート**] をクリックし、[**Bot Emulator**]を検索します。
+* Bot Framework Emulator を起動します (このラボでは v4 Emulator を使用します)。  「**スタート**」をクリックし、「**Bot Emulator**」を検索します。
 
-* ようこそページで、[**新しいボット構成の作成**] をクリックします
+* ようこそページで、「**新しいボット構成の作成**」を選択します
 
-*  名前に「**PictureBot**」と入力します
+* 名前に「**PictureBot**」と入力します
 
-*  ボット Web ページに表示される URL を入力します。
+* ボット Web ページに表示される URL を入力します。
 
-*  Appsettings.json に入力した AppId と App Secret を入力します
+* Appsettings.json に入力した AppId と App Secret を入力します
 
 > **注**: ボット設定にidとsecretの値を入力しない場合は、ボットエミュレーターに値を入力する必要もありません。
 
-*  [**保存して接続**] をクリックし、.bot ファイルをローカルに保存します。
+* 「**保存して接続**」をクリックし、.bot ファイルをローカルに保存します。
 
 * この時点で、ボットと会話できる状態になっています。
 
@@ -185,17 +182,17 @@ Microsoft Bot Framework を使用して作成されたボットは、パブリ�
 
 Emulator の使い方の詳細については、[ここ](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-service-debug-emulator?view=azure-bot-service-4.0)を参照してください。
 
-1.  サンプルのボット コードのファイルの内容を調べます。特に、
+1. サンプルのボット コードのファイルの内容を調べます。特に、
 
-- **Startup.cs** は、サービス/ミドルウェアを追加し、HTTP 要求パイプラインを構成するのに使用するファイルです。この中に多数存在するコメントは、何が行われるのかを理解するのに役立ちます。少し時間を取って読んでみてください。
+* **Startup.cs** は、サービス/ミドルウェアを追加し、HTTP 要求パイプラインを構成するのに使用するファイルです。この中に多数存在するコメントは、何が行われるのかを理解するのに役立ちます。少し時間を取って読んでみてください。
 
-- **PictureBot.cs**: `OnMessageActivityAsync` メソッドは、ユーザーからのメッセージを待つエントリ ポイントです。ここで、受信したメッセージに反応して、さらにメッセージを待つことができます。 `turnContext.SendActivityAsync` を使用して、ボットからユーザーにメッセージを返すことができます。
+* **PictureBot.cs**: `OnMessageActivityAsync` メソッドは、ユーザーからのメッセージを待つエントリ ポイントです。ここで、受信したメッセージに反応して、さらにメッセージを待つことができます。  `turnContext.SendActivityAsync` を使用して、ボットからユーザーにメッセージを返すことができます。
 
 ## ラボ 3.2:  状態とサービスの管理
 
-1.  **Startup.cs**ファイルに再度移動します
+1. **Startup.cs**ファイルに再度移動します
 
-1.  `using` ステートメントのリストに次の行を追加します。
+1. `using` ステートメントのリストに次の行を追加します。
 
 ```csharp
 using System;
@@ -211,9 +208,10 @@ using Microsoft.PictureBot;
 using Microsoft.Bot.Builder.AI.Luis;
 using Microsoft.Bot.Builder.Dialogs;
 ```
+
 上記の名前空間はまだ使用しませんが、いつ使うかを考えてみてください。
 
-1.  **Startup.cs** クラスで、`ConfigureServices` メソッドに注目してください。これは、ボットにサービスを追加するのに使用されます。内容を精査して、何が自動的にビルドされるかを見つけてください。
+1. **Startup.cs** クラスで、`ConfigureServices` メソッドに注目してください。これは、ボットにサービスを追加するのに使用されます。内容を精査して、何が自動的にビルドされるかを見つけてください。
 
 > より深く理解するための追加の注意事項:
 >
@@ -223,33 +221,34 @@ using Microsoft.Bot.Builder.Dialogs;
 
 幸い、このシェルは非常に包括的なので、2つの項目を追加するだけでｓます。
 
-*   ミドルウェア
-*   カスタム状態アクセサー
+* ミドルウェア
+* カスタム状態アクセサー
 
-#### ミドルウェア
+### ミドルウェア
 
 ミドルウェアは、単一のクラスまたはクラスの集合で、アダプターとボット ロジックの間に存在し、アダプターのミドルウェアのコレクションに初期化時に追加されます。
 
-SDK を使用して、開発者は独自のミドルウェアをプログラミングすることや、他者が作成したミドルウェアの再利用可能コンポーネントを追加することができます。ボットに出入りするすべてのアクティビティは、ミドルウェアを通って流れます。これについては、このラボで後ほど詳しく取り上げますが、現時点で理解しておいてほしいのは、どのアクティビティもミドルウェアを通って流れるということです。その理由は、ミドルウェアが `ConfigureServices` メソッドの中に存在し、このメソッドが実行時に呼び出されるからです (ユーザーと `OnMessageActivityAsync` によって送信されるすべてのメッセージの間で実行されます)。
+SDK を使用して、開発者は独自のミドルウェアをプログラミングすることや、他者が作成したミドルウェアの再利用可能コンポーネントを追加することができます。ボットに出入りするすべてのアクティビティは、ミドルウェアを通って流れます。これについては、このラボで後ほど詳しく取り上げますが、現時点で理解しておいてほしいのは、どのアクティビティもミドルウェアを通って流れるということです。その理由は、ミドルウェアが `ConfigureServices` メソッドの中に存在し、このメソッドが実行時に呼び出されるからです (ユーザーと OnTurnAsync によって送信されるすべてのメッセージの間で実行されます)。
 
-1.  **ミドルウェア**という名前の新しいフォルダを追加する
+1. **ミドルウェア**という名前の新しいフォルダを追加する
 
-1.  "**Middleware**" フォルダーを右クリックして、**「追加」>「既存の項目」**を選択します。
+1. "**Middleware**" フォルダーを右クリックして、**「追加」>「既存の項目」**を選択します。
 
-1.  **{GitHubDir}\Lab3-Basic_Filter_Bot\code\Middleware**に移動し、3つのファイルをすべて選択して、[**追加**] を選択します
+1. **{GitHubDir} \ Lab3-Basic_Filter_Bot \ code \ Middleware**に移動し、3つのファイルをすべて選択して、「**追加**」 を選択します
 
-1.  **Startup** クラスに次の変数を追加します。
+1. **Startup** クラスに次の変数を追加します。
 
 ```csharp
 private ILoggerFactory _loggerFactory;
 private bool _isProduction = false;
 ```
 
-2.  **ConfigureServices** メソッドのコードを置き換えます。
+1. **ConfigureServices** メソッドの次のコードを置き換えます。
 
 ```csharp
 services.AddTransient<IBot, PictureBot.Bots.PictureBot>();
-``` 
+```
+
 with the following code:
 
 ```csharp
@@ -301,11 +300,10 @@ services.AddBot<PictureBot.Bots.PictureBot>(options =>
     var middleware = options.Middleware;
     // ミドルウェアをこの下に "middleware.Add(...." で追加する
     // この下に正規表現を追加する
-    
 });
 ```
 
-1.  **Configure** メソッドを次のコードに置き換えます。
+1. **Configure** メソッドを次のコードに置き換えます。
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -339,7 +337,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 これらのコンストラクトを使用して、`PictureState`と呼ぶものを追跡できます。
 
-1.  **Startup.cs** ファイルの **ConfigureServices** メソッドで、カスタム状態アクセサーのリスト内に `PictureState` を追加し、ダイアログを追跡するために、組み込みの `DialogState` を使用します。
+1. **Startup.cs** ファイルの **ConfigureServices** メソッドで、カスタム状態アクセサーのリスト内に `PictureState` を追加し、ダイアログを追跡するために、組み込みの `DialogState` を使用します。
 
 ```csharp
 //状態アクセス権を作成して登録します。
@@ -379,9 +377,9 @@ services.AddSingleton<PictureBotAccessors>(sp =>
 
 では、先ほど見ていたエラーに戻りましょう。この情報を保存する必要がありますが、どこに、どのように保存するかはまだ指定していません。情報を保存してアクセスするには、"PictureState.cs" と "PictureBotAccessor.cs" を更新する必要があります。
 
-1.  プロジェクトを右クリックして **[追加]- > [クラス]** を選択し、クラスファイルを選択して**PictureState**という名前を付けます。
+1. プロジェクトを右クリックして **「追加」- > 「クラス」** を選択し、クラスファイルを選択して**PictureState**という名前を付けます。
 
-1.  次のコードを **PictureState.cs** にコピーします。
+1. 次のコードを **PictureState.cs** にコピーします。
 
 ```csharp
 using System.Collections.Generic;
@@ -389,9 +387,9 @@ using System.Collections.Generic;
 namespace Microsoft.PictureBot
 {
     /// <summary>
-    /// 会話のカウンタ状態を保存します。
-    /// <see cref="Microsoft.Bot.Builder.ConversationState"/>に保存され、
-    /// <see cref="Microsoft.Bot.Builder.MemoryStorage"/> によって支援されます。
+    ///会話のカウンタ状態を保存します。
+    ///<see cref="Microsoft.Bot.Builder.ConversationState"/>に保存され、
+    ///<see cref="Microsoft.Bot.Builder.MemoryStorage"/> によって支援されます。
     /// </summary>
     public class PictureState
     {
@@ -406,11 +404,11 @@ namespace Microsoft.PictureBot
 }
 ```
 
-1.  コードを確認します。ここに、アクティブな会話に関する情報を格納します。文字列の目的を説明するコメントを自由に追加してください。これで、PictureState が適切に初期化されたので、"**Startup.cs**" で発生していたエラーを解消するように PictureBotAccessor を作成できます。
+1. コードを確認します。  ここに、アクティブな会話に関する情報を格納します。  文字列の目的を説明するコメントを自由に追加してください。これで、PictureState が適切に初期化されたので、"**Startup.cs**" で発生していたエラーを解消するように PictureBotAccessor を作成できます。
 
-1.  プロジェクトを右クリックして **[追加]- > [クラス]** を選択し、クラスファイルを選択して**PictureBotAccessors**という名前を付けます。
+1. プロジェクトを右クリックして **「追加」- > 「クラス」** を選択し、クラスファイルを選択して**PictureBotAccessors**という名前を付けます。
 
-1.  次の項目をコピーします。
+1. 次の項目をコピーします。
 
 ```csharp
 using System;
@@ -420,10 +418,10 @@ using Microsoft.Bot.Builder.Dialogs;
 namespace Microsoft.PictureBot
 {
     /// <summary>
-    /// このクラスはシングルトンとして作成され、IBotから派生したコンストラクターに渡されます。
-    ///  - 注入方法については<see cref="PictureBot"/>コンストラクタを参照してください。
-    ///  - 取得するシングルトンの作成の詳細については、コンストラクタに挿入される Startup.cs ファイルを
-    ///    参照してください。
+    ///このクラスはシングルトンとして作成され、IBotから派生したコンストラクターに渡されます。
+    /// -注入方法については<see cref="PictureBot"/>コンストラクタを参照してください。
+    /// -取得するシングルトンの作成の詳細については、コンストラクタに挿入される Startup.cs ファイルを
+    /// 参照してください。
     /// </summary>
     public class PictureBotAccessors
     {
@@ -448,12 +446,12 @@ namespace Microsoft.PictureBot
         /// Gets or sets the <see cref="IStatePropertyAccessor{T}"/> for CounterState.
         /// </summary>
         /// <value>
-        /// アクセサは、会話のターン カウントを保存します。
+        ///アクセサは、会話のターン カウントを保存します。
         /// </value>
         public IStatePropertyAccessor<PictureState> PictureState { get; set; }
 
         /// <summary>
-        /// <see cref="ConversationState"/>会話オブジェクトをを取得します。
+        ///<see cref="ConversationState"/>会話オブジェクトをを取得します。
         /// </summary>
         /// <value>The <see cref="ConversationState"/> object.</value>
         public ConversationState ConversationState { get; }
@@ -467,9 +465,9 @@ namespace Microsoft.PictureBot
 }
 ```
 
-1.  コードを確認し、`PictureStateName`と`PictureState`の実装に注目してください。
+1. コードを確認し、`PictureStateName`と`PictureState`の実装に注目してください。
 
-1.  これを正しく構成したかどうかが心配ですか? "**Startup.cs**" に戻り、カスタム状態アクセサーの作成に関するエラーが解決されていることを確認してください。
+1. これを正しく構成したかどうかが心配ですか? "**Startup.cs**" に戻り、カスタム状態アクセサーの作成に関するエラーが解決されていることを確認してください。
 
 ## ラボ 3.3: ボットのコードを整理する
 
@@ -481,9 +479,9 @@ namespace Microsoft.PictureBot
 * **応答** - ユーザーへの出力を定義するクラス
 * **モデル** - 変更対象のオブジェクト
 
-1.  プロジェクト内に2つの新しいフォルダー「** Responses **」と「** Models **」を作成します。(ヒント: プロジェクトを右クリックして、「追加->フォルダ」を選択できます。
+1. プロジェクト内に 2 つの新しいフォルダー "**Responses**" と "**Models**" を作成するには、プロジェクトを右クリックし、**「追加」 > 「新しいフォルダー」** を選択します。
 
-#### ダイアログ
+### ダイアログ
 
 ダイアログとそのしくみについては、既にご存じかもしれません。そうでない場合は、続行する前に[こちらのダイアログに関するページ](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-builder-dialog-manage-conversation-flow?view=azure-bot-service-4.0&tabs=csharp)をお読みください。
 
@@ -493,11 +491,11 @@ namespace Microsoft.PictureBot
 
 * **MainDialog** - ボット開始時の既定のダイアログ。このダイアログから、ユーザーが要求した他のダイアログが起動します。このダイアログはダイアログ セットのメイン ダイアログであるため、このダイアログでダイアログ コンテナーを作成し、必要に応じてユーザーを他のダイアログにリダイレクトします。
 
-* **SearchDialog** - 検索要求を処理して結果をユーザーに返すことを管理するダイアログ。 ***注**: このワークショップでは、この機能を呼び出しますが、検索は実装しません。*
+* **SearchDialog** - 検索要求を処理して結果をユーザーに返すことを管理するダイアログ。  ***注**: このワークショップでは、この機能を呼び出しますが、検索は実装しません。*
 
 ダイアログは 2 つしかないので、単純に両方とも PictureBot クラスに入れておくことができます。ただし、複雑なシナリオでは、これらを同じフォルダー内の別々のダイアログに分けることが必要になる可能性があります ("応答" と "モデル" を分けたのと同じように)。
 
-1.  **PictureBot.cs** に戻り、一連の `using` ステートメントを次のコードで置き換えます。
+1. **PictureBot.cs** に戻り、一連の `using` ステートメントを次のコードで置き換えます。
 
 ```csharp
 using System.Threading;
@@ -518,17 +516,17 @@ using Newtonsoft.Json.Linq;
 using Microsoft.PictureBot;
 ```
 
-これで、モデル/応答へのアクセスと、サービス LUIS と Azure Search へのアクセスが追加されました。最後の Newtonsoft への参照は、LUIS からの応答を解析するのに役立ちます。これについては、後続のラボで学習します。
+これで、モデル/応答へのアクセスと、サービス LUIS と Azure Cognitive Search へのアクセスが追加されました。最後の Newtonsoft への参照は、LUIS からの応答を解析するのに役立ちます。これについては、後続のラボで学習します。
 
 次に、`OnTurnAsync` のメソッドを置き換える必要があります。具体的には、受け取ったメッセージを処理してからさまざまなダイアログを通してそのメッセージをルーティングするメソッドで置き換えます。
 
-1.  **PictureBot** クラスを次のものに置き換えます。
+1. **PictureBot** クラスを次のものに置き換えます。
 
 ```csharp
 /// <summary>
 /// 受け取ったアクティビティを処理するボットを表します。
 /// ユーザーとのやり取りのたびに、このクラスのインスタンスが 1 つ作成され、OnTurnAsync メソッドが呼び出されます。
-これは有効期間が一時的であるサービスです。有効期間が一時的のサービスは、
+/// これは有効期間が一時的であるサービスです。  有効期間が一時的のサービスは、
 /// 要求されるたびに作成されます。受信したアクティビティごとに、このクラスの新しい
 /// インスタンスが作成されます。オブジェクトの構築にコストがかかる場合や、有効期間が
 /// ターン 1 つだけでない場合は、管理に注意が必要です。
@@ -637,9 +635,9 @@ public class PictureBot : ActivityHandler
 
 ダイアログの内容を作成する前に、応答を準備しておく必要があります。既に説明したように、ダイアログと応答を分けます。このようにするとコードがすっきりするのと、ダイアログのロジックを追うのが簡単になるのが理由です。今は同意できなくても、すぐにできるようになります。
 
-1.  **Responses** フォルダーで、 **MainResponses.cs** および **SearchResponses.cs** という2つのクラスを作成します。既にお分かりかもしれませんが、Responses のファイルの内容はユーザーに送信するさまざまな出力だけであり、ロジックは含まれていません。
+1. **Responses** フォルダーで、 **MainResponses.cs** および **SearchResponses.cs** という2つのクラスを作成します。既にお分かりかもしれませんが、Responses のファイルの内容はユーザーに送信するさまざまな出力だけであり、ロジックは含まれていません。
 
-1.  **MainResponses.cs**内に次を追加します。
+1. **MainResponses.cs** で、コードを次のように置き換えます。
 
 ```csharp
 using System.Threading.Tasks;
@@ -684,7 +682,7 @@ namespace PictureBot.Responses
 
 値のない応答が 2 つあることに注目してください (ReplyWithGreeting と ReplyWithConfused)。適切だと思う値を入力してしてください。
 
-1.  "SearchResponses.cs" の中に、次の行を追加します。
+1. 「SearchResponses.cs」内で、コードを次のように置き換えます。
 
 ```csharp
 using Microsoft.Bot.Builder;
@@ -713,21 +711,21 @@ namespace PictureBot.Responses
 }
 ```
 
-1.  タスク全体が欠落していることに注意してください。適切だと思う内容を自分で入力してください。ただし、新しいタスクの名前は "ReplyWithSearchRequest" としてください。このとおりでない場合は、後で問題が発生する可能性があります。
+1. タスク全体が欠落していることに注意してください。適切だと思う内容を自分で入力してください。ただし、新しいタスクの名前は "ReplyWithSearchRequest" としてください。このとおりでない場合は、後で問題が発生する可能性があります。
 
 #### モデル
 
-時間に制限があるため、すべてのモデルの作成の説明はしません。これらのモデルは単純ですが、追加後に少し時間を取ってコードを精査することをお勧めします。
+時間に制限があるため、すべてのモデルの作成の説明はしません。これらのモデルは単純ですが、追加後に少し時間を取ってコードを精査することをお勧めします。 
 
-1.  "**Models**" フォルダーを右クリックして、**「追加」>「既存の項目」**を選択します。
+1. "**Models**" フォルダーを右クリックして、**「追加」>「既存の項目」**を選択します。
 
-1.  **{GitHubDir}\Lab3-Basic_Filter_Bot\code\Models** に移動し、3つのファイルをすべて選択して、[**追加**] を選択します
+1. **{GitHubDir}\Lab3-Basic_Filter_Bot\code\Models** に移動し、3つのファイルをすべて選択して、[**追加**] を選択します
 
 ## ラボ 3.4: 正規表現とミドルウェア
 
-ボットをさらに良いものにするためにできることは多数あります。何よりも、LUIS を単純な "写真を検索" メッセージ (ボットがかなり頻繁にユーザーから受け取る要求です) に使用したくはありません。単純な正規表現でこれを行うことができ、時間の節約になり (ネットワークの待機時間)、費用も節約できます (LUIS サービスを呼び出すコスト)。
+ボットをさらに良いものにするためにできることは多数あります。何よりも、LUIS を単純な "写真を検索" メッセージ (ボットがかなり頻繁にユーザーから受け取る要求です) に使用したくはありません。  単純な正規表現でこれを行うことができ、時間の節約になり (ネットワークの待機時間)、費用も節約できます (LUIS サービスを呼び出すコスト)。
 
-また、ボットの複雑さが増し、ユーザーの入力を受け取って複数のサービスを使用して解釈するようになると、そのフローを管理するプロセスが必要になります。たとえば、最初に正規表現を試してみて、それで見つけられない場合は LUIS を呼び出し、その後は他のサービス、たとえば [QnA Maker](http://qnamaker.ai) や Azure Search を試します。これを管理するのに良い方法の 1 つは[ミドルウェア](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-builder-concept-middleware?view=azure-bot-service-4.0)を使用することであり、SDK はこれをサポートします。
+また、ボットの複雑さが増し、ユーザーの入力を受け取って複数のサービスを使用して解釈するようになると、そのフローを管理するプロセスが必要になります。  たとえば、最初に正規表現を試してみて、それで見つけられない場合は LUIS を呼び出し、その後は他のサービス、たとえば [QnA Maker](http://qnamaker.ai) や Azure Cognitive Search を試します。これを管理するのに良い方法の 1 つは[ミドルウェア](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-builder-concept-middleware?view=azure-bot-service-4.0)を使用することであり、SDK はこれをサポートします。
 
 ラボを続行する前に、ミドルウェアと Bot Framework SDK についてさらに学習してください。
 
@@ -739,7 +737,7 @@ namespace PictureBot.Responses
 
 最終的には、ミドルウェアを使用して、ユーザーが言っていることの理解を試みます。最初に正規表現 (Regex) を使用し、理解できない場合は LUIS を呼び出します。それでも理解できない場合は、「おっしゃっていることの意味がわかりません」という応答、またはその他の開発者が "ReplyWithConfused" に対して指定したものを返します。
 
-1.  "**Startup.cs**" の、`ConfigureServices` の中にある「この下に正規表現を追加する」というコメントの下に、次の行を追加します。
+1. "**Startup.cs**" の、`ConfigureServices` の中にある「この下に正規表現を追加する」というコメントの下に、次の行を追加します。
 
 ```csharp
 middleware.Add(new RegExpRecognizerMiddleware()
@@ -752,9 +750,9 @@ middleware.Add(new RegExpRecognizerMiddleware()
 
 > ここでは、正規表現の使い方のごく一部を示しています。興味がある場合は、[こちらの詳しい情報を参照してください](https://docs.microsoft.com/ja-jp/dotnet/standard/base-types/regular-expression-language-quick-reference)。
 
-1.  `options.State` が非推奨になったことにお気づきかもしれません。最新の方法に移行してみましょう。
+1. `options.State` が非推奨になったことにお気づきかもしれません。  最新の方法に移行してみましょう。
 
-1.  次のコードを削除します。
+1. 次のコードを削除します。
 
 ```csharp
 var conversationState = new ConversationState(dataStore);
@@ -762,7 +760,7 @@ var conversationState = new ConversationState(dataStore);
 options.State.Add(conversationState);
 ```
 
-1.  次に置き換える
+1. 次に置き換える
 
 ```csharp
 var userState = new UserState(dataStore);
@@ -775,7 +773,7 @@ services.AddSingleton<UserState>(userState);
 services.AddSingleton<ConversationState>(conversationState);
 ```
 
-1.  また、依存性注入バージョンからプルするように`設定`コードを置き換えます。
+1. また、依存性注入バージョンからプルするように `ConfigureServices` コードを置き換えます。
 
 ```csharp
 var conversationState = options.State.OfType<ConversationState>().FirstOrDefault();
@@ -785,7 +783,7 @@ if (conversationState == null)
 }
 ```
 
-1.  次に置き換える
+1. 次に置き換える
 
 ```csharp
 var conversationState = services.BuildServiceProvider().GetService<ConversationState>();
@@ -798,15 +796,15 @@ if (conversationState == null)
 
 LUIS を追加していないので、このボットはいくつかのバリエーションを理解するだけですが、ユーザーがこのボットを使って写真を検索し、共有し、プリントを注文するときに、かなりのメッセージを理解するはずです。
 
-> 余談: ボットができることについてのオプションを並べたメニューを受け取るためにユーザーが「help」と入力する必要はないと主張する人もいるかもしれませんが、これはボットと最初に接触したときの既定の動作です。**見つけやすさ**はボットにとって最大の課題の 1 つです。このボットに何ができるかをユーザーに知ってもらう必要があります。優れた[ボット設計の原則](https://docs.microsoft.com/ja-jp/bot-framework/bot-design-principles)が役立ちます。
+> 余談: ボットができることについてのオプションを並べたメニューを受け取るためにユーザーが「help」と入力する必要はないと主張する人もいるかもしれませんが、これはボットと最初に接触したときの既定の動作です。**見つけやすさ**はボットにとって最大の課題の 1 つです。このボットに何ができるかをユーザーに知ってもらう必要があります。 優れた[ボット設計の原則](https://docs.microsoft.com/ja-jp/bot-framework/bot-design-principles)が役立ちます。
 
 ## ラボ 3.5: ボットを実行する
 
-#### MainDialog 再び
+### MainDialog 再び
 
-本題に戻りましょう。ボットがユーザーの言いたいことに反応できるように、PictureBot.cs　内で MainDialog に記入する必要があります。正規表現からの結果に基づいて、正しい方向に会話を指示する必要があります。コードを注意深く読んで、コードが何をしているのかを理解することを確認してください。
+本題に戻りましょう。ボットがユーザーの言いたいことに反応できるように、PictureBot.cs　内で MainDialog に記入する必要があります。 正規表現からの結果に基づいて、正しい方向に会話を指示する必要があります。コードを注意深く読んで、コードが何をしているのかを理解することを確認してください。
 
-1.  **PictureBot.cs** で、次のメソッドコードを貼り付けます。
+1. **PictureBot.cs** で、次のメソッド コードを貼り付けて追加します。
 
 ```csharp
 // まだユーザーに挨拶していない場合は最初に挨拶しますが、会話の残りの
@@ -878,30 +876,29 @@ public async Task<DialogTurnResult> MainMenuAsync(WaterfallStepContext stepConte
 }
 ```
 
-1.  **F5** を押してボットを実行します。
+1. **F5** を押してボットを実行します。
 
-1.  ボット エミュレーターを使用して、いくつかのコマンドを送信してボットをテストします。
+1. ボット エミュレーターを使用して、いくつかのコマンドを送信してボットをテストします。
 
--   help
--   share pics
--   order pics
--   search pics
+* help
+* share pics
+* order pics
+* search pics
+  
+> 注 ボットで500エラーが発生した場合、OnTurnError デリゲート メソッド内の Startup.cs ファイルにブレークポイントを配置できます。  最も一般的なエラーは、AppId と AppSecret の不一致です。
 
-> **注** ボットで500エラーが発生した場合、**OnTurnError** デリゲート メソッド内の **Startup.cs** ファイルにブレークポイントを配置できます。最も一般的なエラーは、AppId と AppSecret の不一致です。
-
-1.  期待どおりの結果を得られなかったのが "search pics" だけの場合は、すべては自分で構成したとおりに動作しています。"search pics" の失敗は、ラボのこの時点での予期される動作ですが、理由は分かりますか? 次に進む前に答えを考えてください。
+1. 期待どおりの結果を得られなかったのが "search pics" だけの場合は、すべては自分で構成したとおりに動作しています。"search pics" の失敗は、ラボのこの時点での予期される動作ですが、理由は分かりますか? 次に進む前に答えを考えてください。
 
 >ヒント: ブレーク ポイントを使用して、case "search" への一致を、**PictureBot.cs** からトレースしてください。
-
 >行き詰まってしまったときは? このラボのこの時点までのソリューションは、[resources/code/Finished](./code/Finished) にあります。このソリューション内の readme ファイルを開くと、ソリューションを実行するためにどのキーの追加が必要かがわかります。このコードは、ソリューションとして実行するのではなく、参照として使用することをお勧めしますが、実行する場合は、環境に必要なキーを必ず追加してください。
 
-##  リソース
+## リソース
 
--   [Bot Builder Basics](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0&tabs=cs)
--   [.NET ボット ビルダー SDK チュートリアル](https://docs.microsoft.com/ja-jp/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart?view=azure-bot-service-4.0)
--   [ボット サービスのドキュメント](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
--   [ボットを展開する](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-builder-deploy-az-cli?view=azure-bot-service-4.0&tabs=newrg)
+* [Bot Builder Basics](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0&tabs=cs)
+* [.NET ボット ビルダー SDK チュートリアル](https://docs.microsoft.com/ja-jp/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart?view=azure-bot-service-4.0)
+* [ボット サービスのドキュメント](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
+* [ボットを展開する](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-builder-deploy-az-cli?view=azure-bot-service-4.0&tabs=newrg)
 
-##  次のステップ
+## 次のステップ
 
--   [ラボ 04-01: チャットをログに記録する](../Lab4-Log_Chat/01-Introduction.md)
+* [ラボ 04-01: チャットをログに記録する](../Lab4-Log_Chat/01-Introduction.md)

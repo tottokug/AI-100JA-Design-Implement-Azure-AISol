@@ -1,12 +1,12 @@
-﻿# AI-100-DesignImplementAzureAISol
-AI100T01A ILT コースのラボ ファイル
+﻿# Azure AI ソリューションの設計と実装
 
+AI100T01A ILT コースのラボ ファイル
 
 ## ラボ 1: 技術的な要件を満たす
 
 このラボでは、ワークショップのケース スタディを紹介し、Microsoft Cognitive Services スイート内でツールを構築できるように、ローカル ワークステーションと Azure インスタンスにツールをセットアップします。
 
-## ラボ 2: ボットの Computer Vision 機能を実装する
+## 課題 2: ボットの Computer Vision 機能を実装する
 
 このハンズオン ラボでは、Cognitive Services (特に Computer Vision API) を使用して、エンド ツー エンドでインテリジェント コンソール アプリケーションを作成する方法について説明します。ここでは ImageProcessing ポータブル クラス ライブラリ (PCL) を使用します。その内容と、自分で作成したアプリケーションでの使用方法についても説明します。
 
@@ -18,7 +18,7 @@ AI100T01A ILT コースのラボ ファイル
 
 また、ここではBot Emulator でボットをテストし、ボットがユーザーから受け取るメッセージに対して特殊なタスクを実行できるミドルウェアを取り扱います。
 
-Azure Search とマイクロソフトの Language Understanding Intelligent Service (LUIS) に関するいくつかの概念について取り上げますが、このラボでは実装しません。
+Azure Cognitive Search とマイクロソフトの Language Understanding Intelligent Service (LUIS) に関するいくつかの概念について取り上げますが、このラボでは実装しません。
 
 ## ラボ 4: ボットのチャットをログに記録する
 

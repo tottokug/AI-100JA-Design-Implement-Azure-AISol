@@ -19,7 +19,7 @@ LUIS を使用するには、ボットを更新する必要があります。  "
 > **注** Lab 1 から開始しなかった場合は、 **{GitHubPath}/Lab7-Integrate_LUIS/code/Starter/PictureBot/PictureBot.sln** ソリューションから開始することもできます。
 > すべてのアプリ設定の値を置き換えてください
 
-1. "**Startup.cs**" を開き、「ConfigureServices」メソッドを見つけます。ここで、状態アクセサーを作成して登録した後、LUIS 用の追加サービスを追加して、LUIS を追加します。
+1. "**Startup.cs**" を開き、`ConfigureServices`メソッドを見つけます。ここで、状態アクセサーを作成して登録した後、LUIS 用の追加サービスを追加して、LUIS を追加します。
 
 以下のように行います。
 
@@ -70,7 +70,7 @@ services.AddSingleton(sp =>
 
 ## ラボ 7.2: LUIS の PictureBot の MainDialog への追加
 
-1. **PictureBot.cs** を開きます。最初に行う必要があるのは、`PictureBotAccessors`で行ったのと同様に、LUIS 認識エンジンを初期化することです。コメント行「// LUIS 認識エンジンを初期化する」の下に、次の操作を追加します。
+1. **PictureBot.cs** を開きます。最初に行う必要があるのは、`PictureBotAccessors`で行ったのと同様に、LUIS 認識エンジンを初期化することです。コメント行`// LUIS 認識エンジンを初期化する`の下に、次の操作を追加します。
 
 ```csharp
 private LuisRecognizer _recognizer { get; } = null;
@@ -90,7 +90,7 @@ public PictureBot(PictureBotAccessors accessors, ILoggerFactory loggerFactory /*
 _recognizer = recognizer ?? throw new ArgumentNullException(nameof(recognizer));
 ```
 
-繰り返しますが、これは「_accessors」のインスタンスを初期化した方法と非常によく似ています。
+繰り返しますが、これは`_accessors`のインスタンスを初期化した方法と非常によく似ています。
 
 `MainDialog`を更新する限り、ユーザーの入力に関係なく、会話の開始時にユーザーが挨拶されるので、最初の`GreetingAsync`の手順で何かを追加する必要はありません。
 
@@ -152,9 +152,9 @@ default:
 }
 ```
 
-新しいコードの追加で行うことを簡単に説明します。まず、理解できないと答える代わりに、LUIS を呼び出します。そのため、LUIS 認識エンジンを使用して LUIS を呼び出し、一番上の意図を変数に格納します。次に、「switch」を使用して、ピックアップされた意図に応じて、さまざまな方法で応答します。これは、正規表現で行ったこととほぼ同じです。
+新しいコードの追加で行うことを簡単に説明します。まず、理解できないと答える代わりに、LUIS を呼び出します。そのため、LUIS 認識エンジンを使用して LUIS を呼び出し、一番上の意図を変数に格納します。次に、`switch`を使用して、ピックアップされた意図に応じて、さまざまな方法で応答します。これは、正規表現で行ったこととほぼ同じです。
 
-> **注意**: LUIS で、意図に[ラボ 6](../Lab6-Implement_LUIS/02-Implement_LUIS.md) で指示したのとは異なる名前を付けた場合は、それに応じて「case」ステートメントを変更する必要があります。
+> **注意**: LUIS で、意図に[ラボ 6](../Lab6-Implement_LUIS/02-Implement_LUIS.md) で指示したのとは異なる名前を付けた場合は、それに応じて`case`ステートメントを変更する必要があります。
 
 もう 1 つの注意点は、LUIS を呼び出したすべての応答の後に、LUIS の意図の値とスコアを追加することです。その理由は、正規表現とは対照的に、LUIS がいつ呼び出されたかだけを示すためです (最終製品からはこれらの応答を削除しますが、ボットをテストする際には良い指標です)。
 
@@ -172,11 +172,11 @@ default:
 
 LUIS の実装のカスタマイズで問題が発生した場合は、[ここ](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&tabs=cs)でボットの LUIS への追加に関するドキュメント ガイダンスを参照してください。
 
->行き詰まってしまったときは? このラボのこの時点までのソリューションは、[code/Finished](./code/Finished) にあります。Azure Bot Service のキーを「appsettings.json」ファイルに挿入する必要があります。このコードは、ソリューションとして実行するのではなく、参照として使用することをお勧めしますが、実行する場合は、必要なキーを必ず追加してください (このセクションでは、必ずしも必要はありません)。
+>行き詰まってしまったときは? このラボのこの時点までのソリューションは、[code/Finished](./code/Finished) にあります。Azure Bot Service のキーを`appsettings.json`ファイルに挿入する必要があります。このコードは、ソリューションとして実行するのではなく、参照として使用することをお勧めしますが、実行する場合は、必要なキーを必ず追加してください (このセクションでは、必ずしも必要はありません)。
 
 ## **追加クレジット**
 
-Azure Cognitive Search を含めて、以前の補足的な LUIS model-with-search [training] (https://github.com/Azure/LearnAI-Bootcamp/tree/master/lab01.5-luis) で構築した LUIS ボットの統合を試みる場合は、以下のトレーニングを行ってください。[Azure Cognitive Search](https://github.com/Azure/LearnAI-Bootcamp/tree/master/lab02.1-azure_search), と [Azure Cognitive Search ボット](https://github.com/Azure/LearnAI-Bootcamp/blob/master/lab02.2-building_bots/2_Azure_Search.md).
+Azure Cognitive Search を含めて、以前の補足的な LUIS model-with-search [training](https://github.com/Azure/LearnAI-Bootcamp/tree/master/lab01.5-luis) で構築した LUIS ボットの統合を試みる場合は、以下のトレーニングを行ってください。[Azure Cognitive Search](https://github.com/Azure/LearnAI-Bootcamp/tree/master/lab02.1-azure_search), と [Azure Cognitive Search ボット](https://github.com/Azure/LearnAI-Bootcamp/blob/master/lab02.2-building_bots/2_Azure_Search.md).
 
 ## 次のステップ
 

@@ -53,7 +53,7 @@ Emulator を使用したテスト、デバッグ、およびログへの記録�
 
 デフォルトのボット ストレージ プロバイダーでは、ボットの再起動時に破棄されるメモリ内ストレージを使用します。これはテストのみを目的としています。データを保持したいが、ボットをデータベースに接続したくない場合は、Azure Storage プロバイダーを使用するか、SDK を使用して独自のプロバイダーを構築できます。
 
-1. **Startup.cs** ファイルを開きます。  このプロセスはすべてのメッセージに使用するため、Startup クラスで「ConfigureServices」メソッドを使用して、Azure Blob ファイルに格納情報を追加します。現在、以下を使用していることに注意してください。
+1. **Startup.cs** ファイルを開きます。  このプロセスはすべてのメッセージに使用するため、Startup クラスで`ConfigureServices`メソッドを使用して、Azure Blob ファイルに格納情報を追加します。現在、以下を使用していることに注意してください。
 
 ```csharp
 IStorage dataStore = new MemoryStorage();
@@ -96,7 +96,7 @@ IStorage dataStore = new Microsoft.Bot.Builder.Azure.AzureBlobStorage(blobConnec
 
 1. **コンテナ**をクリックして、 **ChatLog** コンテナを開きます
 
-1. **emulator...**で始まるチャット ログ ファイルを選択し、「**Edit blob**」 を選択します。  ファイルには何が表示されていますか? 表示されると思っていたのに、表示されていないのは何ですか?
+1. **emulator...** で始まるチャット ログ ファイルを選択し、「**Edit blob**」 を選択します。  ファイルには何が表示されていますか? 表示されると思っていたのに、表示されていないのは何ですか?
 
 次のようなメッセージが表示されます。
 
@@ -131,7 +131,7 @@ public List<string> UtteranceList { get; private set; } = new List<string>();
 
 この例では、状態マネージャーを使用してデータの読み取りと書き込みを行うことを選択していますが、[状態マネージャを使用せずにストレージから直接読み取りおよび書き込みを行う](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-builder-howto-v4-storage?view=azure-bot-service-4.0&tabs=csharpechorproperty%2Ccsetagoverwrite%2Ccsetag)ことができます。
 
-> ストレージに直接書き込むことを選択した場合は、シナリオに応じて、eTags を設定できます。eTag プロパティを「*」に設定すると、ボットの他のインスタンスによって以前に書き込まれたデータを上書きできるようになります。ここでは詳しく説明しませんが、[同時管理の詳細については、ここを参照してください](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-builder-howto-v4-storage?view=azure-bot-service-4.0&tabs=csharpechorproperty%2Ccsetagoverwrite%2Ccsetag#manage-concurrency-using-etags)。
+> ストレージに直接書き込むことを選択した場合は、シナリオに応じて、eTags を設定できます。eTag プロパティを`*`に設定すると、ボットの他のインスタンスによって以前に書き込まれたデータを上書きできるようになります。ここでは詳しく説明しませんが、[同時管理の詳細については、ここを参照してください](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-builder-howto-v4-storage?view=azure-bot-service-4.0&tabs=csharpechorproperty%2Ccsetagoverwrite%2Ccsetag#manage-concurrency-using-etags)。
 
 ボットを実行する前に最後に行う必要があるのは、`OnTurn`アクションを使用してメッセージを一覧に追加することです。
 

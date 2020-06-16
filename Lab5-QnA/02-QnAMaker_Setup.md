@@ -52,7 +52,7 @@
 
 > **注**: サポートされているファイルの種類とデータソースの詳細については、[こちらをご覧ください。](https://docs.microsoft.com/ja-jp/azure/cognitive-services/qnamaker/concepts/data-sources-supported)
 
-1. **Chit-chat **には、**Witty** を選択します。
+1. **Chit-chat** には、**Witty** を選択します。
 
 1. 「**Create your KB**」 (KB を作成する) をクリックします。
 

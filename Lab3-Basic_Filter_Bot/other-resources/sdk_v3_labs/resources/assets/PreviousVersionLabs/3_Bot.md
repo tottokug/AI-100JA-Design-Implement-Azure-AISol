@@ -9,7 +9,7 @@ Bot Framework に触れた経験があることを前提としています。経
 
 C# SDK を使用してボットを開発します。  開始するには、次の 2 つのことが必要です。
 1. Bot Framework プロジェクトのテンプレートは、[ここ](http://aka.ms/bf-bc-vstemplate)でダウンロードできます。  このファイルは "Bot Application.zip" と呼ばれ、\Documents\Visual Studio 2019\Templates\ProjectTemplates\Visual C#\ ディレクトリに保存する必要があります。  ここに zip ファイル全体をドロップするだけです。解凍する必要はありません。  
-2. ボットをローカルでテストするために、Bot フレームワーク エミュレーターを[ここ](https://github.com/Microsoft/BotFramework-Emulator/releases/download/v3.5.33/botframework-emulator-Setup-3.5.33.exe)から Bot Framework Emulator をダウンロードしてください。  Emulator は、ブラウザーに応じて、「c:\Users\`_your-username_`\AppData\Local\botframework\app-3.5.33\botframework-emulator.exe」フォルダーにインストールされます。 
+2. ボットをローカルでテストするために、Bot フレームワーク エミュレーターを[ここ](https://github.com/Microsoft/BotFramework-Emulator/releases/download/v3.5.33/botframework-emulator-Setup-3.5.33.exe)から Bot Framework Emulator をダウンロードしてください。  Emulator は、ブラウザーに応じて、`c:\Users\`_your-username_`\AppData\Local\botframework\app-3.5.33\botframework-emulator.exe`フォルダーにインストールされます。 
 
 ### ラボ: 単純なボットを作成して実行する
 

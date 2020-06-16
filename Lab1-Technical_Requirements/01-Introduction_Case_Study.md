@@ -42,7 +42,7 @@ Adventure Works Cycles は大規模な多国籍製造会社です。同社はイ
 
 Bing Search を使用して、顧客がボットとの対話中に他のデータにアクセスできるようにするコンテキストのみを提供しますが、ラボではこれらのシナリオを実装しません。参加者は、[Bing Web Search](https://azure.microsoft.com/ja-jp/services/cognitive-services/directory/search/)サービスに関する詳細を読むように指示されます。
 
-このアーキテクチャはこのラボの範囲外ですが、[Blob Storage]((https://docs.microsoft.com/ja-jp/azure/storage/storage-dotnet-how-to-use-blobs) と [Cosmos DB](https://azure.microsoft.com/ja-jp/services/cosmos-db/) によって、イメージとメタデータのストレージを管理する Azure データ ソリューションをこのアーキテクチャに統合します。
+このアーキテクチャはこのラボの範囲外ですが、[Blob Storage](https://docs.microsoft.com/ja-jp/azure/storage/storage-dotnet-how-to-use-blobs) と [Cosmos DB](https://azure.microsoft.com/ja-jp/services/cosmos-db/) によって、イメージとメタデータのストレージを管理する Azure データ ソリューションをこのアーキテクチャに統合します。
 
 ![アーキテクチャ図](../images/AI_Immersion_Arch.png)
 

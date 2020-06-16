@@ -73,7 +73,7 @@ Microsoft Bot Framework DirectLine ボットは、独自の設計のカスタム
 
 1. まだ開いていない場合は、Visual Studio で **PictureBot** ソリューションを開きます
 
-1. ソリューション エクスプローラーでソリューションを右クリックし、**「追加」 > 「新しいプロジェクト」**を選択します。
+1. ソリューション エクスプローラーでソリューションを右クリックし、**「追加」 > 「新しいプロジェクト」** を選択します。
 
 1. **Console App (.NET Core)** を検索して選択し、「**次へ**」をクリックします
 
@@ -83,7 +83,7 @@ Microsoft Bot Framework DirectLine ボットは、独自の設計のカスタム
 
 ### NuGet パッケージを PictureBotDL に追加する
 
-1. PictureBotDL プロジェクトを右クリックし、**「NuGet パッケージの管理.」**を選択します。
+1. PictureBotDL プロジェクトを右クリックし、**「NuGet パッケージの管理」** を選択します。
 
 1. 「**参照**」 タブで、次を検索およびインストール/更新します。
 
@@ -310,7 +310,7 @@ Postman により、これが非常に簡単に行えます。
 
 1. 「**承認**」をクリックして、タイプに「**ベアラー トークン**」を選択します。
 
-1. 値を**{Your Direct Line Secret}**に設定します
+1. 値を **{Your Direct Line Secret}** に設定します
 
 1. 最後に、「**送信**」を選択します。
 
@@ -328,7 +328,7 @@ Postman により、これが非常に簡単に行えます。
 
 時間が余りましたか? (Postman のときと同様に) 会話を取得するために、端末から cURL (ダウンロード リンク: https://curl.haxx.se/download.html) を利用できますか?
 
-> ヒント: コマンドは「curl -H "Authorization:Bearer {SecretKey}" https://directline.botframework.com/api/conversations/{conversationId}/messages -XGET」のようになります。
+> ヒント: コマンドは`curl -H "Authorization:Bearer {SecretKey}" https://directline.botframework.com/api/conversations/{conversationId}/messages -XGET`のようになります。
 
 ## リソース
 

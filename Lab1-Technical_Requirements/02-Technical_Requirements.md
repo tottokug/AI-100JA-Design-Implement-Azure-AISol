@@ -85,9 +85,9 @@ Azure の無料試用版は、[https://azure.microsoft.com/ja-jp/free/](https://
 
 1. パフォーマンスは **Standard** である必要があります
 
-1. アカウントの種類は **StorageV2（汎用v2 **）である必要があります
+1. アカウントの種類は **StorageV2（汎用v2）** である必要があります
 
-1. レプリケーションの場合、「**ローカル冗長ストレージ（LRS**」 を選択します
+1. レプリケーションの場合、「**ローカル冗長ストレージ(LRS)**」 を選択します
 
     ![ストレージ アカウントの値が表示されます](../images/lab01-storageaccount.png 'Create a storage account')
 
@@ -107,7 +107,7 @@ Azure の無料試用版は、[https://azure.microsoft.com/ja-jp/free/](https://
 
 1. **+ コンテナー**を選択します
 
-1. 名前に「 **images**」と入力します
+1. 名前に「**images**」と入力します
 
     ![コンテナー ボタンが強調表示され、コンテナー名が入力されます  「OK」ボタンも強調表示されます。](../images/lab01-storageaccountcontainercreate.png 'Create a container called images')
 

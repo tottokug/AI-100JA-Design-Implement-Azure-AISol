@@ -37,7 +37,7 @@ Visual Studio のソリューション エクスプローラーでプロジェ�
 
 追加したファイルの内容を確認します。近くにいる人と何を行ったかについて話し合いましょう。
 
-また、SearchDialog を呼び出すように RootDialog を更新する必要があります。  "Dialogs" フォルダー内の RootDialog.cs で、"ResumeAfterChoice" メソッドのすぐ下に、次の "ResumeAfter" メソッドを追加します。
+また、SearchDialog を呼び出すように RootDialog を更新する必要があります。  "Dialogs" フォルダー内の RootDialog.cs で、`ResumeAfterChoice` メソッドのすぐ下に、次の "ResumeAfter" メソッドを追加します。
 
 ```csharp
 
@@ -54,7 +54,7 @@ Visual Studio のソリューション エクスプローラーでプロジェ�
 
 ```
 
-RootDialog.cs では、以下の行からコメント (先頭に「//」がある) を削除する必要もあります。`PromptDialog.Text(context, ResumeAfterSearchTopicClarification, "What kind of picture do you want to search for?");` within the `ResumeAfterChoice` method.
+RootDialog.cs では、以下の行からコメント (先頭に`//`がある) を削除する必要もあります。`PromptDialog.Text(context, ResumeAfterSearchTopicClarification, "What kind of picture do you want to search for?");` within the `ResumeAfterChoice` method.
 
 F5 を押してボットを再度実行します。  Bot Emulator で、「犬」や「水」などを検索してみてください。  画像のタグが要求されたときに、結果が表示されていることを確認します。  
 

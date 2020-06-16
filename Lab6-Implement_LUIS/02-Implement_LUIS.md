@@ -222,7 +222,7 @@ LUIS を使用して、自然言語機能を追加する方法を見てみまし
 これで、クライアント アプリケーションで LUIS アプリを使用したり、一覧に記載されたエンドポイントを介してブラウザーでテストしたり、ボットに統合したりする準備が整いました。
 
 
-[公開されたエンドポイントをブラウザーでテストする](https://docs.microsoft.com/ja-jp/azure/cognitive-services/LUIS/PublishApp#test-your-published-endpoint-in-a-browser)こともできます。エンドポイントの URL をコピーします。ブラウザーでこの URL を開くには、URL パラメーター「&q=」をテスト クエリに設定します。たとえば、URL に「Find pictures of dogs」を追加し、Enter キーを押します。ブラウザーには、HTTP エンドポイントの JSON 応答が表示されます。
+[公開されたエンドポイントをブラウザーでテストする](https://docs.microsoft.com/ja-jp/azure/cognitive-services/LUIS/PublishApp#test-your-published-endpoint-in-a-browser)こともできます。エンドポイントの URL をコピーします。ブラウザーでこの URL を開くには、URL パラメーター`&q`をテスト クエリに設定します。たとえば、URL に`Find pictures of dogs`を追加し、Enter キーを押します。ブラウザーには、HTTP エンドポイントの JSON 応答が表示されます。
 
 ## さらに進む
 

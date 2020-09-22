@@ -26,7 +26,7 @@ Cognitive Services に重点を置きますが、Visual Studio 2019 も利用し
 
 ## ラボ 2.2: リソース
 
-[メイン](https://github.com/MicrosoftLearning/AI-100-Design-Implement-Azure-AISol/blob/master/Lab2-Implement_Computer_Vision/) github リポジト リフォルダーにはいくつかのディレクトリがあります。
+[メイン](https://github.com/MicrosoftLearning/AI-100JA-Design-Implement-Azure-AISol/blob/master/Lab2-Implement_Computer_Vision/) github リポジト リフォルダーにはいくつかのディレクトリがあります。
 
 - **sample_images**: Cognitive Services の実装のテストに使用するいくつかのサンプル画像。
 

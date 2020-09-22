@@ -179,8 +179,8 @@ Cosmos DB はこのラボの焦点ではありませんが、ご興味がある�
 1. まだコンパイルしていない場合は、プロジェクトをコンパイルします。	
 1. コマンドプロンプトを開き、 **TestCLI** プロジェクトのビルドディレクトリに移動します。  **{GitHubDir}\Lab2-Implement_Computer_Vision\code\Finished\TestCLI** のようになります。
 
-> **注**: デバッグ ディレクトリに移動しないでください
-> **注**: .net core 2.2 は、インストールが必要です。こちら https://dotnet.microsoft.com/download/dotnet-core/2.2 でご覧になれます。	
+> **注**: デバッグ ディレクトリに移動しないでください。
+.net core 2.2 は、インストールが必要です。こちら https://dotnet.microsoft.com/download/dotnet-core/2.2 でご覧になれます。	
 
 1. 実行コマンド **dotnet run**	
 ```cmd	

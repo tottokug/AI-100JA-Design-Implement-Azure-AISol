@@ -18,7 +18,7 @@ Azure の無料試用版は、[https://azure.microsoft.com/ja-jp/free/](https://
 
 ### 環境の設定
 
-これらのラボは、[Visual Studio 2019](https://www.visualstudio.com/downloads/) を使用した .NET Framework で使用することを目的としています。  元のワークショップは、Azure Data Science Virtual Machine (DSVM) で使用するように設計され、テストされました。  Azure で実際に DSVM リソースを作成できるのは Premium Azure サブスクリプションのみですが、ラボは Visual Studio 2019 を実行しているローカル コンピューターと、ラボの手順全体で示されている必要なソフトウェアのダウンロードで実行できます。
+これらのラボは、Microsoft Windows オペレーティング システムで実行している [Visual Studio 2019](https://www.visualstudio.com/downloads/) を使用した .NET Framework で使用することを目的としています。Visual Studio for Mac のバージョンがありますが、サンプル コードの一部の機能は Mac OS プラットフォームではサポートされていません。  その結果、仮想マシン ソリューションを使用して利用可能なホスト ラボ オプションがあります。インストラクターは、VM ソリューションの使用に関する詳細を提供します。  元のワークショップは、Azure Data Science Virtual Machine (DSVM) で使用するように設計され、テストされました。  Azure で実際に DSVM リソースを作成できるのは Premium Azure サブスクリプションのみですが、ラボは Visual Studio 2019 を実行しているローカル コンピューターと、ラボの手順全体で示されている必要なソフトウェアのダウンロードで実行できます。
 
 ### 必要な URL とキー
 
@@ -65,7 +65,7 @@ Azure の無料試用版は、[https://azure.microsoft.com/ja-jp/free/](https://
 
 1. 「**作成**」を選択します
 
-1. 新しいリソースに移動し、「**クイック スタート**」を選択します
+1. 新しいリソースに移動し、左側のツールバーの 「**リソース管理**」 セクションで、「**キーとエンドポイント**」 を選択します。
 
 1. **API Key** をコピーして、メモ帳に **エンドポイントの URL** を貼り付けます
 

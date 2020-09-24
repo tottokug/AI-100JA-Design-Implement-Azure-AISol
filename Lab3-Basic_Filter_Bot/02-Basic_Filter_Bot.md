@@ -123,11 +123,11 @@ Microsoft Bot Framework を使用して作成されたボットは、パブリ�
 
 1. ソリューションをビルドします。
 
->**ヒント**:  モニターが 1 台だけの場合に手順の説明と Visual Studio を簡単に切り替えるために、手順ファイルを Visual Studio ソリューションに追加できるようになりました。それには、ソリューション エクスプローラーでプロジェクトを右クリックし、**「追加」 > 「既存の項目」** を選択します。「Lab2」に移動し、種類が "MD ファイル" のすべてのファイルを追加します。
+>**ヒント**:  モニターが 1 台だけの場合に手順の説明と Visual Studio を簡単に切り替えるために、手順ファイルを Visual Studio ソリューションに追加できるようになりました。それには、ソリューション エクスプローラーでプロジェクトを右クリックし、**「追加」 > 「既存の項目」** を選択します。「Lab2」に移動し、種類が 「MD ファイル」 のすべてのファイルを追加します。
 
 ### Hello World ボットを作成する
 
-ラボの今後の部分で使用する命名と NuGet パッケージをサポートするように基本シェルの更新が完了したので、カスタム コードの追加を開始する準備ができました。最初に、V4 SDK を使用するボット開発のウォームアップとしてシンプルな "Hello world" ボットを作成します。
+ラボの今後の部分で使用する命名と NuGet パッケージをサポートするように基本シェルの更新が完了したので、カスタム コードの追加を開始する準備ができました。最初に、V4 SDK を使用するボット開発のウォームアップとしてシンプルな 「Hello worl」 ボットを作成します。
 
 重要な概念の 1 つが `"ターン"` です。これは、ユーザーへのメッセージとボットからの応答を表すのに使用されます。
 たとえば、ユーザーが「ハロー、ボット」と言ってボットが「こんにちは、お元気ですか?」と答えると、これが **1 つの**ターンとなります。次の画像で、1 つの**ターン**がボット アプリケーションの複数のレイヤーをどのように通過するかを確認してください。
@@ -192,7 +192,7 @@ Emulator の使い方の詳細については、[ここ](https://docs.microsoft.
 
 1. **Startup.cs**ファイルに再度移動します
 
-1. `using` ステートメントのリストに次の行を追加します。
+1. `using` ステートメントのリストに次の行を**追加**します。
 
 ```csharp
 using System;
@@ -232,9 +232,9 @@ SDK を使用して、開発者は独自のミドルウェアをプログラミ�
 
 1. **ミドルウェア**という名前の新しいフォルダを追加する
 
-1. "**Middleware**" フォルダーを右クリックして、**「追加」>「既存の項目」** を選択します。
+1. 「**Middleware**」フォルダーを右クリックして、**「追加」>「既存の項目」** を選択します。
 
-1. **{GitHubDir} \ Lab3-Basic_Filter_Bot \ code \ Middleware**に移動し、3つのファイルをすべて選択して、「**追加**」 を選択します
+1. **{GitHubDir}\Lab3-Basic_Filter_Bot\code\Middleware** に移動し、3つのファイルをすべて選択して、「**追加**」 を選択します
 
 1. **Startup** クラスに次の変数を追加します。
 
@@ -278,7 +278,7 @@ services.AddBot<PictureBot.Bots.PictureBot>(options =>
     // ストレージ プロバイダーの場合は、Microsoft.Bot.Builder.Azure
     // Nugetパッケージをソリューションに追加します。パッケージは次の場所にあります。
     // https://www.nuget.org/packages/Microsoft.Bot.Builder.Azure/
-    Azure BLOB ストレージを使用するには、次の行のコメントを解除します。
+    // Azure BLOB ストレージを使用するには、次の行のコメントを解除します。
     // //.botファイルのストレージ構成名またはID。
     // const string StorageConfigurationId = "<STORAGE-NAME-OR-ID-FROM-BOT-FILE>";
     // var blobConfig = botConfig.FindServiceByNameOrId(StorageConfigurationId);
@@ -467,7 +467,7 @@ namespace Microsoft.PictureBot
 
 1. コードを確認し、`PictureStateName`と`PictureState`の実装に注目してください。
 
-1. これを正しく構成したかどうかが心配ですか? "**Startup.cs**" に戻り、カスタム状態アクセサーの作成に関するエラーが解決されていることを確認してください。
+1. これを正しく構成したかどうかが心配ですか? 「**Startup.cs**」 に戻り、カスタム状態アクセサーの作成に関するエラーが解決されていることを確認してください。
 
 ## ラボ 3.3: ボットのコードを整理する
 
@@ -479,7 +479,7 @@ namespace Microsoft.PictureBot
 * **応答** - ユーザーへの出力を定義するクラス
 * **モデル** - 変更対象のオブジェクト
 
-1. プロジェクト内に 2 つの新しいフォルダー "**Responses**" と "**Models**" を作成するには、プロジェクトを右クリックし、**「追加」 > 「新しいフォルダー」** を選択します。
+1. プロジェクト内に 2 つの新しいフォルダー 「**Responses**」 と 「**Models**」 を作成するには、プロジェクトを右クリックし、**「追加」 > 「新しいフォルダー」** を選択します。
 
 ### ダイアログ
 
@@ -590,7 +590,7 @@ public class PictureBot : ActivityHandler
         // LUIS 認識エンジンのインスタンスを追加する
 
         _logger = loggerFactory.CreateLogger<PictureBot>();
-        _logger.LogTrace("PictureBot ターン開始。");
+        _logger.LogTrace("PictureBot turn start.");
         _accessors = accessors ?? throw new System.ArgumentNullException(nameof(accessors));
 
         // DialogSet には DialogState アクセサーが必要です。ターン コンテキストがあるときにこれを呼び出します。
@@ -653,11 +653,11 @@ namespace PictureBot.Responses
         }
         public static async Task ReplyWithHelp(ITurnContext context)
         {
-            await context.SendActivityAsync($"私は写真の検索、写真の共有、写真プリントの注文を行うことができます。");
+            await context.SendActivityAsync($"I can search for pictures, share pictures and order prints of pictures.");
         }
         public static async Task ReplyWithResumeTopic(ITurnContext context)
         {
-            await context.SendActivityAsync($"どれをご希望ですか?");
+            await context.SendActivityAsync($"What can I do for you?");
         }
         public static async Task ReplyWithConfused(ITurnContext context)
         {
@@ -670,11 +670,11 @@ namespace PictureBot.Responses
         }
         public static async Task ReplyWithShareConfirmation(ITurnContext context)
         {
-            await context.SendActivityAsync($"あなたの写真を Twitter に投稿します...");
+            await context.SendActivityAsync($"Posting your picture(s) on twitter...");
         }
         public static async Task ReplyWithOrderConfirmation(ITurnContext context)
         {
-            await context.SendActivityAsync($"写真の標準プリントを注文します...");
+            await context.SendActivityAsync($"Ordering standard prints of your picture(s)...");
         }
     }
 }
@@ -711,15 +711,15 @@ namespace PictureBot.Responses
 }
 ```
 
-1. タスク全体が欠落していることに注意してください。適切だと思う内容を自分で入力してください。ただし、新しいタスクの名前は "ReplyWithSearchRequest" としてください。このとおりでない場合は、後で問題が発生する可能性があります。
+1. タスク全体が欠落していることに注意してください。適切だと思う内容を自分で入力してください。ただし、新しいタスクの名前は 「ReplyWithSearchRequest」 としてください。このとおりでない場合は、後で問題が発生する可能性があります。
 
 #### モデル
 
 時間に制限があるため、すべてのモデルの作成の説明はしません。これらのモデルは単純ですが、追加後に少し時間を取ってコードを精査することをお勧めします。 
 
-1. "**Models**" フォルダーを右クリックして、**「追加」>「既存の項目」** を選択します。
+1. 「**Models**」 フォルダーを右クリックして、**「追加」>「既存の項目」** を選択します。
 
-1. **{GitHubDir}\Lab3-Basic_Filter_Bot\code\Models** に移動し、3つのファイルをすべて選択して、[**追加**] を選択します
+1. **{GitHubDir}\Lab3-Basic_Filter_Bot\code\Models** に移動し、3つのファイルをすべて選択して、「**追加**」 を選択します
 
 ## ラボ 3.4: 正規表現とミドルウェア
 
@@ -735,9 +735,9 @@ namespace PictureBot.Responses
 
 1. [ミドルウェアの作成](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-builder-create-middleware?view=azure-bot-service-4.0&tabs=csaddmiddleware%2Ccsetagoverwrite%2Ccsmiddlewareshortcircuit%2Ccsfallback%2Ccsactivityhandler)
 
-最終的には、ミドルウェアを使用して、ユーザーが言っていることの理解を試みます。最初に正規表現 (Regex) を使用し、理解できない場合は LUIS を呼び出します。それでも理解できない場合は、「おっしゃっていることの意味がわかりません」という応答、またはその他の開発者が "ReplyWithConfused" に対して指定したものを返します。
+最終的には、ミドルウェアを使用して、ユーザーが言っていることの理解を試みます。最初に正規表現 (Regex) を使用し、理解できない場合は LUIS を呼び出します。それでも理解できない場合は、「おっしゃっていることの意味がわかりません」という応答、またはその他の開発者が 「ReplyWithConfused」 に対して指定したものを返します。
 
-1. "**Startup.cs**" の、`ConfigureServices` の中にある「この下に正規表現を追加する」というコメントの下に、次の行を追加します。
+1. 「**Startup.cs**」 の、`ConfigureServices` の中にある「この下に正規表現を追加する」というコメントの下に、次の行を追加します。
 
 ```csharp
 middleware.Add(new RegExpRecognizerMiddleware()
@@ -885,11 +885,11 @@ public async Task<DialogTurnResult> MainMenuAsync(WaterfallStepContext stepConte
 * order pics
 * search pics
   
-> 注 ボットで500エラーが発生した場合、OnTurnError デリゲート メソッド内の Startup.cs ファイルにブレークポイントを配置できます。  最も一般的なエラーは、AppId と AppSecret の不一致です。
+> **注** ボットで500エラーが発生した場合、**OnTurnError** デリゲート メソッド内の **Startup.cs** ファイルにブレークポイントを配置できます。  最も一般的なエラーは、AppId と AppSecret の不一致です。
 
-1. 期待どおりの結果を得られなかったのが "search pics" だけの場合は、すべては自分で構成したとおりに動作しています。"search pics" の失敗は、ラボのこの時点での予期される動作ですが、理由は分かりますか? 次に進む前に答えを考えてください。
+1. 期待どおりの結果を得られなかったのが 「search pics」 だけの場合は、すべては自分で構成したとおりに動作しています。「search pics」 の失敗は、ラボのこの時点での予期される動作ですが、理由は分かりますか? 次に進む前に答えを考えてください。
 
->ヒント: ブレーク ポイントを使用して、case "search" への一致を、**PictureBot.cs** からトレースしてください。
+>ヒント: ブレーク ポイントを使用して、case 「search」 への一致を、**PictureBot.cs** からトレースしてください。
 >行き詰まってしまったときは? このラボのこの時点までのソリューションは、[resources/code/Finished](./code/Finished) にあります。このソリューション内の readme ファイルを開くと、ソリューションを実行するためにどのキーの追加が必要かがわかります。このコードは、ソリューションとして実行するのではなく、参照として使用することをお勧めしますが、実行する場合は、環境に必要なキーを必ず追加してください。
 
 ## リソース

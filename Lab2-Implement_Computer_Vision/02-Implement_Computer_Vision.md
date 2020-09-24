@@ -131,7 +131,7 @@ public static async Task<ImageInsights> ProcessImageAsync(Func<Task<Stream>> ima
 var imageAnalysisResult = await VisionServiceHelper.AnalyzeImageAsync(imageStreamCallback, DefaultVisualFeaturesList);
 ```
 
-これまでに Computer Vision サービスを呼び出しました。次の結果だけが含まれる "ImageInsights" にエントリを作成します。ImageId、キャプション、タグ (`ImageInsights.cs`を再参照することで確認できます)。
+これまでに Computer Vision サービスを呼び出しました。次の結果だけが含まれる 「ImageInsights」 にエントリを作成します。ImageId、キャプション、タグ (`ImageInsights.cs`を再参照することで確認できます)。
 
 1. 次のコードでこれを完了させます。
 
@@ -144,7 +144,7 @@ ImageInsights result = new ImageInsights
 };
 ```
 
-これで、Computer Vision API から必要なキャプションとタグが取得され、各画像の結果 (imageId 付き) が "ImageInsights" に格納されます。
+これで、Computer Vision API から必要なキャプションとタグが取得され、各画像の結果 (imageId 付き) が 「ImageInsights」 に格納されます。
 
 1. 最後に、メソッドの末尾に次の行を追加して、メソッドを閉じる必要があります。
 

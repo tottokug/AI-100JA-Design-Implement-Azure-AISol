@@ -1,4 +1,4 @@
-﻿---
+---
 lab:
     title: 'ラボ 6: LUIS モデルを実装する'
     module: 'モジュール 4: LUIS を使用して Language Understanding 機能を作成する方法を学習する'

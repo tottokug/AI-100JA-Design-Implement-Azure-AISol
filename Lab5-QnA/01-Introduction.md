@@ -1,4 +1,4 @@
-﻿---
+---
 lab:
     title: 'ラボ 5: 紹介'
     module: 'モジュール 3: QnA Maker でのボットの拡張'

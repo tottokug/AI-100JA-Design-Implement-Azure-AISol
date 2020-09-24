@@ -1,4 +1,4 @@
-﻿---
+---
 lab:
     title: 'ラボ 7: Dialogues を使用して LUIS をボットに統合する'
     module: 'モジュール 5: LUIS を使用したボットの拡張'

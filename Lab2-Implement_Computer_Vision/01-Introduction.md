@@ -1,4 +1,4 @@
-﻿---
+---
 lab:
     title: 'ラボ 2: ボットの Computer Vision 機能を実装する'
     module: 'モジュール 1: Azure Cognitive Services の概要'

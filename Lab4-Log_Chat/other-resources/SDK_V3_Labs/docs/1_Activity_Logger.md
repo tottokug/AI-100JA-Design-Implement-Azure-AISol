@@ -1,18 +1,18 @@
-﻿# アクティビティ ロガー
+# Activity Logger
 
-## 1. 目的
+## 1. Objectives
 
-このラボは、Microsoft Bot Framework を使用したログ記録の開始を目的としています。具体的には、このラボでは、アクティビティ ロガーを使用して会話をログに記録する方法を示します。このラボでのログ記録は、デバッグを使用して実行されます。
+This lab is aimed at getting started with logging using the Microsoft Bot Framework. Specifically, in this lab, we will demonstrate how you can log conversations using an activity logger. Logging in this lab is performed using Debug.
 
-## 2. セットアップ
+## 2. Setup
 
-Visual Studio の code\core-Middleware から core-Middleware コードをインポートします。これを実行する最も簡単な方法は、core-Middleware.sln を開くことです。ソリューション エクスプローラーは、Visual Studio で次のように表示されます。
+Import the core-Middleware code from code\core-Middleware in Visual Studio. The easiest way to perform this is opening core-Middleware.sln. The solution explorer would look as follows in Visual Studio:
 
-![ソリューション エクスプローラー](images/SolutionExplorer.png)
+![Solution Explorer](images/SolutionExplorer.png)
 
 ## 3. IActivityLogger
 
-会話の履歴を処理するとき、最も一般的な操作の 1 つは、ボットとユーザーの間のメッセージ アクティビティをインターセプトしてログに記録することです。「IActivityLogger」インターフェイスには、クラスでメッセージ アクティビティをログに記録するために実装する必要がある機能の定義が含まれています。デバッグで実行しているときにのみトレース リスナーにメッセージ アクティビティを書き込む「IActivityLogger」インターフェイスの「DebugActivityLogger」の実装。
+One of the most common operations when working with conversational history is to intercept and log message activities between bots and users. The IActivityLogger interface contains the definition of the functionality that a class needs to implement to log message activities. The DebugActivityLogger implementation of the IActivityLogger interface writes message activities to the trace listeners only when running in debug.
 
 ````C#
 public class DebugActivityLogger : IActivityLogger
@@ -23,9 +23,9 @@ public class DebugActivityLogger : IActivityLogger
     }
 }
 ````
-ログ アクティビティは、ボット アプリケーションの有効期間内に発生するイベントです。Application_Start メソッドはアプリケーションの起動時に呼び出され、アプリケーションの有効期間中に存続します。
+The logging activity is an event that takes place for the lifetime of the bot application. Application_Start method is called when the application starts and lasts for the lifetime of the application.
 
-Global.asax を使用すると、重要なライフサイクル イベントに対応するイベント ハンドラーを記述できます。Global.asax イベントは、ユーザーが直接呼び出すことはありません。これらは、アプリケーション イベントに反応して自動的に呼び出されます。このラボでは、次のように Application_Start (Global.asax 内) に DebugActivityLogger を登録する必要があります。
+Global.asax allows us to write event handlers that react to important life-cycle events. Global.asax events are never called directly by the user. They are called automatically in response to application events. For this lab, we must register DebugActivityLogger in Application_Start (in Global.asax) as follows.
 
 ````C#
 protected void Application_Start()
@@ -38,14 +38,14 @@ protected void Application_Start()
 }
 ````
 
-Application_Start メソッドは、アプリケーションのライフサイクル中に 1 回だけ呼び出されます。このメソッドを使用して、スタートアップ タスクを実行できます。
+The Application_Start method is called only one time during the life cycle of an application. You can use this method to perform startup tasks.
 
-## 4. 結果をログに記録する
+## 4. Log Results
 
-ボット アプリケーションを実行し、メッセージを使用してエミュレーターでテストします。ログ データは Debug.WriteLine を使用して書き込まれます。出力ウィンドウを使用して結果を表示できます。*「出力元の表示」* で "Debug" (デバッグ) が選択されていることを確認します。出力が表示されない場合は、メニューから 「表示」 > 「出力」を選択します。````From:56800324 - To:2c1c7fa3 - Message:hello````のようなエントリが表示されます。これはエコー ボットであるため、もログに記録されたエコー メッセージも表示されます。
+Run the bot application and test in the emulator with messages. The log data is written using Debug.WriteLine. You can view the result using Output window. Ensure Debug is selected for *Show output from*. If Output is not visible, select View->Output from the menu. You will see an entry such as ````From:56800324 - To:2c1c7fa3 - Message:hello````. Since this is an echo bot, you will also see the echoed message logged.
 
-![結果をログに記録する](images/LogResults.png)
+![Log Results](images/LogResults.png)
 
-### [2_File_Logger](2_File_Logger.md) に進みましょう
+### Continue to [2_File_Logger](2_File_Logger.md)
 
-[0_README](../0_README.md) に戻る
+Back to [0_README](../0_README.md)

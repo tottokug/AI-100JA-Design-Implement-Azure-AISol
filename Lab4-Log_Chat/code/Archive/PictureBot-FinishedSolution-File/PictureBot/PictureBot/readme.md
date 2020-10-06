@@ -1,4 +1,4 @@
-﻿# ASP.NET コアでホストされる EchoBot
-このサンプルでは、単純な EchoBot ボットを ASP.Net コア 2 と統合する方法を示します。
+﻿# EchoBot hosted in ASP.NET Core
+This sample shows how to integrate a simple EchoBot bot with ASP.Net Core 2.
 
-appsettings.json では、ボット サービスのファイル パスとシークレットを設定する必要があります。
+In appsettings.json, you will need to set your Bot Service filepath and secret.

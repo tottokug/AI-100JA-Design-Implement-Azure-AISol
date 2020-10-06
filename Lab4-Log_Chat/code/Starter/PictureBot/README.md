@@ -1,69 +1,69 @@
 ﻿# PictureBot
 
-ボット フレームワーク v4 エコー ボットのサンプル。
+Bot Framework v4 echo bot sample.
 
-このボットは、[Bot Framework](https://dev.botframework.com) を使用して作成されており、ユーザーからの入力を受け取ってエコー バックする単純なボットを作成する方法を示します。
+This bot has been created using [Bot Framework](https://dev.botframework.com), it shows how to create a simple bot that accepts input from the user and echoes it back.
 
-## 前提条件
+## Prerequisites
 
-- [.NET Core SDK](https://dotnet.microsoft.com/download) バージョン 2.1
+- [.NET Core SDK](https://dotnet.microsoft.com/download) version 2.1
 
-```bash
-  # .NET バージョンの確認
+  ```bash
+  # determine dotnet version
   dotnet --version
-```
+  ```
 
-## これサンプルを試します
+## To try this sample
 
-- ターミナルで、`PictureBot` に移動します。
+- In a terminal, navigate to `PictureBot`
 
-```bash
-    # プロジェクトフォルダへの変更
+    ```bash
+    # change into project folder
     cd # PictureBot
-```
+    ```
 
-- ターミナルまたは Visual Studio からボットを実行するには、オプション A または B を選択します。
+- Run the bot from a terminal or from Visual Studio, choose option A or B.
 
-  A) 端末から
+  A) From a terminal
 
-```bash
-  # ボットを実行します
+  ```bash
+  # run the bot
   dotnet run
-```
+  ```
 
-  B) または Visual Studio から
+  B) Or from Visual Studio
 
-  - Visual Studio を起動する
-  - ファイル -> 開く -> プロジェクト/ソリューション
-  - `PictureBot` フォルダに移動します。
-  - `PictureBot.csproj` ファイルを選択する
-  - `F5` キーを押してプロジェクトを実行します。
+  - Launch Visual Studio
+  - File -> Open -> Project/Solution
+  - Navigate to `PictureBot` folder
+  - Select `PictureBot.csproj` file
+  - Press `F5` to run the project
 
-## Bot Framework Emulator を使用したボットのテスト
+## Testing the bot using Bot Framework Emulator
 
-[Bot Framework Emulator](https://github.com/microsoft/botframework-emulator) は、ローカル ホストまたはトンネルを介してリモートで実行しているボットをテストおよびデバッグできるようにするデスクトップ アプリケーションです。
+[Bot Framework Emulator](https://github.com/microsoft/botframework-emulator) is a desktop application that allows bot developers to test and debug their bots on localhost or running remotely through a tunnel.
 
-- [ここ](https://github.com/Microsoft/BotFramework-Emulator/releases)をクリックして、Bot Framework Emulator バージョン 4.5.0 以降をインストールします。
+- Install the Bot Framework Emulator version 4.5.0 or greater from [here](https://github.com/Microsoft/BotFramework-Emulator/releases)
 
-### Bot Framework Emulator を使用してボットに接続する
+### Connect to the bot using Bot Framework Emulator
 
-- Bot Framework Emulator を起動する
-- ファイル -> ボットを開く
-- `http://localhost:3978/api/messages` のボット URL を入力する
+- Launch Bot Framework Emulator
+- File -> Open Bot
+- Enter a Bot URL of `http://localhost:3978/api/messages`
 
-## ボットを Azure にデプロイする
+## Deploy the bot to Azure
 
-Azure へのボットのデプロイの詳細については、「[Azure へのボットのデプロイ](https://aka.ms/azuredeployment)」を参照して、デプロイ手順の完全な一覧を参照してください。
+To learn more about deploying a bot to Azure, see [Deploy your bot to Azure](https://aka.ms/azuredeployment) for a complete list of deployment instructions.
 
-## その他の資料
+## Further reading
 
-- [Bot Framework のドキュメント](https://docs.botframework.com)
-- [ボットの基本](https://docs.microsoft.com/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0)
-- [アクティビティ処理](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-builder-concept-activity-processing?view=azure-bot-service-4.0)
-- [Azure Bot Services の概要](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
-- [Azure Bot Services のドキュメント](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
-- [.NET Core CLI ツール](https://docs.microsoft.com/ja-jp/dotnet/core/tools/?tabs=netcore2x)
+- [Bot Framework Documentation](https://docs.botframework.com)
+- [Bot Basics](https://docs.microsoft.com/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0)
+- [Activity processing](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-activity-processing?view=azure-bot-service-4.0)
+- [Azure Bot Service Introduction](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
+- [Azure Bot Service Documentation](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+- [.NET Core CLI tools](https://docs.microsoft.com/en-us/dotnet/core/tools/?tabs=netcore2x)
 - [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 - [Azure Portal](https://portal.azure.com)
-- [LUIS を使用した Language Understanding](https://docs.microsoft.com/ja-jp/azure/cognitive-services/luis/)
-- [チャネルとボット コネクタ サービス](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-concepts?view=azure-bot-service-4.0)
+- [Language Understanding using LUIS](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/)
+- [Channels and Bot Connector Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-concepts?view=azure-bot-service-4.0)

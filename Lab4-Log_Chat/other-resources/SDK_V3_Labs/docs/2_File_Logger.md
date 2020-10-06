@@ -1,14 +1,14 @@
-﻿# ファイル ロガー
+# File Logger
 
-## 1.	目的
+## 1.	Objectives
 
-この演習の目的は、ミドルウェアを使用してチャットの会話をファイルに記録することです。入出力 (I/O) 操作が多すぎると、ボットからの応答が遅くなる可能性があります。このラボでは、グローバル イベントを利用して、ファイルへのチャット会話の効率的なログ記録を実行します。このアクティビティは、前のラボの概念の拡張です。
+The aim of this lab is to log chat conversations to a file using middleware. Excessive Input/Output (I/O) operations can result in slow responses from the bot. In this lab, the global events are leveraged to perform efficient logging of chat conversations to a file. This activity is an extension of the previous lab's concepts.
 
-Visual Studio の code\file-core-Middleware からプロジェクトをインポートします。
+Import the project from code\file-core-Middleware in Visual Studio.
 
-## 2. 非効率的なログの記録方法
+## 2. An inefficient way of logging
 
-チャットの会話をファイルに記録する非常に簡単な方法は、以下のコード スニペットに示すように File.AppendAllLines を使用することです。File.AppendAllLines でファイルを開き、指定した文字列をファイルに追加して、ファイルを閉じます。ただし、ユーザー/ボットからのすべてのメッセージのファイルを開いて閉じるので、これは非常に非効率なログ記録方法です。
+A very simple way of logging chat conversations to a file is to use File.AppendAllLines as shown below in the code snippet. File.AppendAllLines opens a file, appends the specified string to the file, and then closes the file. However, this can be very inefficient way of logging as we will be opening and closing the file for every message from the user/bot.
 tu
 ````C#
 public class DebugActivityLogger : IActivityLogger
@@ -20,15 +20,15 @@ public class DebugActivityLogger : IActivityLogger
 }
 ````
 
-## 3.	効率的なログの記録方法
+## 3.	An efficient way of logging
 
-より効率的なファイルへの記録方法は、Global.asax ファイルを使用して、ボットのライフサイクルに関連するイベントを使用することです。以下のコード スニペットに示すように、global.asax を拡張します。次の行を、環境内に存在しているパスに変更します。
+A more efficient way of logging to a file is to use the Global.asax file and use the events related to the lifecycle of the bot. Extend the global.asax as shown in the code snippet below. Change the below line to a path that exists in your environment.
 
 ````C# 
 tw = new StreamWriter("C:\\Users\\username\\log.txt", true);
 ````
 
-Application_Start で、特定のエンコーディングのストリームに文字を書き込むストリーム ラッパーを実装する StreamWriter を開きます。これはボットのライフサイクルを維持し、各メッセージのファイルを開いたり閉じたりせずに、ボットに書き込むことができます。また、StreamWriter がパラメータとして DebugActivityLogger に送信されることにも注目してください。Application_End でログ ファイルを閉じることができます。アプリケーションがアンロードされる前に、アプリケーションの有効期間ごとに 1 回呼び出されます。
+Application_Start opens a StreamWriter that implements a Stream wrapper that writes characters to a stream in a particular encoding. This lasts for the life of the bot and we can now just write to it as opposed to opening and closing the file for each message. It is also worth noting that the StreamWriter is now sent as a parameter to DebugActivityLogger. The log file can be closed in Application_End which is called once per lifetime of the application before the application is unloaded.
 
 ````C#
 using System.Web.Http;
@@ -63,14 +63,14 @@ namespace MiddlewareBot
 }
 ````
 
-DebugActivityLogger コンストラクターでファイル パラメーターを受け取り、LogAsync を更新し、次の行を追加してログ ファイルに書き込みます。
+Recieve the file parameter in DebugActivityLogger constructor and update LogAsync to write to the log file now by adding the below lines.
 
 ````C#
 tw.WriteLine($"From:{activity.From.Id} - To:{activity.Recipient.Id} - Message:{activity.AsMessageActivity().Text}", true);
 tw.Flush();
 ````
 
-DebugActivityLogger コード全体は次のようになります。
+The entire DebugActivityLogger code looks as follows:
 
 ````C#
 using System.Diagnostics;
@@ -100,25 +100,25 @@ namespace MiddlewareBot
 }
 ````
 
-## 4. ログ ファイル
+## 4. Log file
 
-エミュレーターでボット アプリケーションを実行し、メッセージを使用してテストします。行で指定されているログ ファイルを調べます
+Run the bot application in the emulator and test with messages. Investigate the log file specified in the line
 
 ````C# 
 tw = new StreamWriter("C:\\Users\\username\\log.txt", true);
 ````
 
-ユーザーとボットからログ メッセージを表示するには、メッセージがログ ファイルに次のように表示されます。
+To view the log messages from the user and the bot, the messages should appear as follows in the log file now:
 
 ````From:2c1c7fa3 - To:56800324 - Message:a log message````
 
 ````From:56800324 - To:2c1c7fa3 - Message:You sent a log message which was 13 characters````
 
-## 5. 選択的ログ
+## 5. Selective Logging
 
-特定のシナリオでは、選択的にメッセージに対してモデリングを実行するか、選択的にログに記録することが望ましいでしょう。このような例は多数あります: a) 非常にアクティブなコミュニティ ボットは、大量のチャット メッセージを非常に迅速にキャプチャできますが、チャット メッセージの多くはあまり有用ではない可能性があります。b) 特定のユーザー/ボットまたは特定のトレンド製品のカテゴリ/トピックに関連するメッセージに焦点を当てるために、選択的にログに記録する必要があることもあります。
+In certain scenarios, it would be desirable to perform modeling on selective messages or selectively log. There are many such examples: a) A very active community bot can potentially capture a tsunami of chat messages very quickly and a lot of the chat messages may not be very useful. b) There may also be a need to selectively log to focus on certain users/bot or messages related to a particular trending product category/topic.
 
-常にすべてのチャット メッセージをキャプチャし、選択的にメッセージをマイニングするためにフィルタリングを実行できます。ただし、選択的にログに記録する柔軟性があることが有益な場合があり、Microsoft Bot Framework がこれを可能にします。ユーザーからのメッセージを選択的にログに記録するには、アクティビティの json を調べて、"name" でフィルター処理します。たとえば、次の json では、メッセージが "Bot1" によって送信されました。
+One can always capture all the chat messages and perform filtering to mine selective messages. However, having the flexibility to selectively log can be useful and the Microsoft Bot Framework allows this. To selectively log messages from the users, you can investigate the activity json and filter on "name". For example, in the json below, the message was sent by "Bot1".
 
 ```json
 {
@@ -148,7 +148,7 @@ tw = new StreamWriter("C:\\Users\\username\\log.txt", true);
   "replyToId": "09df56eecd28457b87bba3e67f173b84"
 }
 ```
-json を調べた後、DebugActivityLogger の LogAsync メソッドを変更して、````activity.From.Name````プロパティをチェックする簡単な条件を組み込むことによって、ユーザー メッセージをフィルター処理できます。
+After investigating the json, the LogAsync method in DebugActivityLogger can be modified to filter on user messages by introducing a simple condition to check ````activity.From.Name```` property:
 
 ````C#
 public class DebugActivityLogger : IActivityLogger
@@ -164,6 +164,6 @@ public class DebugActivityLogger : IActivityLogger
 ````
 
 
-### [3_SQL_Logger](3_SQL_Logger.md) に進みましょう
+### Continue to [3_SQL_Logger](3_SQL_Logger.md)
 
-[0_README](../0_README.md) に戻る
+Back to [0_README](../0_README.md)

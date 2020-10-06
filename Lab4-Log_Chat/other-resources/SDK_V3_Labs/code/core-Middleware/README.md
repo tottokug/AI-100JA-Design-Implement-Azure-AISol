@@ -1,23 +1,23 @@
-﻿# ミドルウェア ボットのサンプル
+# Middleware Bot Sample
 
-メッセージをインターセプトしてログに記録する方法を示すサンプル ボット。
+A sample bot showing how to intercept messages and log them.
 
-[![Azureへのデプロイ][Deploy Button]][Deploy CSharp/MiddlewareLogging]
+[![Deploy to Azure][Deploy Button]][Deploy CSharp/MiddlewareLogging]
 
 [Deploy Button]: https://azuredeploy.net/deploybutton.png
 [Deploy CSharp/MiddlewareLogging]: https://azuredeploy.net
 
-### 前提条件
+### Prerequisites
 
-このサンプルを実行するための最小の前提条件は次のとおりです。
-* Visual Studio 2015 の最新の更新プログラム。Community バージョンは[ここ](http://www.visualstudio.com)から無料でダウンロードできます。
-* Bot Framework EmulatorBot Framework Emulator をインストールするには、[ここ](https://emulator.botframework.com/)からダウンロードしてください。Bot Framework Emulator の詳細については、[このドキュメントの記事](https://github.com/microsoft/botframework-emulator/wiki/Getting-Started)を参照してください。
+The minimum prerequisites to run this sample are:
+* The latest update of Visual Studio 2015. You can download the community version [here](http://www.visualstudio.com) for free.
+* The Bot Framework Emulator. To install the Bot Framework Emulator, download it from [here](https://emulator.botframework.com/). Please refer to [this documentation article](https://github.com/microsoft/botframework-emulator/wiki/Getting-Started) to know more about the Bot Framework Emulator.
 
-### コードのハイライト
+### Code Highlights
 
-会話の履歴を処理するとき、最も一般的な操作の 1 つは、ボットとユーザーの間のメッセージ アクティビティをインターセプトしてログに記録することです。[`Microsoft.Bot.Builder.History`](https://github.com/Microsoft/BotBuilder/tree/master/CSharp/Library/Microsoft.Bot.Builder.History)名前空間には、これを行うためのインターフェイスとクラスが用意されています。特に、[`IActivityLogger`](https://github.com/Microsoft/BotBuilder/blob/master/CSharp/Library/Microsoft.Bot.Builder/Dialogs/IActivityLogger.cs)インターフェイスには、クラスでメッセージ アクティビティをログに記録するために実装する必要がある機能の定義が含まれています。
+One of the most common operations when working with conversational history is to intercept and log message activities between bots and users. The [`Microsoft.Bot.Builder.History`](https://github.com/Microsoft/BotBuilder/tree/master/CSharp/Library/Microsoft.Bot.Builder.History) namespace provides interfaces and classes for doing this. In particular, the [`IActivityLogger`](https://github.com/Microsoft/BotBuilder/blob/master/CSharp/Library/Microsoft.Bot.Builder/Dialogs/IActivityLogger.cs) interface contains the definition of the functionality that a class needs to implement to log message activities.
 
-デバッグで実行しているときにのみトレース リスナーにメッセージ アクティビティを書き込む`IActivityLogger`インターフェイスの[`DebugActivityLogger`](DebugActivityLogger.cs)の実装を確認してください。
+Check out the [`DebugActivityLogger`](DebugActivityLogger.cs) implementation of the `IActivityLogger` interface that writes message activities to the trace listeners only when running in debug.
 
 ````C#
 public class DebugActivityLogger : IActivityLogger
@@ -29,7 +29,7 @@ public class DebugActivityLogger : IActivityLogger
 }
 ````
 
-既定では、BotBuilder ライブラリで、操作なしアクティビティ ロガーである会話コンテナーによって[`NullActivityLogger`](https://github.com/Microsoft/BotBuilder/blob/master/CSharp/Library/Microsoft.Bot.Builder/Dialogs/IActivityLogger.cs#L81)が登録されます。[`Global.asax.cs`](DebugActivityLogger.cs)内のサンプルの[`DebugActivityLogger`](Global.asax.cs#L11-L13)の Autofac コンテナーでの登録を確認してください。
+By default, the BotBuilder library registers a [`NullActivityLogger`](https://github.com/Microsoft/BotBuilder/blob/master/CSharp/Library/Microsoft.Bot.Builder/Dialogs/IActivityLogger.cs#L81) with the conversation container, which is a no-op activity logger. Check out the registration in the Autofac container of the [`DebugActivityLogger`](DebugActivityLogger.cs) of the sample in the [`Global.asax.cs`](Global.asax.cs#L11-L13).
 
 ````C#
 var builder = new ContainerBuilder();
@@ -37,25 +37,25 @@ builder.RegisterType<DebugActivityLogger>().AsImplementedInterfaces().InstancePe
 builder.Update(Conversation.Container);
 ````
 
-### 結果
+### Outcome
 
-サンプル ソリューションを開いて実行するときに、[Visual Studio 出力ウィンドウの「Debug text」 (テキストのデバッグ) ペイン](https://blogs.msdn.microsoft.com/visualstudioalm/2015/02/09/the-output-window-while-debugging-with-visual-studio/)に次の結果が表示されます。
+You will see the following result in the [Debug text pane of the Visual Studio Output window](https://blogs.msdn.microsoft.com/visualstudioalm/2015/02/09/the-output-window-while-debugging-with-visual-studio/) when opening and running the sample solution.
 
-ボットが受信したメッセージ:
+A message received by the bot:
 ````
 From:default-user - To:ii845fc9l02209hh6 - Message:Hello bot!
 ````
 
-ユーザーに送信されたメッセージ:
+A the message sent to the user:
 ````
 From:ii845fc9l02209hh6 - To:default-user - Message:You sent Hello bot! which was 10 characters
 ````
 
-### 詳細情報
+### More Information
 
-.NET 用の Bot Builder および会話の履歴の使用方法の詳細については、次のリソースを参照してください。
+To get more information about how to get started in Bot Builder for .NET and Conversational history please review the following resources:
 
-* [.NET 用の Bot Builder](https://docs.microsoft.com/ja-jp/bot-framework/dotnet/)
-* [メッセージをインターセプトする](https://docs.microsoft.com/ja-jp/bot-framework/dotnet/bot-builder-dotnet-middleware)
-* [Microsoft.Bot.Builder.History 名前空間](https://docs.botframework.com/ja-jp/csharp/builder/sdkreference/dc/dc6/namespace_microsoft_1_1_bot_1_1_builder_1_1_history.html)
-* [TableLogger (Azure Table Storage を使用したアクティビティ ロガー)](https://github.com/Microsoft/BotBuilder/blob/master/CSharp/Library/Microsoft.Bot.Builder.Azure/TableLogger.cs#L60)
+* [Bot Builder for .NET](https://docs.microsoft.com/en-us/bot-framework/dotnet/)
+* [Intercept messages](https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-middleware)
+* [Microsoft.Bot.Builder.History namespace](https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/dc6/namespace_microsoft_1_1_bot_1_1_builder_1_1_history.html)
+* [TableLogger (Activity logger using Azure Table Storage)](https://github.com/Microsoft/BotBuilder/blob/master/CSharp/Library/Microsoft.Bot.Builder.Azure/TableLogger.cs#L60)

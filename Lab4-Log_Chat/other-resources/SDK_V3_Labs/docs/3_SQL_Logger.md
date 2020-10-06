@@ -1,36 +1,36 @@
-﻿# SQL ロガー
+# SQL Logger
 
-## 1.	目的
+## 1.	Objectives
 
-この演習の目的は、チャットの会話をAzure SQL データベースに記録することです。このラボは、Global.asax イベントと LogAsync メソッドを使用した前の「ファイル ロガー」ラボの拡張です。
+The aim of this lab is to log chat conversations to Azure SQL database. This lab is an extension of the previous File Logger lab where we used Global.asax events and LogAsync methods.
 
-## 2.	セットアップ/前提条件
+## 2.	Setup/Pre-requisites
 
-2.1.   Visual Studio の code\sql-core-Middleware からプロジェクトをインポートします。
+2.1.   Import the project from code\sql-core-Middleware in Visual Studio.
 
-2.2.   SQL データベースに書き込むためです。新しい SQL データベースを作成するには、Azure ポータルに移動し、[DB を作成する - Portal](https://docs.microsoft.com/ja-jp/azure/sql-database/sql-database-get-started-portal)の手順に従います。ただし、リンクに示されているように、「MySampleDatabase」ではなく、Botlog と呼ばれるデータベースを作成します。プロセスの最後に、下の図に示すように、「概要」タブが表示されるはずです。
+2.2.   Since we will be writing to a SQL database. To create a new one, go to the azure portal and follow the [Create DB - Portal](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal) steps. But create a database called Botlog, not "MySampleDatabase" as suggested in the link. At the end of the process, you should see the Overview tab, as you can see in the image below.
 
 ![Botlog](images/BotLog.png)
 
-2.2.   「概要」タブで「データベース接続文字列の表示」を選択し、ラボの後の方で使用するために、接続文字列をメモします (テキスト ドキュメントに貼り付ける)。
+2.2.   Select "Show database connection strings" from the Overview tab and make a note (paste in a text document) of the connection string as we will be using it later in the lab.
 
-![接続文字列](images/ConnectionStrings.png)
+![Connection Strings](images/ConnectionStrings.png)
 
-2.3.   ファイアウォールの設定を変更して、IP アドレスをキャプチャします。[DB を作成する - Portal](https://docs.microsoft.com/ja-jp/azure/sql-database/sql-database-get-started-portal) の手順に従った場合は、既にこれを行っている可能性があります。IP アドレスは、https://whatismyipaddress.com/ で確認できます。 
+2.3.   Change your firewall settings to capture your ip address. You may have already done this if you followed the steps from [Create DB - Portal](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal) . Your ip address can be found here: https://whatismyipaddress.com/ 
 
-![ファイアウォール設定](images/FirewallSettings.png)
+![Firewall Settings](images/FirewallSettings.png)
 
-2.4.   以下の create table ステートメント (またはスキーマ) を使用して userChatLog という新しいテーブルを作成します。[DB を作成する - Portal](https://docs.microsoft.com/ja-jp/azure/sql-database/sql-database-get-started-portal) リンクの「SQL データベースに対してクエリを実行する」セクションと同じツールを使用します。Azure Portal で、左側のメニューの「データ エクスプローラー (プレビュー)」をクリックします。ログインするには、データベースの作成時に指定したのと同じアカウントとパスワードを使用します。以下のスクリプトを貼り付け、「実行」をクリックします。予想される結果は、メッセージ "クエリが成功しました: 影響を受ける行: 0." です。 
+2.4.   Create a new table called userChatLog with the below create table statement (or schema). We will use the same tool of the "Query the SQL database" section at the [Create DB - Portal](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal) link. Within the Azure Portal, click "Data Explorer (preview)" on the left menu. To login, use the same account and password you specified when creating the database. Paste the script below and click "Run". The expected result is the message "Query succeeded: Affected rows: 0.". 
 
 ```
 CREATE TABLE userChatLog(id int IDENTITY(1, 1),fromId varchar(max),toId varchar(max),message varchar(max),PRIMARY KEY(id));
 ```
 
-2.5.   sql-core-Middleware から Visual Studio にコードをインポートします。これを行う最も簡単な方法は、ソリューション「sql-core-Middleware.sln」をクリックすることです。
+2.5.   Import the code from sql-core-Middleware into Visual Studio. The easiest way to do this is by clicking on the solution sql-core-Middleware.sln.
 
-## 3.  SQL ログ
+## 3.  SQL Logging
 
-フレームワークは、これまでのラボで使用したものとほとんど同じです。要するに、Global.asax のグローバル イベントを使用してログの記録を設定します。これを行う理想的な方法は、Application_Start によって SQL サーバーへの接続を開始し、チャット メッセージを格納するための LogAsync メソッドに接続オブジェクトを渡し、Application_End によって接続を閉じることです。
+The framework is very much the same as what was used in the previous labs. In short, we will use the Global.asax's global events to setup our logging. The ideal way of doing this is to initiate the connection to SQL server via Application_Start, pass the connection object to LogAsync method for storing chat messages and close the connection via Application_End.
 
 ````c#
 public class WebApiApplication : System.Web.HttpApplication
@@ -38,7 +38,7 @@ public class WebApiApplication : System.Web.HttpApplication
         SqlConnection connection = null;
         protected void Application_Start()
         {
-            // sql 文字列接続の設定
+            // Setting up sql string connection
             SqlConnectionStringBuilder sqlbuilder = new SqlConnectionStringBuilder();
             sqlbuilder.DataSource = "botlogserver.database.windows.net";
             sqlbuilder.UserID = "botlogadmin";
@@ -65,7 +65,7 @@ public class WebApiApplication : System.Web.HttpApplication
     }
 ````
 
-接続オブジェクトが上記のコード スニペットの SqlActivityLogger にパラメーターとして渡されることに注目してください。その結果、LogAsync メソッドで、ボットまたはユーザーからのメッセージをログに記録する準備ができました。チャット メッセージとともに、送信元と送信先の ID をアクティビティ オブジェクト (activity.From.Id, activity.Recipient.Id, activity.AsMessageActivity().Text) から取得できます。
+It is worth noting that the connection object is passed as a parameter to SqlActivityLogger in the above code snippet. As a result, the LogAsync method is now ready to log any message from the bot or the user. The from/to ids along with the chat message can be obtained from the activity object (activity.From.Id, activity.Recipient.Id, activity.AsMessageActivity().Text).
 
 ````c#
 public class SqlActivityLogger : IActivityLogger
@@ -84,33 +84,33 @@ public class SqlActivityLogger : IActivityLogger
 
                 string insertQuery = "INSERT INTO userChatLog(fromId, toId, message) VALUES (@fromId,@toId,@message)";
                 
-                // fromId、toId、メッセージをユーザーの chatlog テーブルに渡す 
+                // Passing the fromId, toId, message to the the user chatlog table 
                 SqlCommand command = new SqlCommand(insertQuery, connection);
                 command.Parameters.AddWithValue("@fromId", fromId);
                 command.Parameters.AddWithValue("@toId", toId);
                 command.Parameters.AddWithValue("@message", message);
               
-                // Azure sql データベースを挿入する
+                // Insert to Azure sql database
                 command.ExecuteNonQuery();
                 Debug.WriteLine("Insertion successful of message: " + activity.AsMessageActivity().Text);   
         }
     }
 ````
 
-### SQL インジェクション 
+### SQL Injection 
 
-SQL インジェクションとは、攻撃者が、アプリケーションのデータベース サーバーを制御する悪意のある SQL ステートメントを実行するインジェクション攻撃を指します。SQL インジェクションにより、攻撃者が機密データに不正にアクセスできるようになる可能性があります。LogAsync メソッドでは、パラメーターにより、SQL インジェクションに対する防御が可能になります。パラメータ化されたクエリの主なメリットは、SQL インジェクションを防ぐことです。
+SQL Injection refers to an injection attack wherein an attacker can execute malicious SQL statements that control an application’s database server. SQL Injection can provide an attacker with unauthorized access to sensitive data. In the LogAsync method, parameters allow for defense against SQL injection. The prime benefit of parameterized queries is to prevent SQL injection.
 
-## 4.  SQL クエリの結果
+## 4.  SQL Query Results
 
-Visual Studio からプロジェクトを実行し、Bot Emulator を開きます。SQL ログ機能をテストするために、ボットへのメッセージの送信を開始します。
+Run the project from visual studio and open the bot emulator. Begin to send messages to your bot to test the SQL logging functionality.
 
 ![Bot Emulator](images/BotEmulator.png)
 
-ポータルのデータベース ページから、「ツール」->「クエリ エディター (プレビュー)」を選択して、テーブルに格納されているログ メッセージをプレビューします。ログインしてクエリを実行します。
-これは結果をすばやく確認する方法ですが、唯一の方法ではありません。クエリ操作を実行するには、任意の SQL クライアントを使用してください。クエリ ````Select * from userChatLog```` を実行して、テーブル "userChatLog" に挿入されるチャットを表示します。次の例では、Bot Emulator を介して送信されるメッセージ ````My Beautiful Los Angeles```` が ID とともにログに記録されます。
+From the database page of the portal, select Tools -> Query editor (preview) to preview log messages stored in the table. Login to run any queries.
+This is a quick way to see results but is not the only way of doing it. Feel free to use any SQL client to perform query operations. Run the query ````Select * from userChatLog```` to view chat inserts into the table userChatLog. In the below example, the message ````My Beautiful Los Angeles```` sent via the bot emulator is logged along with the ids.
 
-![クエリ エディター](images/QueryEditor.png)
+![Query Editor](images/QueryEditor.png)
 
 
-### [0_README](../0_README.md) に進み、ラボを復習して、追加のクレジットを試してください
+### Continue to [0_README](../0_README.md) to review lab and attempt extra credit

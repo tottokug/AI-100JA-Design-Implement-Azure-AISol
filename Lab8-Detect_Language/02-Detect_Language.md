@@ -62,7 +62,7 @@ private TextAnalyticsClient _textAnalyticsClient;
 1. コンストラクタを変更して、新しい TextAnalyticsClient を含めます。
 
 ```csharp
-Public PictureBot（PictureBotAccessors アクセサー、ILoggerFactory loggerFactory、LuisRecognizer 認識エンジン、TextAnalyticsClient analyticsClient）
+public PictureBot（PictureBotAccessors accessors, ILoggerFactory loggerFactory, LuisRecognizer recognizer, TextAnalyticsClient analyticsClient）
 ```
 
 1. コンストラクター内で、クラス変数を初期化します。
